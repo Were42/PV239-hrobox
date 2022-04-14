@@ -5,3 +5,6 @@
 /Hrobox/Hrobox/obj
 /Hrobox/Hrobox.Android/obj
 /.vs
+/Hrobox/.vs/Hrobox
+/Hrobox/Hrobox.Android/bin/Debug
+/Hrobox/Hrobox/bin/Debug/netstandard2.0
