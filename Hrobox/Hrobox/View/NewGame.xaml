@@ -4,20 +4,46 @@
              x:Class="Hrobox.View.NewGame"
              Title="Create game">
     <ContentPage.Content>
-        <Grid Margin="0, 50, 0,0">
+        <Grid Margin="0, 30, 0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" Margin="5, 80, 5 , 5" Text="Here you can create New Game." TextColor= "{StaticResource Primary}" FontSize="Medium" Padding="10"></Label>
+            <Label Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" Margin="5, 70, 5 , 0" Text="Here you can create New Game." TextColor= "{StaticResource Primary}" FontSize="Large" Padding="10"></Label>
+
             <Entry Grid.Row="1" Grid.Column="1" Placeholder="Name" PlaceholderColor="CadetBlue" HorizontalTextAlignment="Center"></Entry>
-            <Button Grid.Row="2" Grid.Column="1" Margin="0, 100, 0, 270 " CornerRadius="15" Text="Create Tag"></Button>
+            <Entry Grid.Row="2" Grid.Column="1" Placeholder="Rules" PlaceholderColor="CadetBlue" HorizontalTextAlignment="Center"></Entry>
+            <Entry Grid.Row="3" Grid.Column="1" Placeholder="Min Number of users" Keyboard="Numeric" PlaceholderColor="CadetBlue" HorizontalTextAlignment="Center"></Entry>
+            <Entry Grid.Row="4" Grid.Column="1" Placeholder="Max Number of users" Keyboard="Numeric" PlaceholderColor="CadetBlue" HorizontalTextAlignment="Center"></Entry>
+            <Picker Grid.Row="5" Grid.Column="1" Title="Duration" TitleColor="DarkSlateGray" HorizontalTextAlignment="Center" ItemsSource="{StaticResource DaysOfWeek}" />
+            <Picker Grid.Row="6" Grid.Column="1" Title="Age Groups" TitleColor="DarkSlateGray" HorizontalTextAlignment="Center" ItemsSource="{StaticResource DaysOfWeek}" />
+            <Picker Grid.Row="7" Grid.Column="1" Title="Tags" TitleColor="DarkSlateGray" HorizontalTextAlignment="Center" ItemsSource="{StaticResource DaysOfWeek}" />
+            <Button Grid.Row="8" Grid.Column="1" Margin="0, 10, 0, 60 " CornerRadius="15" Text="Create Game"></Button>
         </Grid>
     </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="DaysOfWeek" Type="{x:Type x:String}">
+                <x:String>Monday</x:String>
+                <x:String>Tuesday</x:String>
+                <x:String>Wednesday</x:String>
+                <x:String>Thursday</x:String>
+                <x:String>Friday</x:String>
+                <x:String>Saturday</x:String>
+                <x:String>Sunday</x:String>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>
