@@ -27,7 +27,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="1" Text="Přihlášení" FontSize="Large" TextColor="White">
+                    <Label Grid.Row="0" Grid.Column="1" Text="Login" FontSize="Large" TextColor="White">
                     </Label>
                     <Grid Grid.Row="1" Grid.Column="1" >
                         <Grid.RowDefinitions>
