@@ -2,5 +2,10 @@
 {
     public class AgeGroup
     {
+        enum Age
+        {
+            
+
+        }
     }
 }
