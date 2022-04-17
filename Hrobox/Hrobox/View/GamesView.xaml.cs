@@ -19,8 +19,9 @@ namespace Hrobox.View
 
         private void OnTapSelectTags(object sender, EventArgs e)
         {
-            Console.WriteLine("SUP");
-            Navigation.PushModalAsync(new MultiPickerView());
+            var page = new MultiPickerView();
+            page.BindingContext = BindingContext;
+            Navigation.PushModalAsync(page);
         }
     }
 }
