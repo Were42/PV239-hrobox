@@ -79,14 +79,18 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    <FlyoutItem Title="Main Page" Icon="icon_about.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+    <FlyoutItem Title="Hrobox games" Icon="icon_about.png">
+        <ShellContent Route="Games" ContentTemplate="{DataTemplate local:Games}" />
     </FlyoutItem>
-
-
-    <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Login" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
-    </MenuItem>
+    <FlyoutItem Title="Create Game" Icon="icon_about.png">
+        <ShellContent Route="NewGame" ContentTemplate="{DataTemplate local:NewGame}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Create Tag" Icon="icon_about.png">
+        <ShellContent Route="NewTag" ContentTemplate="{DataTemplate local:NewTag}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Sign in / Log in" Icon="icon_about.png">
+        <ShellContent Route="Login" ContentTemplate="{DataTemplate local:Login}" />
+    </FlyoutItem>
 
     <!--
         TabBar lets you define content that won't show up in a flyout menu. When this content is active

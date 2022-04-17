@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hrobox.View.Games"
+             Title="Hrobox Games">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame HasShadow="True" BackgroundColor="LightBlue">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Placeholder="Key word" TextColor="Black" PlaceholderColor="Black"></Entry>
+                        <Button Grid.Row="0" Grid.Column="4" BackgroundColor="White" TextColor="Black" Text="Refr" FontSize="Micro"></Button>
+                        <RadioButton Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Content="All" FontSize="Small"></RadioButton>
+                        <RadioButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Content="15" FontSize="Small"></RadioButton>
+                        <RadioButton Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" Grid.ColumnSpan="2" Content="15-30" FontSize="Small"></RadioButton>
+                        <RadioButton Grid.Row="1" Grid.Column="4" HorizontalOptions="Center" Grid.ColumnSpan="2" Content="30-60" FontSize="Small"></RadioButton>
+
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"
+                               Text="Na slepou bábu"/>
+                        <Label Grid.Column="1"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"
+                               Text="10-60 ppl"></Label>
+                        <Label Grid.Column="2"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"
+                               Text="tagging"></Label>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
