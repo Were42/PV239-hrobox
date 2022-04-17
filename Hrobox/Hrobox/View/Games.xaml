@@ -16,16 +16,16 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height="20"></RowDefinition>
                             <RowDefinition Height="20"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Placeholder="Key word" TextColor="Black" PlaceholderColor="Black"></Entry>
-                        <Button Grid.Row="0" Grid.Column="4" BackgroundColor="White" TextColor="Black" Text="Refr" FontSize="Micro"></Button>
+                        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Placeholder="Key word" TextColor="Black" FontSize="Medium" PlaceholderColor="Black"></Entry>
+                        <Button Grid.Row="0" Grid.Column="4" BackgroundColor="White" TextColor="Black" Text="Find" FontSize="Micro"></Button>
                         <RadioButton Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Content="All" FontSize="Small"></RadioButton>
                         <RadioButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Content="15" FontSize="Small"></RadioButton>
-                        <RadioButton Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" Grid.ColumnSpan="2" Content="15-30" FontSize="Small"></RadioButton>
-                        <RadioButton Grid.Row="1" Grid.Column="4" HorizontalOptions="Center" Grid.ColumnSpan="2" Content="30-60" FontSize="Small"></RadioButton>
+                        <RadioButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Grid.ColumnSpan="3" Content="15-30" FontSize="Small"></RadioButton>
+                        <RadioButton Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Grid.ColumnSpan="2" Content="30-60" FontSize="Small"></RadioButton>
 
                     </Grid>
                 </Frame>
