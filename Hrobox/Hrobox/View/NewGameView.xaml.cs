@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Hrobox.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Games : ContentPage
+    public partial class NewGameView : ContentPage
     {
-        public Games()
+        public NewGameView()
         {
             InitializeComponent();
         }

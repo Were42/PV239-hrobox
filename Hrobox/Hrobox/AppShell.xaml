@@ -80,16 +80,16 @@
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
     <FlyoutItem Title="Hrobox games" Icon="icon_about.png">
-        <ShellContent Route="Games" ContentTemplate="{DataTemplate local:Games}" />
+        <ShellContent Route="Games" ContentTemplate="{DataTemplate local:GamesView}" />
     </FlyoutItem>
     <FlyoutItem Title="Create Game" Icon="icon_about.png">
-        <ShellContent Route="NewGame" ContentTemplate="{DataTemplate local:NewGame}" />
+        <ShellContent Route="NewGame" ContentTemplate="{DataTemplate local:NewGameView}" />
     </FlyoutItem>
     <FlyoutItem Title="Create Tag" Icon="icon_about.png">
-        <ShellContent Route="NewTag" ContentTemplate="{DataTemplate local:NewTag}" />
+        <ShellContent Route="NewTag" ContentTemplate="{DataTemplate local:NewTagView}" />
     </FlyoutItem>
     <FlyoutItem Title="Sign in / Log in" Icon="icon_about.png">
-        <ShellContent Route="Login" ContentTemplate="{DataTemplate local:Login}" />
+        <ShellContent Route="Login" ContentTemplate="{DataTemplate local:LoginView}" />
     </FlyoutItem>
 
     <!--

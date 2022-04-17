@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Hrobox.View.Login"
-             Title="Sign in/Login">
+             x:Class="Hrobox.View.LoginView"
+             Title="Sign in/Log in">
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
