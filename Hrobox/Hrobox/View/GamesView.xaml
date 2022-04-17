@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
+             xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
              x:Class="Hrobox.View.GamesView"
              Title="Hrobox Games">
+    <ContentPage.BindingContext>
+        <viewModel:GamesViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -27,7 +31,12 @@
                                 <RowDefinition Height="20"></RowDefinition>
                                 <RowDefinition Height="50"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <SearchBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Placeholder="Key word" TextColor="Black" FontSize="Medium" PlaceholderColor="Black"></SearchBar>
+                            <SearchBar Grid.Row="0" Grid.Column="0"
+                                       Grid.ColumnSpan="5" Placeholder="Key word"
+                                       TextColor="Black" FontSize="Medium"
+                                       PlaceholderColor="Black"
+                                       Text="{Binding KeyWord}"
+                                       SearchCommand="{Binding Find}"></SearchBar>
                             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
                                 <RadioButton HorizontalOptions="Center" IsChecked="True" Content="All" FontSize="Small"></RadioButton>
                                 <RadioButton HorizontalOptions="Center" Content="15" FontSize="Small"></RadioButton>
@@ -43,13 +52,13 @@
                             </Grid>
                         </Grid>
                     </Frame>
-                    <!--<ListView>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <view:GameItemView></view:GameItemView>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
+                    <!--<ListView ItemsSource="{Binding Games}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <view:GameItemView></view:GameItemView>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>-->
                     <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
                         <Grid>
                             <Grid.ColumnDefinitions>
