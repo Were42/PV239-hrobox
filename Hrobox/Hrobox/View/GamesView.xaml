@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Hrobox.View.Games"
+             x:Class="Hrobox.View.GamesView"
              Title="Hrobox Games">
     <ContentPage.Content>
         <ScrollView>
@@ -20,8 +20,7 @@
                             <RowDefinition Height="20"></RowDefinition>
                             <RowDefinition Height="20"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Placeholder="Key word" TextColor="Black" FontSize="Medium" PlaceholderColor="Black"></Entry>
-                        <Button Grid.Row="0" Grid.Column="4" BackgroundColor="White" TextColor="Black" Text="Find" FontSize="Micro"></Button>
+                        <SearchBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Placeholder="Key word" TextColor="Black" FontSize="Medium" PlaceholderColor="Black"></SearchBar>
                         <RadioButton Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Content="All" FontSize="Small"></RadioButton>
                         <RadioButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Content="15" FontSize="Small"></RadioButton>
                         <RadioButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Grid.ColumnSpan="3" Content="15-30" FontSize="Small"></RadioButton>
