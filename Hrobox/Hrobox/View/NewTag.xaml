@@ -4,10 +4,20 @@
              x:Class="Hrobox.View.NewTag"
              Title="Create tag">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" TextColor="{StaticResource Primary}"/>
-        </StackLayout>
+        <Grid Margin="0, 50, 0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" Margin="5, 80, 5 , 5" Text="Here you can create Tag, that is used for filtering games." TextColor= "{StaticResource Primary}" FontSize="Medium" Padding="10"></Label>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="Name" PlaceholderColor="CadetBlue" HorizontalTextAlignment="Center"></Entry>
+            <Button Grid.Row="2" Grid.Column="1" Margin="0, 100, 0, 270 " CornerRadius="15" Text="Create Tag"></Button>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
