@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Hrobox.View.Login"
-             Title="Sign in/Log in">
+             Title="Sign in/Login">
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -27,7 +27,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="1" Text="Přihlášení" FontSize="Large" TextColor="White">
+                    <Label Grid.Row="0" Grid.Column="1" Text="Login" FontSize="Large" TextColor="White">
                     </Label>
                     <Grid Grid.Row="1" Grid.Column="1" >
                         <Grid.RowDefinitions>
