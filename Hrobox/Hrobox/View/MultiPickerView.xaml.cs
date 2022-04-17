@@ -10,17 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace Hrobox.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GamesView : ContentPage
+    public partial class MultiPickerView : ContentPage
     {
-        public GamesView()
+        public MultiPickerView()
         {
             InitializeComponent();
         }
 
-        private void OnTapSelectTags(object sender, EventArgs e)
+        private void Button_OnClicked(object sender, EventArgs e)
         {
-            Console.WriteLine("SUP");
-            Navigation.PushModalAsync(new MultiPickerView());
+            Navigation.PopModalAsync();
         }
     }
 }
