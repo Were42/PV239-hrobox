@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
+             xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
              x:Class="Hrobox.View.GamesView"
              Title="Hrobox Games">
+    <ContentPage.BindingContext>
+        <viewModel:GamesViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -27,15 +31,20 @@
                                 <RowDefinition Height="20"></RowDefinition>
                                 <RowDefinition Height="50"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <SearchBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Placeholder="Key word" TextColor="Black" FontSize="Medium" PlaceholderColor="Black"></SearchBar>
+                            <SearchBar Grid.Row="0" Grid.Column="0"
+                                       Grid.ColumnSpan="5" Placeholder="Key word"
+                                       TextColor="Black" FontSize="Medium"
+                                       PlaceholderColor="Black"
+                                       Text="{Binding KeyWord}"
+                                       SearchCommand="{Binding Find}"></SearchBar>
                             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
-                                <RadioButton HorizontalOptions="Center" IsChecked="True" Content="All" FontSize="Small"></RadioButton>
-                                <RadioButton HorizontalOptions="Center" Content="15" FontSize="Small"></RadioButton>
-                                <RadioButton HorizontalOptions="Center" Content="15-30" FontSize="Small"></RadioButton>
-                                <RadioButton HorizontalOptions="Center" Content="30-60" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsAll}" Content="All" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsQuarter}" Content="15" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHalf}" Content="15-30" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHour}" Content="30-60" FontSize="Small"></RadioButton>
                             </StackLayout>
                             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
-                                <Entry Placeholder="Select tags"/>
+                                <Entry Placeholder="Select tags" HorizontalTextAlignment="Center"/>
                                 <BoxView></BoxView>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnTapSelectTags"/>
@@ -43,14 +52,15 @@
                             </Grid>
                         </Grid>
                     </Frame>
-                    <!--<ListView>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <view:GameItemView></view:GameItemView>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
-                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                    <Label Text="Found games:" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}"></Label>
+                    <!--<ListView ItemsSource="{Binding Games}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <view:GameItemView/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>-->
+                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" CornerRadius="10" BorderColor="{StaticResource Primary}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -71,7 +81,7 @@
                                Text="ball"></Label>
                         </Grid>
                     </Frame>
-                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" CornerRadius="10" BorderColor="{StaticResource Primary}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -92,7 +102,7 @@
                                Text="ball"></Label>
                         </Grid>
                     </Frame>
-                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" CornerRadius="10" BorderColor="{StaticResource Primary}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
