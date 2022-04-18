@@ -29,6 +29,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40"></RowDefinition>
                                 <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="20"></RowDefinition>
                                 <RowDefinition Height="50"></RowDefinition>
                             </Grid.RowDefinitions>
                             <SearchBar Grid.Row="0" Grid.Column="0"
@@ -37,13 +38,15 @@
                                        PlaceholderColor="Black"
                                        Text="{Binding KeyWord}"
                                        SearchCommand="{Binding Find}"></SearchBar>
-                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
+                            <Label Grid.Row="1" Grid.Column="0"
+                                   Grid.ColumnSpan="5" Text="Time duration:"></Label>
+                            <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
                                 <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsAll}" Content="All" FontSize="Small"></RadioButton>
-                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsQuarter}" Content="15" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsQuarter}" Content="&lt;15" FontSize="Small"></RadioButton>
                                 <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHalf}" Content="15-30" FontSize="Small"></RadioButton>
                                 <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHour}" Content="30-60" FontSize="Small"></RadioButton>
                             </StackLayout>
-                            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
+                            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5">
                                 <Entry Placeholder="Select tags" HorizontalTextAlignment="Center"/>
                                 <BoxView></BoxView>
                                 <Grid.GestureRecognizers>
@@ -53,13 +56,13 @@
                         </Grid>
                     </Frame>
                     <Label Text="Found games:" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}"></Label>
-                    <!--<ListView ItemsSource="{Binding Games}">
+                    <ListView ItemsSource="{Binding Games}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <view:GameItemView/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>-->
+                    </ListView>
                     <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" CornerRadius="10" BorderColor="{StaticResource Primary}">
                         <Grid>
                             <Grid.ColumnDefinitions>
