@@ -11,8 +11,8 @@ namespace Hrobox.Model
         public Tag Tag { get; set; }
         public Duration Duration { get; set; }
         public string Version { get; set; }
-        public int MinNumPlayers { get; set; }
-        public int MaxNumPlayers { get; set; }
+        public int? MinNumPlayers { get; set; }
+        public int? MaxNumPlayers { get; set; }
         public AgeGroup AgeGroups { get; set; }
     }
 }
