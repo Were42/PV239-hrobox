@@ -11,7 +11,7 @@ namespace Hrobox.ViewModel
     {
         public string Tag { get; set; }
 
-        public ICommand createTag;
+        private ICommand createTag;
         public ICommand CreateTag { get; }
 
         public CreateTagViewModel()
