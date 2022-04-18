@@ -55,7 +55,7 @@
                     <!--<ListView ItemsSource="{Binding Games}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <view:GameItemView></view:GameItemView>
+                                <view:GameItemView/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>-->

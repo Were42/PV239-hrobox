@@ -14,7 +14,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                <Label Text="{Binding}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" FontSize="Medium" />
+                                <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" FontSize="Medium" />
                                 <CheckBox HorizontalOptions="End"/>
                                 <!--<StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}"/>
