@@ -9,7 +9,7 @@ namespace Hrobox.Model
         public string Name { get; set; }
         public string Rules { get; set; }
         public Tag Tag { get; set; }
-        public Duration Duration { get; set; }
+        public Duration.DurationEnum Duration { get; set; }
         public string Version { get; set; }
         public int? MinNumPlayers { get; set; }
         public int? MaxNumPlayers { get; set; }

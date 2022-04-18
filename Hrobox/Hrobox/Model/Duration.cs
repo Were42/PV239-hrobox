@@ -2,9 +2,9 @@
 
 namespace Hrobox.Model
 {
-    public class Duration
+    public static class Duration
     {
-        enum DurationEnum
+        public enum DurationEnum
         {
             HalfHour,
             Hour,

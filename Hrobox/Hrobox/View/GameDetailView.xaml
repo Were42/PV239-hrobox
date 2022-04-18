@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
              x:Class="Hrobox.View.GameDetailView"
              Title="Game Detail">
+    <ContentPage.BindingContext>
+        <viewModel:GameDetailViewModels></viewModel:GameDetailViewModels>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <Frame BorderColor="{StaticResource Primary}" Margin="20" HasShadow="True" CornerRadius="15">
             <Grid Padding="0">
@@ -20,40 +24,37 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="7*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Text="Name" Grid.ColumnSpan="3" Padding="10" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}">
+            <Label Text="{Binding GameModel.Name}" TextDecorations="Underline" Grid.ColumnSpan="3" Padding="10" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}">
             </Label>
                 <Label Grid.Row="1" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
             <Label Grid.Row="1" Text="Version" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+                <Label Grid.Row="1" Grid.Column="2" Text="{Binding GameModel.Version}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
 
                 <Label Grid.Row="2" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
                 <Label Grid.Row="2" Text="Duration" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+                <Label Grid.Row="2" Grid.Column="2" Text="{Binding GameModel.Duration}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
 
                 <Label Grid.Row="3" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
                 <Label Grid.Row="3" Text="Min Players" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+                <Label Grid.Row="3" Grid.Column="2" Text="{Binding GameModel.MinNumPlayers}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
 
                 <Label Grid.Row="4" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
                 <Label Grid.Row="4" Text="Max Players" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+                <Label Grid.Row="4" Grid.Column="2" Text="{Binding GameModel.MaxNumPlayers}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
 
                 <Label Grid.Row="5" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
                 <Label Grid.Row="5" Text="Version" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+                <Label Grid.Row="5" Grid.Column="2" Text="{Binding GameModel.Name}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
                 <Frame Grid.Row="6" Grid.ColumnSpan="3" BorderColor="{StaticResource Primary}" CornerRadius="10">
                     <ScrollView>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="2*"></RowDefinition>
-                                <RowDefinition Height="10*"></RowDefinition>
-                                <RowDefinition Height="2*"></RowDefinition>
-                                <RowDefinition Height="3*"></RowDefinition>
-                                <RowDefinition Height="2*"></RowDefinition>
-                                <RowDefinition Height="3*"></RowDefinition>
-                            </Grid.RowDefinitions>
+                        <StackLayout>
                             <Label TextDecorations="Underline" Text="Rules:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
-                            <Label Grid.Row="1" Text="Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
-                            <Label Grid.Row="2" TextDecorations="Underline" Text="Age Groups:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
-                            <Label Grid.Row="3" Text="Bla bla bla bla bla bla bla bla bla bla Bla bla bla" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
-                            <Label Grid.Row="4" TextDecorations="Underline" Text="Tags:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
-                            <Label Grid.Row="5" Text="Bla bla Bla Bla ahoj Bla Bla Bla " TextColor="{StaticResource Primary}" FontSize="Small"></Label>
-                        </Grid>
+                            <Label  Text="Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla blabla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
+                            <Label  TextDecorations="Underline" Text="Age Groups:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
+                            <Label  Text="Bla bla bla bla bla bla bla bla bla bla Bla bla bla" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
+                            <Label  TextDecorations="Underline" Text="Tags:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
+                            <Label  Text="Bla bla Bla Bldsfa ahoj Blkukačkaa Bla Bla " TextColor="{StaticResource Primary}" FontSize="Small"></Label>
+                        </StackLayout>
                     </ScrollView>
                 </Frame>
             </Grid>
