@@ -44,7 +44,7 @@
 
                 <Label Grid.Row="5" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
                 <Label Grid.Row="5" Text="Version" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="5" Grid.Column="2" Text="{Binding GameModel.Name}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+                <Label Grid.Row="5" Grid.Column="2" Text="{Binding GameModel.Version}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
                 <Frame Grid.Row="6" Grid.ColumnSpan="3" BorderColor="{StaticResource Primary}" CornerRadius="10">
                     <ScrollView>
                         <StackLayout>
