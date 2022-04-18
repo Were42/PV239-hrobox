@@ -19,7 +19,6 @@ namespace Hrobox.View
 
         private void Button_OnClicked(object sender, EventArgs e)
         {
-            (BindingContext as GamesViewModel).Tags.First().IsSelected = true;
             Navigation.PopModalAsync();
         }
     }

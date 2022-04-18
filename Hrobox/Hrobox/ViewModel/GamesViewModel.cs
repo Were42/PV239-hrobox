@@ -13,11 +13,14 @@ namespace Hrobox.ViewModel
     {
         public ObservableCollection<GameModel> Games { get; set; }
         public ObservableCollection<TagModel> Tags { get; set; } = new ObservableCollection<TagModel>();
-
+        public bool IsQuarter { get; set; } = false;
+        public bool IsHalf { get; set; } = false;
+        public bool IsHour { get; set; } = false;
+        public bool IsAll { get; set; } = true;
 
         public string KeyWord { get; set; } = "";
         private ICommand find;
-        public ICommand Find { get { return find; } }
+        public ICommand Find => find;
 
         public GamesViewModel()
         {

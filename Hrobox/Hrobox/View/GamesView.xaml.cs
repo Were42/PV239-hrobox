@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,8 +18,7 @@ namespace Hrobox.View
 
         private void OnTapSelectTags(object sender, EventArgs e)
         {
-            var page = new MultiPickerView();
-            page.BindingContext = BindingContext;
+            var page = new MultiPickerView(){BindingContext = BindingContext};
             Navigation.PushModalAsync(page);
         }
     }

@@ -38,13 +38,13 @@
                                        Text="{Binding KeyWord}"
                                        SearchCommand="{Binding Find}"></SearchBar>
                             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
-                                <RadioButton HorizontalOptions="Center" IsChecked="True" Content="All" FontSize="Small"></RadioButton>
-                                <RadioButton HorizontalOptions="Center" Content="15" FontSize="Small"></RadioButton>
-                                <RadioButton HorizontalOptions="Center" Content="15-30" FontSize="Small"></RadioButton>
-                                <RadioButton HorizontalOptions="Center" Content="30-60" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsAll}" Content="All" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsQuarter}" Content="15" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHalf}" Content="15-30" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHour}" Content="30-60" FontSize="Small"></RadioButton>
                             </StackLayout>
                             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
-                                <Entry Placeholder="Select tags"/>
+                                <Entry Placeholder="Select tags" HorizontalTextAlignment="Center"/>
                                 <BoxView></BoxView>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnTapSelectTags"/>
@@ -52,6 +52,7 @@
                             </Grid>
                         </Grid>
                     </Frame>
+                    <Label Text="Found games:" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}"></Label>
                     <!--<ListView ItemsSource="{Binding Games}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -59,7 +60,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>-->
-                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" CornerRadius="10" BorderColor="{StaticResource Primary}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -80,7 +81,7 @@
                                Text="ball"></Label>
                         </Grid>
                     </Frame>
-                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" CornerRadius="10" BorderColor="{StaticResource Primary}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -101,7 +102,7 @@
                                Text="ball"></Label>
                         </Grid>
                     </Frame>
-                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" CornerRadius="10" BorderColor="{StaticResource Primary}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>

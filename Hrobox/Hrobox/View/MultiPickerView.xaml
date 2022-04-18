@@ -15,7 +15,7 @@
                         <ViewCell>
                             <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                 <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" FontSize="Medium" />
-                                <CheckBox HorizontalOptions="End"/>
+                                <CheckBox HorizontalOptions="End" IsChecked="{Binding IsSelected}"/>
                                 <!--<StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}"/>
                                 </StackLayout.GestureRecognizers>-->
