@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Hrobox.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewGameView : ContentPage
+    public partial class GameDetailView : ContentPage
     {
-        public NewGameView()
+        public GameDetailView()
         {
             InitializeComponent();
-        }
-        //todo: remove when done with testing detail
-        private void Button_OnClicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new GameDetailView());
         }
     }
 }
