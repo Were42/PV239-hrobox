@@ -3,8 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Hrobox.View.GameItemView">
   <ViewCell.View>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
-  </ViewCell.View>
+      <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+          <Grid>
+              <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"></ColumnDefinition>
+                  <ColumnDefinition Width="auto"></ColumnDefinition>
+                  <ColumnDefinition Width="auto"></ColumnDefinition>
+              </Grid.ColumnDefinitions>
+              <Label Grid.Column="0"
+                     VerticalTextAlignment="Center"
+                     TextColor="{StaticResource Primary}"
+                     Text="Na slepou bábu"/>
+              <Label Grid.Column="1"
+                     VerticalTextAlignment="Center"
+                     TextColor="{StaticResource Primary}"
+                     Text="10-60 ppl"></Label>
+              <Label Grid.Column="2"
+                     VerticalTextAlignment="Center"
+                     TextColor="{StaticResource Primary}"
+                     Text="tagging"></Label>
+          </Grid>
+      </Frame>
+    </ViewCell.View>
 </ViewCell>

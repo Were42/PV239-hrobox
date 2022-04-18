@@ -1,55 +1,129 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
+             xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
              x:Class="Hrobox.View.GamesView"
              Title="Hrobox Games">
+    <ContentPage.BindingContext>
+        <viewModel:GamesViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Frame HasShadow="True" BackgroundColor="LightBlue">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <SearchBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Placeholder="Key word" TextColor="Black" FontSize="Medium" PlaceholderColor="Black"></SearchBar>
-                        <RadioButton Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Content="All" FontSize="Small"></RadioButton>
-                        <RadioButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Content="15" FontSize="Small"></RadioButton>
-                        <RadioButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Grid.ColumnSpan="3" Content="15-30" FontSize="Small"></RadioButton>
-                        <RadioButton Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Grid.ColumnSpan="2" Content="30-60" FontSize="Small"></RadioButton>
-
-                    </Grid>
-                </Frame>
-                <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0"
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ScrollView Grid.Column="1">
+                <StackLayout>
+                    <Frame HasShadow="True" Margin="0,10,0,0" CornerRadius="10" BackgroundColor="LightBlue">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <SearchBar Grid.Row="0" Grid.Column="0"
+                                       Grid.ColumnSpan="5" Placeholder="Key word"
+                                       TextColor="Black" FontSize="Medium"
+                                       PlaceholderColor="Black"
+                                       Text="{Binding KeyWord}"
+                                       SearchCommand="{Binding Find}"></SearchBar>
+                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
+                                <RadioButton HorizontalOptions="Center" IsChecked="True" Content="All" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" Content="15" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" Content="15-30" FontSize="Small"></RadioButton>
+                                <RadioButton HorizontalOptions="Center" Content="30-60" FontSize="Small"></RadioButton>
+                            </StackLayout>
+                            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
+                                <Entry Placeholder="Select tags"/>
+                                <BoxView></BoxView>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnTapSelectTags"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                    <!--<ListView ItemsSource="{Binding Games}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <view:GameItemView/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>-->
+                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
                                VerticalTextAlignment="Center"
                                TextColor="{StaticResource Primary}"
-                               Text="Na slepou bábu"/>
-                        <Label Grid.Column="1"
+                               Text="Juggling"/>
+                            <Label Grid.Column="1"
                                VerticalTextAlignment="Center"
                                TextColor="{StaticResource Primary}"
-                               Text="10-60 ppl"></Label>
-                        <Label Grid.Column="2"
+                               Text="3-6 ppl"></Label>
+                            <Label Grid.Column="2"
                                VerticalTextAlignment="Center"
                                TextColor="{StaticResource Primary}"
-                               Text="tagging"></Label>
-                    </Grid>
-                </Frame>
-            </StackLayout>
-        </ScrollView>
+                               Text="ball"></Label>
+                        </Grid>
+                    </Frame>
+                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"
+                               Text="Catch"/>
+                            <Label Grid.Column="1"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"
+                               Text="20-60 ppl"></Label>
+                            <Label Grid.Column="2"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"
+                               Text="ball"></Label>
+                        </Grid>
+                    </Frame>
+                    <Frame BackgroundColor="LightBlue" HeightRequest="40" HasShadow="True" BorderColor="{StaticResource Primary}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"
+                               Text="Puzzles"/>
+                            <Label Grid.Column="1"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"
+                               Text="10-12 ppl"></Label>
+                            <Label Grid.Column="2"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"
+                               Text="thinking"></Label>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
