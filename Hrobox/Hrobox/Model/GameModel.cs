@@ -8,7 +8,7 @@ namespace Hrobox.Model
     {
         public string Name { get; set; }
         public string Rules { get; set; }
-        public List<string> Tags { get; set; }
+        public Tag Tag { get; set; }
         public Duration Duration { get; set; }
         public string Version { get; set; }
         public int MinNumPlayers { get; set; }
