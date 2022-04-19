@@ -50,7 +50,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition ></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Command="LoginCommand" FontSize="Medium" Text="Sign in" CornerRadius="30" BackgroundColor="LightBlue" ScaleY="0.8"></Button>
+                        <Button Command="{Binding LoginCommand}" FontSize="Medium" Text="Sign in" CornerRadius="30" BackgroundColor="LightBlue" ScaleY="0.8"></Button>
                         <Button Clicked="Button_OnClicked" Grid.Row="1" FontSize="Small" Text="Sign up" BackgroundColor="Transparent" CornerRadius="30"></Button>
                     </Grid>
         </Grid>

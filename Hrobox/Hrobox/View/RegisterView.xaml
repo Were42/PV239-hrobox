@@ -5,8 +5,7 @@
              x:Class="Hrobox.View.RegisterView"
              Title="Sign up">
     <ContentPage.BindingContext>
-        <viewModel:RegisterViewModel
-            ></viewModel:RegisterViewModel>
+        <viewModel:RegisterViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid BackgroundColor="White">
@@ -32,8 +31,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="1" Text="Create Account" FontSize="Large" TextColor="White">
-                    </Label>
+                    <Label Grid.Row="0" Grid.Column="1" Text="Create Account" FontSize="Large" TextColor="White" />
                     <Grid Grid.Row="1" Grid.Column="1" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"></RowDefinition>
@@ -54,7 +52,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition ></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Command="RegisterCommand" FontSize="Medium" Text="Create account" CornerRadius="30" BackgroundColor="LightBlue" ScaleY="0.8"></Button>
+                        <Button Command="{Binding RegisterCommand}" FontSize="Medium" Text="Create account" CornerRadius="30" BackgroundColor="LightBlue" ScaleY="0.8"></Button>
                     </Grid>
                 </Grid>
             </Frame>
