@@ -10,17 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Hrobox.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginView : ContentPage
+    public partial class RegisterView : ContentPage
     {
-        public LoginView()
+        public RegisterView()
         {
             InitializeComponent();
-        }
-
-        private void Button_OnClicked(object sender, EventArgs e)
-        {
-            var page = new RegisterView();
-            Navigation.PushAsync(page);
         }
     }
 }
