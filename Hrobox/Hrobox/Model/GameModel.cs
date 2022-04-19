@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CookBook.Mobile.Models;
 
 namespace Hrobox.Model
 {
-    internal class GameModel
+    internal class GameModel : ModelBase
     {
         public string Name { get; set; }
         public string Rules { get; set; }
@@ -13,6 +14,8 @@ namespace Hrobox.Model
         public string Version { get; set; }
         public int? MinNumPlayers { get; set; }
         public int? MaxNumPlayers { get; set; }
+        public string MinMaxNumPlayers { get; set; }
+        public string FirstTag { get; set; }
         public AgeGroup AgeGroups { get; set; }
     }
 }
