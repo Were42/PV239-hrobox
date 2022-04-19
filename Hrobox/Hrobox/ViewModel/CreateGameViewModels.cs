@@ -12,6 +12,7 @@ namespace Hrobox.ViewModel
     internal class CreateGameViewModels : ViewModelBase
     {
         public GameModel GameModel { get; set; }
+        public List<TagModel> TagModels { get; set; }
         private ICommand createGame; 
         public ICommand CreateGame { get; }
 
