@@ -14,7 +14,7 @@
                     <Label Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Text="Login" FontSize="Large" TextColor="White">
                     </Label>
                     <Entry Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" Placeholder="Email" Text="{Binding User.Email}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
-                    <Entry Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center"  Placeholder="Password" Text="{Binding User.Password}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
+                    <Entry Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center" IsPassword="True" Placeholder="Password" Text="{Binding User.Password}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
                 <Button Grid.Row="4" Grid.Column="1"  Command="{Binding LoginCommand}" FontSize="Medium" Text="Sign in" CornerRadius="20" BackgroundColor="LightBlue" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="70" WidthRequest="120"></Button>
                 <Button Grid.Row="5" Grid.Column="1" Clicked="Button_OnClicked" FontSize="Small" Text="Sign up" BackgroundColor="Transparent" CornerRadius="30"></Button>
         </Grid>
