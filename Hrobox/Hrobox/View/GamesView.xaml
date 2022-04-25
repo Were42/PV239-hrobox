@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
+             xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
+             x:Class="Hrobox.View.GamesView"
+             Title="Hrobox Games">
+    <ContentPage.BindingContext>
+        <viewModel:GamesViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="1">
+                <Frame HasShadow="True" Margin="0,10,0,0" CornerRadius="10" BackgroundColor="LightBlue">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <SearchBar Grid.Row="0" Grid.Column="0"
+                                   Grid.ColumnSpan="5" Placeholder="Key word"
+                                   TextColor="White" FontSize="Medium"
+                                   PlaceholderColor="White"
+                                   Text="{Binding KeyWord}"
+                                   SearchCommand="{Binding Find}"></SearchBar>
+                        <Label Grid.Row="1" Grid.Column="0"
+                               Grid.ColumnSpan="5" Text="Time duration (in minutes):"></Label>
+                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
+                            <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsAll}" Content="All" FontSize="Small"></RadioButton>
+                            <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsQuarter}" Content="&lt;15" FontSize="Small"></RadioButton>
+                            <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHalf}" Content="15-30" FontSize="Small"></RadioButton>
+                            <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHour}" Content="30-60" FontSize="Small"></RadioButton>
+                        </StackLayout>
+                        <Label Grid.Row="3" Grid.Column="0"
+                               Grid.ColumnSpan="5" Text="Age groups:"></Label>
+                        <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding IsKids}" HorizontalOptions="Center"></CheckBox>
+                            <Label Text="Kids" FontSize="Small"></Label>
+                            <CheckBox IsChecked="{Binding IsSchool}" HorizontalOptions="Center"></CheckBox>
+                            <Label Text="School" FontSize="Small"></Label>
+                            <CheckBox IsChecked="{Binding IsTeen}" HorizontalOptions="Center"></CheckBox>
+                            <Label Text="Teen" FontSize="Small"></Label>
+                            <CheckBox IsChecked="{Binding IsAdult}" HorizontalOptions="Center"></CheckBox>
+                            <Label Text="Adults" FontSize="Small"></Label>
+                        </StackLayout>
+                        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5">
+                            <Entry Placeholder="Select tags" HorizontalTextAlignment="Center"/>
+                            <BoxView></BoxView>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnTapSelectTags"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Grid>
+                </Frame>
+                <Label Text="Found games:" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}"></Label>
+                <CollectionView ItemsSource="{Binding Games}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="LightBlue" HeightRequest="40"
+                                   HasShadow="True" CornerRadius="10" BorderColor="{StaticResource Primary}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0"
+                                           VerticalTextAlignment="Center"
+                                           TextColor="{StaticResource Primary}"
+                                           Text="{Binding Name}"/>
+                                    <Label Grid.Column="1"
+                                           VerticalTextAlignment="Center"
+                                           TextColor="{StaticResource Primary}"
+                                           Text="{Binding FirstTag}"></Label>
+                                    <Label Grid.Column="2"
+                                           VerticalTextAlignment="Center"
+                                           TextColor="{StaticResource Primary}"
+                                           Text="{Binding MinMaxNumPlayers}"></Label>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout> 
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

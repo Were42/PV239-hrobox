@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
+             x:Class="Hrobox.View.LoginView"
+             Title="Sign in/Log in">
+    <ContentPage.BindingContext>
+        <viewModel:LoginViewModel></viewModel:LoginViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource Primary}" CornerRadius="10" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Text="Login" FontSize="Large" TextColor="White">
+                    </Label>
+                    <Grid Grid.Row="1" Grid.Column="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Entry Grid.Row="0" Placeholder="Email" Text="{Binding User.Email}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
+                        <Entry Grid.Row="1" Placeholder="Password" Text="{Binding User.Password}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Command="{Binding LoginCommand}" FontSize="Medium" Text="Sign in" CornerRadius="30" BackgroundColor="LightBlue" ScaleY="0.8"></Button>
+                        <Button Clicked="Button_OnClicked" Grid.Row="1" FontSize="Small" Text="Sign up" BackgroundColor="Transparent" CornerRadius="30"></Button>
+                    </Grid>
+        </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
