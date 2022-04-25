@@ -10,7 +10,7 @@
     <ContentPage.Content>
 
             <Frame Margin="50, 65, 50, 65" BackgroundColor="{StaticResource Primary}" CornerRadius="10" >
-            <Grid Margin="0, 10, 0, 30" ColumnDefinitions="*, 3*, *" RowDefinitions="100, 100, 100, *, 60, 60">
+            <Grid Margin="0, 10, 0, 30" ColumnDefinitions="*, 200, *" RowDefinitions="100, 100, 100, *, 60, 60">
                     <Label Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Text="Login" FontSize="Large" TextColor="White">
                     </Label>
                     <Entry Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" Placeholder="Email" Text="{Binding User.Email}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
