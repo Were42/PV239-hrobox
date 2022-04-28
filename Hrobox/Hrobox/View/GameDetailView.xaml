@@ -9,47 +9,59 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Frame BorderColor="{StaticResource Primary}" Margin="20" HasShadow="True" CornerRadius="15">
-            <Grid Padding="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1.5*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="10*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="7*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="7*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Text="{Binding GameModel.Name}" TextDecorations="Underline" Grid.ColumnSpan="3" Padding="10" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}">
-            </Label>
-                <Label Grid.Row="1" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-            <Label Grid.Row="1" Text="Version" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="1" Grid.Column="2" Text="{Binding GameModel.Version}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+            <Grid RowDefinitions="60, 35, 35, 35, 35, 35, *" Padding="0" >
+                <Label Text="{Binding GameModel.Name}" TextDecorations="Underline" Padding="10" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}">
+                </Label>
+                <Label FontSize="Medium" Grid.Row="1" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Version: " />
+                        <Span Text="{Binding GameModel.Version}" />
+                    </FormattedString>
+                </Label.FormattedText>
+                </Label>
 
-                <Label Grid.Row="2" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="2" Text="Duration" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="2" Grid.Column="2" Text="{Binding GameModel.Duration}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+                <Label FontSize="Medium" Grid.Row="2" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Min Players: " />
+                            <Span Text="{Binding GameModel.MinNumPlayers}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
-                <Label Grid.Row="3" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="3" Text="Min Players" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="3" Grid.Column="2" Text="{Binding GameModel.MinNumPlayers}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+                <Label FontSize="Medium" Grid.Row="3" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Max Players: " />
+                            <Span Text="{Binding GameModel.MaxNumPlayers}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
-                <Label Grid.Row="4" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="4" Text="Max Players" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="4" Grid.Column="2" Text="{Binding GameModel.MaxNumPlayers}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
+                <Label FontSize="Medium" Grid.Row="4" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Duration: " />
+                            <Span Text="{Binding GameModel.Duration}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
-                <Label Grid.Row="5" Grid.Column="1" Text=":" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="5" Text="Version" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Label Grid.Row="5" Grid.Column="2" Text="{Binding GameModel.Version}" TextColor="{StaticResource Primary}" FontSize="Medium" HorizontalTextAlignment="Center" ></Label>
-                <Frame Grid.Row="6" Grid.ColumnSpan="3" BorderColor="{StaticResource Primary}" CornerRadius="10">
+                <Label FontSize="Medium" Grid.Row="5" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Version: " />
+                            <Span Text="{Binding GameModel.Version}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
+                <Frame Grid.Row="6" BorderColor="{StaticResource Primary}" CornerRadius="10">
                     <ScrollView>
                         <StackLayout>
                             <Label TextDecorations="Underline" Text="Rules:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
-                            <Label  Text="Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla blabla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
+                            <Label  Text=" Bla bla blbalablablablablablablablablablablablablablab blbalbalbalablablablabaal bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla blabla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
                             <Label  TextDecorations="Underline" Text="Age Groups:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
                             <Label  Text="Bla bla bla bla bla bla bla bla bla bla Bla bla bla" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
                             <Label  TextDecorations="Underline" Text="Tags:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
