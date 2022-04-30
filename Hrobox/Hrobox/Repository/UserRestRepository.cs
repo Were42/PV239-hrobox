@@ -33,17 +33,14 @@ namespace Hrobox.Repository
             return Items;
         }
 
-        public async Task CreateUser(UserModel user, bool isNewItem)
+        public async Task CreateUser(UserModel user)
         {
             Uri uri = new Uri("".ToString());
             string json = JsonSerializer.Serialize<UserModel>(user, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
-            if (isNewItem)
-            {
-                response = await client.PostAsync(uri, content);
-            }
+            response = await client.PostAsync(uri, content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -51,17 +48,14 @@ namespace Hrobox.Repository
             }
         }
 
-        public async Task UpdateUser(UserModel user, bool isNewItem)
+        public async Task UpdateUser(UserModel user)
         {
             Uri uri = new Uri("".ToString());
             string json = JsonSerializer.Serialize<UserModel>(user, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
-            if (isNewItem)
-            {
-                response = await client.PutAsync(uri, content);
-            }
+            response = await client.PutAsync(uri, content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -69,7 +63,7 @@ namespace Hrobox.Repository
             }
         }
 
-        public async Task deleteUser(string id)
+        public async Task DeleteUser(string id)
         {
             Uri uri = new Uri("".ToString());
             HttpResponseMessage response = await client.DeleteAsync(uri);
@@ -79,17 +73,22 @@ namespace Hrobox.Repository
             }
         }
 
-        public async Task SignIn(UserModel user)
+        public async Task<SignInUserModel> SignIn(UserModel user)
         {
             Uri uri = new Uri("".ToString());
             string json = JsonSerializer.Serialize<UserModel>(user, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PostAsync(uri, content);
+            SignInUserModel Item = new SignInUserModel();
 
             if (response.IsSuccessStatusCode)
             {
-                Debug.WriteLine(@"\tTodoItem successfully saved.");
+                string content2 = await response.Content.ReadAsStringAsync();
+                Item = JsonSerializer.Deserialize<SignInUserModel>(content2,
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             }
+
+            return Item;
         }
     }
 }

@@ -7,8 +7,9 @@ namespace Hrobox.Repository
     public interface IGameRepository
     {
         Task<List<GameModel>> GetAll();
-        Task CreateGame(GameModel game, bool isNewItem);
-        Task UpdateGame(GameModel game, bool isNewItem);
+        Task<GameModel> GetById(int id);
+        Task CreateGame(GameModel game);
+        Task UpdateGame(GameModel game);
         Task deleteGame(string id);
 
     }

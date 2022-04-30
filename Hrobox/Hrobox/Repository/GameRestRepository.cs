@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Hrobox.Model;
+using Xamarin.Forms;
 using JsonSerializerOptions = System.Text.Json.JsonSerializerOptions;
 
 namespace Hrobox.Repository
@@ -35,7 +36,24 @@ namespace Hrobox.Repository
             return Items;
         }
 
-        public async Task CreateGame(GameModel game, bool isNewItem = true)
+        public async Task<GameModel> GetById(int id)
+        {
+            Uri uri = new Uri("".ToString());
+            
+            StringContent content_in = new StringContent(id.ToString(), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(uri, content_in);
+            GameModel Item = new GameModel();
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                Item = JsonSerializer.Deserialize<GameModel>(content,
+                    new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+            }
+
+            return Item;
+        }
+
+        public async Task CreateGame(GameModel game)
         {
             Uri uri = new Uri("".ToString());
             string json = JsonSerializer.Serialize<GameModel>(game,
@@ -43,18 +61,16 @@ namespace Hrobox.Repository
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
-            if (isNewItem)
-            {
-                response = await client.PostAsync(uri, content);
-            }
+            
+            response = await client.PostAsync(uri, content);
 
-            if (response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
             {
                 Debug.WriteLine(@"\tTodoItem successfully saved.");
             }
         }
 
-        public async Task UpdateGame(GameModel game, bool isNewItem = false)
+        public async Task UpdateGame(GameModel game)
         {
             Uri uri = new Uri("".ToString());
             string json = JsonSerializer.Serialize<GameModel>(game,
@@ -62,10 +78,7 @@ namespace Hrobox.Repository
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
-            if (isNewItem)
-            {
-                response = await client.PutAsync(uri, content);
-            }
+            response = await client.PutAsync(uri, content);
 
             if (response.IsSuccessStatusCode)
             {

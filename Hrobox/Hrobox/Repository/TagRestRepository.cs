@@ -31,17 +31,14 @@ namespace Hrobox.Repository
             return Items;
         }
 
-        public async Task CreateTag(Tag tag, bool isNewItem)
+        public async Task CreateTag(Tag tag)
         {
             Uri uri = new Uri("".ToString());
             string json = JsonSerializer.Serialize<Tag>(tag, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
-            if (isNewItem)
-            {
-                response = await client.PostAsync(uri, content);
-            }
+            response = await client.PostAsync(uri, content);
 
             if (response.IsSuccessStatusCode)
             {

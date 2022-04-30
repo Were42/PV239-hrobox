@@ -9,6 +9,6 @@ namespace Hrobox.Repository
     internal interface ITagRepository
     {
         Task<List<Tag>> GetAllTags();
-        Task CreateTag(Tag tag, bool isNewItem);
+        Task CreateTag(Tag tag);
     }
 }
