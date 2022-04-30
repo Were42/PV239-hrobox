@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Hrobox.Model;
+using Hrobox.Services;
 using IOS_BP_APP.Models;
 
 namespace Hrobox.ViewModel
 {
-    internal class GamesViewModel : ViewModelBase
+    public class GamesViewModel : ViewModelBase
     {
         public ObservableCollection<GameModel> Games { get; set; } = new ObservableCollection<GameModel>();
         public ObservableCollection<TagModel> Tags { get; set; } = new ObservableCollection<TagModel>();
@@ -23,11 +24,14 @@ namespace Hrobox.ViewModel
         public bool IsAdult { get; set; }
 
         public string KeyWord { get; set; } = "";
+
         private ICommand find;
         public ICommand Find => find;
 
-        public GamesViewModel()
+        private readonly INavigationService navigationService;
+        public GamesViewModel(INavigationService navigationService)
         {
+            this.navigationService = navigationService;
             //todo: delete this test data. Ph before calling to server is implemented
             Tags.Add(new TagModel()
             {
@@ -145,6 +149,9 @@ namespace Hrobox.ViewModel
         public void FindIt()
         {
             Console.WriteLine("HI");
+        }
+        public override async Task OnAppearingAsync()
+        {
         }
     }
 }
