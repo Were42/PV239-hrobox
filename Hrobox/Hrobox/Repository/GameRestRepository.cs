@@ -23,7 +23,7 @@ namespace Hrobox.Repository
         public async Task<List<GameModel>> GetAll()
         {
 
-            Uri uri = new Uri("".ToString());
+            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/games");
             HttpResponseMessage response = await client.GetAsync(uri);
             List<GameModel> Items = new List<GameModel>();
             if (response.IsSuccessStatusCode)

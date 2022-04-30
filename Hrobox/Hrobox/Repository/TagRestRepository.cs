@@ -14,18 +14,17 @@ namespace Hrobox.Repository
         private HttpClient client;
         public TagRestRepository()
         {
-            var client = new HttpClient();
+            client = new HttpClient();
         }
-        public async Task<List<Tag>> GetAllTags()
+        public async Task<TagsModel> GetAllTags()
         {
-            Uri uri = new Uri("".ToString());
+            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/tags");
             HttpResponseMessage response = await client.GetAsync(uri);
-            List<Tag> Items = new List<Tag>();
+            TagsModel Items = new TagsModel();
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                Items = JsonSerializer.Deserialize<List<Tag>>(content,
-                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                Items = JsonSerializer.Deserialize<TagsModel>(content);
             }
 
             return Items;
