@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Hrobox.Model;
+using Hrobox.Services.Interfaces;
 
 namespace Hrobox.ViewModel
 {
@@ -9,8 +10,11 @@ namespace Hrobox.ViewModel
     {
         public GameModel GameModel { get; set; }
 
-        public GameDetailViewModels()
+        private readonly INavigationService navigationService;
+
+        public GameDetailViewModels(INavigationService navigationService)
         {
+            this.navigationService = navigationService;
             GameModel = new GameModel();
             this.GameModel.Name = "Hra na slepou bábu";
             this.GameModel.Duration = Duration.DurationEnum.Fifteenminutes;

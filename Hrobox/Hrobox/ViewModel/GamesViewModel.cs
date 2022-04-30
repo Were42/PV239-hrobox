@@ -34,6 +34,8 @@ namespace Hrobox.ViewModel
         public ICommand CreateGame => createGame;
         private ICommand createTag;
         public ICommand CreateTag => createTag;
+        private ICommand login;
+        public ICommand Login => login;
 
         private readonly INavigationService navigationService;
         public GamesViewModel(INavigationService navigationService)
@@ -153,7 +155,8 @@ namespace Hrobox.ViewModel
             });
             find = new DelegateCommand(FindIt);
             createGame = new AsyncCommand(CreateGameFunction, null, null, false);
-            createTag = new DelegateCommand(CreateTagFunction);
+            createTag = new AsyncCommand(CreateTagFunction, null, null, false);
+            login = new AsyncCommand(LoginFunction, null, null, false);
         }
 
         public void FindIt()
@@ -164,9 +167,13 @@ namespace Hrobox.ViewModel
         {
             await navigationService.PushAsync<NewGameViewModel>();
         }
-        public void CreateTagFunction()
+        public async Task CreateTagFunction()
         {
-            Console.WriteLine("HI");
+            await navigationService.PushAsync<NewTagViewModel>();
+        }
+        public async Task LoginFunction()
+        {
+            await navigationService.PushAsync<LoginViewModel>();
         }
         public override async Task OnAppearingAsync()
         {

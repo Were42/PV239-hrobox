@@ -12,7 +12,7 @@ namespace Hrobox.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewTagView
     {
-        public NewTagView(CreateTagViewModel createTagViewModel):base(createTagViewModel)
+        public NewTagView(NewTagViewModel createTagViewModel):base(createTagViewModel)
         {
             InitializeComponent();
         }

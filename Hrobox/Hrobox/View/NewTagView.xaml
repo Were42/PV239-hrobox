@@ -5,7 +5,7 @@
                       xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
                       x:Class="Hrobox.View.NewTagView"
                       Title="Create tag"
-                      x:DataType="viewModel:CreateTagViewModel">
+                      x:DataType="viewModel:NewTagViewModel">
     <Grid ColumnDefinitions="*,2*,*"
           RowDefinitions="180, *,350"
           Margin="0, 50, 0,0">

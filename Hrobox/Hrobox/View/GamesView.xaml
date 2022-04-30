@@ -8,7 +8,7 @@
              Title="Hrobox Games"
              x:DataType="viewModel:GamesViewModel">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Login" IconImageSource="userIcon" />
+        <ToolbarItem Text="Login" IconImageSource="userIcon" Command="{Binding Login}"/>
     </ContentPage.ToolbarItems>
     <Grid BackgroundColor="White">
         <Grid.ColumnDefinitions>
@@ -76,6 +76,7 @@
                         Text="Create Game"
                         BackgroundColor="LightBlue"/>
                 <Button CornerRadius="10"
+                        Command="{Binding CreateTag}"
                         Grid.Column="1"
                         Text="Create Tag"
                         BackgroundColor="LightBlue"/>
