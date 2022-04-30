@@ -12,14 +12,13 @@ namespace Hrobox.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewGameView
     {
-        public NewGameView(CreateGameViewModels createGameViewModels) : base(createGameViewModels)
+        public NewGameView(NewGameViewModel createGameViewModels) : base(createGameViewModels)
         {
             InitializeComponent();
         }
         //todo: remove when done with testing detail
         private void Button_OnClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new GameDetailView());
         }
     }
 }

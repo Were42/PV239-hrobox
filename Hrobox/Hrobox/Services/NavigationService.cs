@@ -3,6 +3,7 @@ using Hrobox.ViewModel.Interfaces;
 //using Hrobox.Exceptions;
 using System.Linq;
 using System.Threading.Tasks;
+using Hrobox.Services.Interfaces;
 using Xamarin.Forms;
 
 namespace Hrobox.Services

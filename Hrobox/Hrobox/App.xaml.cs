@@ -1,6 +1,7 @@
 ﻿using System;
 using Hrobox.Installers;
 using Hrobox.Services;
+using Hrobox.Services.Interfaces;
 using Hrobox.View;
 using Hrobox.ViewModel;
 using Microsoft.Extensions.DependencyInjection;

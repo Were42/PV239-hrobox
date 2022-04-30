@@ -1,4 +1,5 @@
 ﻿using Hrobox.Services;
+using Hrobox.Services.Interfaces;
 using Hrobox.View;
 using Microsoft.Extensions.DependencyInjection;
 using Xamarin.Forms;

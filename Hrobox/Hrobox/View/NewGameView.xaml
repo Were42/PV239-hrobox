@@ -5,7 +5,7 @@
                       xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
                       x:Class="Hrobox.View.NewGameView"
                       Title="Create game"
-                      x:DataType="viewModel:CreateGameViewModels">
+                      x:DataType="viewModel:NewGameViewModel">
     <Grid ColumnDefinitions="*, 195, *"
           RowDefinitions="120,40,40,45,45,45,45,45,*,140,80" 
           Margin="0, 0, 0,0">

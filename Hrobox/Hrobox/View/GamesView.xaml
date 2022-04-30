@@ -70,8 +70,15 @@
                 </Grid>
             </Frame>
             <Grid ColumnDefinitions="*,*" RowDefinitions="auto">
-                <Button CornerRadius="10" Grid.Column="0" Text="Create Game" BackgroundColor="LightBlue"/>
-                <Button CornerRadius="10" Grid.Column="1" Text="Create Tag" BackgroundColor="LightBlue"/>
+                <Button CornerRadius="10"
+                        Command="{Binding CreateGame}"
+                        Grid.Column="0"
+                        Text="Create Game"
+                        BackgroundColor="LightBlue"/>
+                <Button CornerRadius="10"
+                        Grid.Column="1"
+                        Text="Create Tag"
+                        BackgroundColor="LightBlue"/>
             </Grid>
             <Label Text="Found games:" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}"></Label>
             <CollectionView ItemsSource="{Binding Games}">

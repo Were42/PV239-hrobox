@@ -1,7 +1,7 @@
-﻿using Hrobox.ViewModel.Interfaces;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Hrobox.ViewModel.Interfaces;
 
-namespace Hrobox.Services
+namespace Hrobox.Services.Interfaces
 {
     public interface INavigationService
     {

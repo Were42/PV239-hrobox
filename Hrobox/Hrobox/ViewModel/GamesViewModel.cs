@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Services;
+using Hrobox.Services.Interfaces;
 using IOS_BP_APP.Models;
 
 namespace Hrobox.ViewModel
@@ -27,6 +30,10 @@ namespace Hrobox.ViewModel
 
         private ICommand find;
         public ICommand Find => find;
+        private ICommand createGame;
+        public ICommand CreateGame => createGame;
+        private ICommand createTag;
+        public ICommand CreateTag => createTag;
 
         private readonly INavigationService navigationService;
         public GamesViewModel(INavigationService navigationService)
@@ -145,8 +152,19 @@ namespace Hrobox.ViewModel
                 MinMaxNumPlayers = "4-8"
             });
             find = new DelegateCommand(FindIt);
+            createGame = new AsyncCommand(CreateGameFunction, null, null, false);
+            createTag = new DelegateCommand(CreateTagFunction);
         }
+
         public void FindIt()
+        {
+            Console.WriteLine("HI");
+        }
+        public async Task CreateGameFunction()
+        {
+            await navigationService.PushAsync<NewGameViewModel>();
+        }
+        public void CreateTagFunction()
         {
             Console.WriteLine("HI");
         }
