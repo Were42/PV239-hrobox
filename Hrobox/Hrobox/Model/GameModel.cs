@@ -17,6 +17,8 @@ namespace Hrobox.Model
         public int? MaxNumPlayers { get; set; }
         public string MinMaxNumPlayers { get; set; }
         public string FirstTag { get; set; }
+        public string CreatedBy { get; set; }
+        public string CreatedAt { get; set; }
         public AgeGroup AgeGroups { get; set; }
     }
 }

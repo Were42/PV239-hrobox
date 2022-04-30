@@ -10,11 +10,11 @@ using JsonSerializerOptions = System.Text.Json.JsonSerializerOptions;
 
 namespace Hrobox.Repository
 {
-    public class GameRestGameRepository : IGameRepository
+    public class GameRestRepository : IGameRepository
     {
         HttpClient client;
 
-        public GameRestGameRepository()
+        public GameRestRepository()
         {
             client = new HttpClient();
         }
