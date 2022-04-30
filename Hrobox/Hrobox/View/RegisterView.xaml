@@ -1,22 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
-             x:Class="Hrobox.View.RegisterView"
-             Title="Sign up">
-    <ContentPage.BindingContext>
-        <viewModel:RegisterViewModel/>
-    </ContentPage.BindingContext>
-    <ContentPage.Content>
-        <Frame Margin="50, 65, 50, 65" BackgroundColor="{StaticResource Primary}" CornerRadius="10" >
-            <Grid Margin="0, 10, 0, 30" ColumnDefinitions="*, 200, *" RowDefinitions="100, 100, 100, 100, *, 60">
-                <Label Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Text="Sign up" FontSize="Large" TextColor="White">
-                </Label>
-                <Entry Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" Placeholder="Email" Text="{Binding User.Email}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
-                <Entry Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center" IsPassword="True" Placeholder="Password" Text="{Binding User.Password}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
-                <Entry Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="Center" IsPassword="True" Placeholder="Password" Text="{Binding User.Password}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
-                <Button Grid.Row="5" Grid.Column="1"  Command="{Binding RegisterCommand}" FontSize="Medium" Text="Sign up" CornerRadius="20" BackgroundColor="LightBlue" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="70" WidthRequest="120"></Button>
-            </Grid>
-        </Frame>
-    </ContentPage.Content>
-</ContentPage>
+<view:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
+                      xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
+                      x:Class="Hrobox.View.RegisterView"
+                      Title="Sign up"
+                      x:DataType="viewModel:RegisterViewModel">
+    <Frame Margin="50, 65, 50, 65" BackgroundColor="{StaticResource Primary}" CornerRadius="10" >
+        <Grid Margin="0, 10, 0, 30" ColumnDefinitions="*, 200, *" RowDefinitions="100, 100, 100, 100, *, 60">
+            <Label Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Text="Sign up" FontSize="Large" TextColor="White">
+            </Label>
+            <Entry Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" Placeholder="Email" Text="{Binding User.Email}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
+            <Entry Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center" IsPassword="True" Placeholder="Password" Text="{Binding User.Password}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
+            <Entry Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="Center" IsPassword="True" Placeholder="Password" Text="{Binding User.Password}" TextColor="Black" FontSize="Small" PlaceholderColor="White"></Entry>
+            <Button Grid.Row="5" Grid.Column="1"  Command="{Binding RegisterCommand}" FontSize="Medium" Text="Sign up" CornerRadius="20" BackgroundColor="LightBlue" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="70" WidthRequest="120"></Button>
+        </Grid>
+    </Frame>
+</view:ContentPageBase>

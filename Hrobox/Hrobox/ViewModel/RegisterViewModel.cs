@@ -7,7 +7,7 @@ using IOS_BP_APP.Models;
 
 namespace Hrobox.ViewModel
 {
-    internal class RegisterViewModel : ViewModelBase
+    public class RegisterViewModel : ViewModelBase
     {
         public UserModel User { get; set; }
 

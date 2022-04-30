@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hrobox.Model
 {
-    internal class UserModel
+    public class UserModel
     {
         public string Name { get; set; }
         public string Email { get; set; }

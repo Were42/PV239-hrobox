@@ -9,7 +9,7 @@ using IOS_BP_APP.Models;
 
 namespace Hrobox.ViewModel
 {
-    internal class CreateGameViewModels : ViewModelBase
+    public class CreateGameViewModels : ViewModelBase
     {
         public GameModel GameModel { get; set; }
         public List<TagModel> TagModels { get; set; }

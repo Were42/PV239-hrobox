@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Hrobox.ViewModel
 {
-    internal class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase
     {
         public UserModel User { get; set; }
         private ICommand loginCommand;

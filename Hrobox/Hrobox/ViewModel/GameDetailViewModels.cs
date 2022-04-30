@@ -5,7 +5,7 @@ using Hrobox.Model;
 
 namespace Hrobox.ViewModel
 {
-    internal class GameDetailViewModels : ViewModelBase
+    public class GameDetailViewModels : ViewModelBase
     {
         public GameModel GameModel { get; set; }
 

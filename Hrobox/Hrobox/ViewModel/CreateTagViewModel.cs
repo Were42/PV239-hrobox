@@ -7,7 +7,7 @@ using IOS_BP_APP.Models;
 
 namespace Hrobox.ViewModel
 {
-    internal class CreateTagViewModel : ViewModelBase
+    public class CreateTagViewModel : ViewModelBase
     {
         public string Tag { get; set; }
 
