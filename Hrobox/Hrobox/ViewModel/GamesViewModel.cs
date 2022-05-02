@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Hrobox.Command;
 using Hrobox.Model;
+using Hrobox.Repository;
 using Hrobox.Services;
 using Hrobox.Services.Interfaces;
 using IOS_BP_APP.Models;
@@ -29,9 +30,11 @@ namespace Hrobox.ViewModel
         public ICommand Login => login;
 
         private readonly INavigationService navigationService;
-        public GamesViewModel(INavigationService navigationService)
+        private readonly IGameRepository gameRepository;
+        public GamesViewModel(INavigationService navigationService, IGameRepository gameRestRepository)
         {
             this.navigationService = navigationService;
+            this.gameRepository = gameRestRepository;
             //todo: delete this test data. Ph before calling to server is implemented
             Tags.Add(new TagModel()
             {
@@ -144,15 +147,15 @@ namespace Hrobox.ViewModel
                 Name = "GameNamePH",
                 MinMaxNumPlayers = "4-8"
             });
-            find = new DelegateCommand(FindIt);
+            find = new AsyncCommand(FindIt, null, null, false);
             createGame = new AsyncCommand(CreateGameFunction, null, null, false);
             createTag = new AsyncCommand(CreateTagFunction, null, null, false);
             login = new AsyncCommand(LoginFunction, null, null, false);
         }
 
-        public void FindIt()
+        public async Task FindIt()
         {
-            Console.WriteLine("HI");
+           Games = new ObservableCollection<GameModel>(await gameRepository.GetAll(Filter));
         }
         public async Task CreateGameFunction()
         {

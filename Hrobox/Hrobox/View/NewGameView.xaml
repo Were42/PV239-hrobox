@@ -69,7 +69,7 @@
             Grid.Column="1"
             Title="Tags" 
             TitleColor="CadetBlue" HorizontalTextAlignment="Center" 
-            SelectedItem="{Binding GameModel.Tag}"
+            SelectedItem="{Binding GameModel.Tags}"
             TextColor="{StaticResource Primary}" 
             ItemsSource="{StaticResource DaysOfWeek}" />
     <Button Command="{Binding CreateGame}"
