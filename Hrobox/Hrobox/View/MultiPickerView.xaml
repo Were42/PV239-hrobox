@@ -4,6 +4,7 @@
              xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
              xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
              x:Class="Hrobox.View.MultiPickerView">
+
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Label HorizontalTextAlignment="Center"  Text="Select TAGs"></Label>
         <ListView x:Name="ListView" VerticalOptions="Center" ItemsSource="{Binding Tags}">
