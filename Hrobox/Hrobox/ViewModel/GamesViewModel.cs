@@ -17,16 +17,7 @@ namespace Hrobox.ViewModel
     {
         public ObservableCollection<GameModel> Games { get; set; } = new ObservableCollection<GameModel>();
         public ObservableCollection<TagModel> Tags { get; set; } = new ObservableCollection<TagModel>();
-        public bool IsQuarter { get; set; }
-        public bool IsHalf { get; set; }
-        public bool IsHour { get; set; }
-        public bool IsAll { get; set; } = true;
-        public bool IsKids { get; set; }
-        public bool IsSchool { get; set; }
-        public bool IsTeen { get; set; }
-        public bool IsAdult { get; set; }
-
-        public string KeyWord { get; set; } = "";
+        public FilterModel Filter { get; set; }
 
         private ICommand find;
         public ICommand Find => find;

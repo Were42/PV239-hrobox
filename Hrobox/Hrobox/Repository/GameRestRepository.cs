@@ -20,11 +20,13 @@ namespace Hrobox.Repository
             client = new HttpClient();
         }
 
-        public async Task<List<GameModel>> GetAll()
+        public async Task<List<GameModel>> GetAll(FilterModel filterModel)
         {
 
             Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/games");
-            HttpResponseMessage response = await client.GetAsync(uri);
+            string json = JsonSerializer.Serialize<FilterModel>(filterModel, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            StringContent content_post = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(uri, content_post);
             List<GameModel> Items = new List<GameModel>();
             if (response.IsSuccessStatusCode)
             {
