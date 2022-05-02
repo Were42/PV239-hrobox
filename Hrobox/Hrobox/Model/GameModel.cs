@@ -7,15 +7,18 @@ namespace Hrobox.Model
 {
     public class GameModel : ModelBase
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Rules { get; set; }
-        public Tag Tag { get; set; }
+        public List<Tag> Tags { get; set; }
         public Duration.DurationEnum Duration { get; set; }
         public string Version { get; set; }
         public int? MinNumPlayers { get; set; }
         public int? MaxNumPlayers { get; set; }
         public string MinMaxNumPlayers { get; set; }
         public string FirstTag { get; set; }
+        public string CreatedBy { get; set; }
+        public string CreatedAt { get; set; }
         public AgeGroup AgeGroups { get; set; }
     }
 }
