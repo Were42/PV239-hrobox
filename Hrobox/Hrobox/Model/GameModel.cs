@@ -5,7 +5,7 @@ using CookBook.Mobile.Models;
 
 namespace Hrobox.Model
 {
-    internal class GameModel : ModelBase
+    public class GameModel : ModelBase
     {
         public string Name { get; set; }
         public string Rules { get; set; }

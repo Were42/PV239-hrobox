@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hrobox.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Hrobox.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GamesView : ContentPage
+    public partial class GamesView
     {
-        public GamesView()
+        public GamesView(GamesViewModel gamesViewModel) : base(gamesViewModel)
         {
             InitializeComponent();
-        }
-
-        private void OnTapSelectTags(object sender, EventArgs e)
-        {
-            var page = new MultiPickerView(){BindingContext = BindingContext};
-            Navigation.PushModalAsync(page);
         }
     }
 }
