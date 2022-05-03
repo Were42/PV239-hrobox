@@ -12,7 +12,7 @@ namespace Hrobox.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MultiPickerView
     {
-        public MultiPickerView(GamesViewModel gamesViewModel):base(gamesViewModel)
+        public MultiPickerView(MultiPickerViewModel multiPickerViewModel):base(multiPickerViewModel)
         {
             InitializeComponent();
         }

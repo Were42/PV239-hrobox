@@ -9,14 +9,13 @@ using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Services;
 using Hrobox.Services.Interfaces;
-using IOS_BP_APP.Models;
 
 namespace Hrobox.ViewModel
 {
     public class GamesViewModel : ViewModelBase
     {
-        public ObservableCollection<GameModel> Games { get; set; } = new ObservableCollection<GameModel>();
-        public ObservableCollection<TagModel> Tags { get; set; } = new ObservableCollection<TagModel>();
+        public ObservableCollection<GameModel> Games { get; set; } = new();
+        public ObservableCollection<TagModel> Tags { get; set; } = new();
         public bool IsQuarter { get; set; }
         public bool IsHalf { get; set; }
         public bool IsHour { get; set; }
@@ -36,6 +35,8 @@ namespace Hrobox.ViewModel
         public ICommand CreateTag => createTag;
         private ICommand login;
         public ICommand Login => login;
+        private ICommand openPicker;
+        public ICommand OpenPicker => openPicker;
 
         private readonly INavigationService navigationService;
         public GamesViewModel(INavigationService navigationService)
@@ -157,6 +158,7 @@ namespace Hrobox.ViewModel
             createGame = new AsyncCommand(CreateGameFunction, null, null, false);
             createTag = new AsyncCommand(CreateTagFunction, null, null, false);
             login = new AsyncCommand(LoginFunction, null, null, false);
+            openPicker = new AsyncCommand(OpenPickerFunction, null, null, false);
         }
 
         public void FindIt()
@@ -174,6 +176,10 @@ namespace Hrobox.ViewModel
         public async Task LoginFunction()
         {
             await navigationService.PushAsync<LoginViewModel>();
+        }
+        public async Task OpenPickerFunction()
+        {
+            await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
         public override async Task OnAppearingAsync()
         {
