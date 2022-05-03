@@ -18,7 +18,6 @@
                TextColor= "{StaticResource Primary}"
                FontSize="Large" 
                Padding="0"></Label>
-
         <Entry Grid.Row="1"
                Grid.Column="1"
                Placeholder="Name"
@@ -69,6 +68,7 @@
                 Grid.Column="1"
                 Title="Tags" 
                 TitleColor="CadetBlue" HorizontalTextAlignment="Center" 
+                SelectedItem="{Binding GameModel.Tags}"
                 TextColor="{StaticResource Primary}" 
                 ItemsSource="{StaticResource DaysOfWeek}" />
         <Button Command="{Binding CreateGame}"
