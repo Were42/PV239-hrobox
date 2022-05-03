@@ -18,68 +18,67 @@
                TextColor= "{StaticResource Primary}"
                FontSize="Large" 
                Padding="0"></Label>
-
-    <Entry Grid.Row="1"
-           Grid.Column="1"
-           Placeholder="Name"
-           Text="{Binding GameModel.Name}"
-           PlaceholderColor="CadetBlue"
-           HorizontalTextAlignment="Center"
-           TextColor="{StaticResource Primary}"></Entry>
-    <Entry Grid.Row="2"
-           Grid.Column="1"
-           Placeholder="Rules"
-           Text="{Binding GameModel.Rules}"
-           PlaceholderColor="CadetBlue"
-           HorizontalTextAlignment="Center"
-           TextColor="{StaticResource Primary}"></Entry>
-    <Entry Grid.Row="3" 
-           Grid.Column="1" 
-           Placeholder="Min Number of users"
-           Text="{Binding GameModel.MinNumPlayers}"
-           Keyboard="Numeric"
-           PlaceholderColor="CadetBlue"
-           TextColor="{StaticResource Primary}"
-           HorizontalTextAlignment="Center"></Entry>
-    <Entry Grid.Row="4"
-           Grid.Column="1"
-           Placeholder="Max Number of users" 
-           Text="{Binding GameModel.MaxNumPlayers}"
-           Keyboard="Numeric"
-           PlaceholderColor="CadetBlue"
-           TextColor="{StaticResource Primary}"
-           HorizontalTextAlignment="Center"></Entry>
-    <Picker Grid.Row="5"
-            Grid.Column="1"
-            Title="Duration"
-            TitleColor="CadetBlue"
-            SelectedItem="{Binding GameModel.Duration}"
-            HorizontalTextAlignment="Center"
-            TextColor="{StaticResource Primary}"
-            ItemsSource="{StaticResource DaysOfWeek}" />
-    <Picker Grid.Row="6"
-            Grid.Column="1"
-            Title="Age Groups" 
-            TitleColor="CadetBlue"
-            SelectedItem="{Binding GameModel.AgeGroups}" 
-            HorizontalTextAlignment="Center" 
-            TextColor="{StaticResource Primary}"
-            ItemsSource="{StaticResource DaysOfWeek}" />
-    <Picker Grid.Row="7" 
-            Grid.Column="1"
-            Title="Tags" 
-            TitleColor="CadetBlue" HorizontalTextAlignment="Center" 
-            SelectedItem="{Binding GameModel.Tags}"
-            TextColor="{StaticResource Primary}" 
-            ItemsSource="{StaticResource DaysOfWeek}" />
-    <Button Command="{Binding CreateGame}"
-            Grid.Row="9"
-            Grid.Column="1" Margin="0, 0, 0, 80 " 
-            CornerRadius="15"
-            Text="Create Game" ></Button>
-    <!-- todo: remove when done with testing detail-->
-    <Button Clicked="Button_OnClicked" Grid.Row="10" Grid.Column="1" Margin="0, 0, 0, 40 " CornerRadius="15" Text="Game DETAIL TEST BUTTON" ></Button>
-</Grid>
+        <Entry Grid.Row="1"
+               Grid.Column="1"
+               Placeholder="Name"
+               Text="{Binding GameModel.Name}"
+               PlaceholderColor="CadetBlue"
+               HorizontalTextAlignment="Center"
+               TextColor="{StaticResource Primary}"></Entry>
+        <Entry Grid.Row="2"
+               Grid.Column="1"
+               Placeholder="Rules"
+               Text="{Binding GameModel.Rules}"
+               PlaceholderColor="CadetBlue"
+               HorizontalTextAlignment="Center"
+               TextColor="{StaticResource Primary}"></Entry>
+        <Entry Grid.Row="3" 
+               Grid.Column="1" 
+               Placeholder="Min Number of users"
+               Text="{Binding GameModel.MinNumPlayers}"
+               Keyboard="Numeric"
+               PlaceholderColor="CadetBlue"
+               TextColor="{StaticResource Primary}"
+               HorizontalTextAlignment="Center"></Entry>
+        <Entry Grid.Row="4"
+               Grid.Column="1"
+               Placeholder="Max Number of users" 
+               Text="{Binding GameModel.MaxNumPlayers}"
+               Keyboard="Numeric"
+               PlaceholderColor="CadetBlue"
+               TextColor="{StaticResource Primary}"
+               HorizontalTextAlignment="Center"></Entry>
+        <Picker Grid.Row="5"
+                Grid.Column="1"
+                Title="Duration"
+                TitleColor="CadetBlue"
+                SelectedItem="{Binding GameModel.Duration}"
+                HorizontalTextAlignment="Center"
+                TextColor="{StaticResource Primary}"
+                ItemsSource="{StaticResource DaysOfWeek}" />
+        <Picker Grid.Row="6"
+                Grid.Column="1"
+                Title="Age Groups" 
+                TitleColor="CadetBlue"
+                SelectedItem="{Binding GameModel.AgeGroups}" 
+                HorizontalTextAlignment="Center" 
+                TextColor="{StaticResource Primary}"
+                ItemsSource="{StaticResource DaysOfWeek}" />
+        <Picker Grid.Row="7" 
+                Grid.Column="1"
+                Title="Tags" 
+                TitleColor="CadetBlue" HorizontalTextAlignment="Center" 
+                SelectedItem="{Binding GameModel.Tags}"
+                TextColor="{StaticResource Primary}" 
+                ItemsSource="{StaticResource DaysOfWeek}" />
+        <Button Command="{Binding CreateGame}"
+                Grid.Row="9"
+                Grid.Column="1" Margin="0, 0, 0, 80 " 
+                CornerRadius="15"
+                Text="Create Game" ></Button>
+        <!-- todo: remove when done with testing detail-->
+        <Button Clicked="Button_OnClicked" Grid.Row="10" Grid.Column="1" Margin="0, 0, 0, 40 " CornerRadius="15" Text="Game DETAIL TEST BUTTON" ></Button>
+    </Grid>
     <ContentPage.Resources>
         <ResourceDictionary>
             <x:Array x:Key="DaysOfWeek" Type="{x:Type x:String}">
