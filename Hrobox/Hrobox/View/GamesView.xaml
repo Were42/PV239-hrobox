@@ -60,13 +60,16 @@
                         <CheckBox IsChecked="{Binding IsAdult}" HorizontalOptions="Center"></CheckBox>
                         <Label Text="Adults" FontSize="Small"></Label>
                     </StackLayout>
-                    <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5">
-                        <Entry Placeholder="Select tags" HorizontalTextAlignment="Center"/>
-                        <BoxView></BoxView>
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1"/>
-                        </Grid.GestureRecognizers>
-                    </Grid>
+                    <Button Grid.Row="5"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            Text="Select tags"
+                            CornerRadius="10"
+                            BackgroundColor="White"
+                            TextColor="{StaticResource Primary}"
+                            BorderColor="{StaticResource Primary}"
+                            BorderWidth="2"
+                            Command="{Binding OpenPicker}"/>
                 </Grid>
             </Frame>
             <Grid ColumnDefinitions="*,*" RowDefinitions="auto">

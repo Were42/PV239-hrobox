@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
+using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Services.Interfaces;
-using IOS_BP_APP.Models;
 
 namespace Hrobox.ViewModel
 {

@@ -1,41 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Services.Interfaces;
-using IOS_BP_APP.Models;
+using Hrobox.ViewModel.Interfaces;
 using Xamarin.Forms;
 
 namespace Hrobox.ViewModel
 {
-    public class MultiPickerViewModel : ViewModelBase
+    public class MultiPickerViewModel : ViewModelBase, IViewModel<ObservableCollection<TagModel>>
     {
-        public UserModel User { get; set; }
-        private ICommand loginCommand;
-        public ICommand LoginCommand { get; }
-
-        private ICommand register;
-        public ICommand Register => register;
+        public ObservableCollection<TagModel> Tags { get; set; }
+        public string Teststring { get; set; } = "HEJ";
         private readonly INavigationService navigationService;
-
-        public LoginViewModel(INavigationService navigationService)
+        private ICommand closePicker;
+        public ICommand ClosePicker => closePicker;
+        public MultiPickerViewModel(INavigationService navigationService)
         {
             this.navigationService = navigationService;
-            this.User = new UserModel();
-            this.loginCommand = new DelegateCommand(Login);
-            this.register = new AsyncCommand(RegisterFunction, null, null, false);
+            closePicker = new AsyncCommand(ClosePickerFunction, null, null, false);
         }
 
-        private void Login()
+        public async Task ClosePickerFunction()
         {
-            throw new NotImplementedException();
+            await navigationService.PopAsync();
         }
-        private async Task RegisterFunction()
+
+        public void SetViewModelParameter(ObservableCollection<TagModel>? parameter)
         {
-            await navigationService.PushAsync<RegisterViewModel>();
+            Tags = parameter;
         }
     }
 }

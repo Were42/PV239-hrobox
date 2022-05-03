@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace IOS_BP_APP.Models
+namespace Hrobox.Command
 {
     //kód převzat z https://dev.azure.com/ics-2019-team4630/project/_git/Face%20Cord?path=%2FFaceCord.APP%2FCommands%2FRelayCommands.cs
     public class DelegateCommand : ICommand

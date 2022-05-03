@@ -6,7 +6,6 @@ using System.Windows.Input;
 using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Services.Interfaces;
-using IOS_BP_APP.Models;
 using Xamarin.Forms;
 
 namespace Hrobox.ViewModel
