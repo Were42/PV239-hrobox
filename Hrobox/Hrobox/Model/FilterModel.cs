@@ -11,7 +11,7 @@ namespace Hrobox.Model
         public int? Offset { get; set; } = 0;
         public string? Lang { get; set; }
         public string? Author { get; set; }
-        public AgeGroups? AgeGroup { get; set; }
+        public AgeGroup AgeGroup { get; set; }
         public List<string> Duration { get; set; }
         public FilterTagModel? Tags { get; set; }
 

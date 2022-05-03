@@ -94,7 +94,7 @@ namespace Hrobox.ViewModel
             {
                 if (value)
                 {
-                    this.Filter.AgeGroup.Values.Add(AgeGroups.AgeGroup.K);
+                    this.Filter.AgeGroup.Values.Add("K");
                 }
 
                 IsKids = value;
@@ -106,7 +106,7 @@ namespace Hrobox.ViewModel
             {
                 if (value)
                 {
-                    this.Filter.AgeGroup.Values.Add(AgeGroups.AgeGroup.S);
+                    this.Filter.AgeGroup.Values.Add("A");
                 }
 
                 IsSchool = value;
@@ -118,7 +118,7 @@ namespace Hrobox.ViewModel
             {
                 if (value)
                 {
-                    this.Filter.AgeGroup.Values.Add(AgeGroups.AgeGroup.T);
+                    this.Filter.AgeGroup.Values.Add("T");
                 }
 
                 IsTeen = value;
@@ -130,7 +130,7 @@ namespace Hrobox.ViewModel
             {
                 if (value)
                 {
-                    this.Filter.AgeGroup.Values.Add(AgeGroups.AgeGroup.A);
+                    this.Filter.AgeGroup.Values.Add("A");
                 }
                 IsAdult = value;
             }

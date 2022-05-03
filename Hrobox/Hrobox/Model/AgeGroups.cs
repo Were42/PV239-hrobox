@@ -2,17 +2,9 @@
 
 namespace Hrobox.Model
 {
-    public class AgeGroups
+    public class AgeGroup
     {
         public bool MatchAll { get; set; } = false;
-        public List<AgeGroup> Values { get; set; }
-        public enum AgeGroup
-        {
-            K,
-            S,
-            T,
-            A
-
-        }
+        public List<string> Values { get; set; }
     }
 }
