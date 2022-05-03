@@ -10,7 +10,6 @@ using Hrobox.Model;
 using Hrobox.Repository;
 using Hrobox.Services;
 using Hrobox.Services.Interfaces;
-using IOS_BP_APP.Models;
 
 namespace Hrobox.ViewModel
 {
@@ -154,6 +153,8 @@ namespace Hrobox.ViewModel
         public ICommand CreateTag => createTag;
         private ICommand login;
         public ICommand Login => login;
+        private ICommand openPicker;
+        public ICommand OpenPicker => openPicker;
 
         private readonly INavigationService navigationService;
         private readonly IGameRepository gameRepository;
@@ -279,6 +280,7 @@ namespace Hrobox.ViewModel
             createGame = new AsyncCommand(CreateGameFunction, null, null, false);
             createTag = new AsyncCommand(CreateTagFunction, null, null, false);
             login = new AsyncCommand(LoginFunction, null, null, false);
+            openPicker = new AsyncCommand(OpenPickerFunction, null, null, false);
         }
 
         public async Task FindIt()
@@ -296,6 +298,10 @@ namespace Hrobox.ViewModel
         public async Task LoginFunction()
         {
             await navigationService.PushAsync<LoginViewModel>();
+        }
+        public async Task OpenPickerFunction()
+        {
+            await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
         public override async Task OnAppearingAsync()
         {

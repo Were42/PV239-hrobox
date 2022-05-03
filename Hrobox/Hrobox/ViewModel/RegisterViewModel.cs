@@ -7,7 +7,6 @@ using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Repository;
 using Hrobox.Services.Interfaces;
-using IOS_BP_APP.Models;
 
 namespace Hrobox.ViewModel
 {

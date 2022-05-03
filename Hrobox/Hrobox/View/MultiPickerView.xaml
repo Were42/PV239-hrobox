@@ -3,24 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModel="clr-namespace:Hrobox.ViewModel;assembly=Hrobox"
              xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
-             x:Class="Hrobox.View.MultiPickerView">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label HorizontalTextAlignment="Center"  Text="Select TAGs"></Label>
+             x:Class="Hrobox.View.MultiPickerView"
+             Title="Select tags">
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,0,0,20">
         <ListView x:Name="ListView" VerticalOptions="Center" ItemsSource="{Binding Tags}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="40,0">
                             <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" FontSize="Medium" />
                             <CheckBox HorizontalOptions="End" IsChecked="{Binding IsSelected}"/>
-                            <!--<StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}"/>
-                            </StackLayout.GestureRecognizers>-->
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button HorizontalOptions="Center" Text="Done"></Button>
+        <Button CornerRadius="10" HorizontalOptions="Center" Text="Select" Command="{Binding ClosePicker}"/>
     </StackLayout>
 </view:ContentPageBase>
