@@ -19,6 +19,6 @@ namespace Hrobox.Model
         public string FirstTag { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedAt { get; set; }
-        public AgeGroups AgeGroups { get; set; }
+        public AgeGroup AgeGroups { get; set; }
     }
 }
