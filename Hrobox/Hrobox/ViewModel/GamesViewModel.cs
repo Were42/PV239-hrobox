@@ -75,13 +75,14 @@ namespace Hrobox.ViewModel
             }
         }
 
-        public bool IsAll {
+        public bool IsAll
+        {
             get => IsAll;
             set
             {
                 if (value)
                 {
-                    this.Filter.Duration  = new List<string>{ "<15", "15-30", "30-60", "60+" };
+                    this.Filter.Duration = new List<string> {"<15", "15-30", "30-60", "60+"};
                 }
 
                 IsAll = value;
@@ -160,6 +161,8 @@ namespace Hrobox.ViewModel
         {
             this.navigationService = navigationService;
             this.gameRepository = gameRestRepository;
+            this.IsAll = true;
+
             //todo: delete this test data. Ph before calling to server is implemented
             Tags.Add(new TagModel()
             {
