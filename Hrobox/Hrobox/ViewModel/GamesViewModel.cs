@@ -18,6 +18,131 @@ namespace Hrobox.ViewModel
     {
         public ObservableCollection<GameModel> Games { get; set; } = new ObservableCollection<GameModel>();
         public ObservableCollection<TagModel> Tags { get; set; } = new ObservableCollection<TagModel>();
+
+        public bool IsQuarter
+        {
+            get => IsQuarter;
+            set
+            {
+                if (value)
+                {
+                    this.Filter.Duration.Add("<15");
+                }
+
+                IsQuarter = value;
+            }
+        }
+
+        public bool IsHalf
+        {
+            get => IsHalf;
+            set
+            {
+                if (value)
+                {
+                    this.Filter.Duration.Add("15-30");
+                }
+
+                IsHalf = value;
+            }
+        }
+
+        public bool IsHour
+        {
+            get => IsHour;
+            set
+            {
+                if (value)
+                {
+                    this.Filter.Duration.Add("30-60");
+                }
+
+                IsHour = value;
+            }
+        }
+
+        public bool IsHourPlus
+        {
+            get => IsHourPlus;
+            set
+            {
+                if (value)
+                {
+                    this.Filter.Duration.Add("60+");
+                }
+
+                IsHourPlus = value;
+            }
+        }
+
+        public bool IsAll {
+            get => IsAll;
+            set
+            {
+                if (value)
+                {
+                    this.Filter.Duration  = new List<string>{ "<15", "15-30", "30-60", "60+" };
+                }
+
+                IsAll = value;
+            }
+        }
+        public bool IsKids {
+            get => IsKids;
+            set
+            {
+                if (value)
+                {
+                    this.Filter.AgeGroup.Values.Add(AgeGroups.AgeGroup.K);
+                }
+
+                IsKids = value;
+            }
+        }
+        public bool IsSchool {
+            get => IsSchool;
+            set
+            {
+                if (value)
+                {
+                    this.Filter.AgeGroup.Values.Add(AgeGroups.AgeGroup.S);
+                }
+
+                IsSchool = value;
+            }
+        }
+        public bool IsTeen {
+            get => IsTeen;
+            set
+            {
+                if (value)
+                {
+                    this.Filter.AgeGroup.Values.Add(AgeGroups.AgeGroup.T);
+                }
+
+                IsTeen = value;
+            }
+        }
+        public bool IsAdult {
+            get => IsAdult;
+            set
+            {
+                if (value)
+                {
+                    this.Filter.AgeGroup.Values.Add(AgeGroups.AgeGroup.A);
+                }
+                IsAdult = value;
+            }
+        }
+
+        public string KeyWord
+        {
+            get => KeyWord;
+            set
+            {
+                this.Filter.Name = value;
+            }
+        }
         public FilterModel Filter { get; set; }
 
         private ICommand find;

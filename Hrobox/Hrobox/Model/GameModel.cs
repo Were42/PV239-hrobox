@@ -11,7 +11,7 @@ namespace Hrobox.Model
         public string Name { get; set; }
         public string Rules { get; set; }
         public List<Tag> Tags { get; set; }
-        public Duration.DurationEnum Duration { get; set; }
+        public string Duration { get; set; }
         public string Version { get; set; }
         public int? MinNumPlayers { get; set; }
         public int? MaxNumPlayers { get; set; }
@@ -19,6 +19,6 @@ namespace Hrobox.Model
         public string FirstTag { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedAt { get; set; }
-        public AgeGroup AgeGroups { get; set; }
+        public AgeGroups AgeGroups { get; set; }
     }
 }

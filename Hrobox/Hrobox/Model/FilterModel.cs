@@ -7,15 +7,14 @@ namespace Hrobox.Model
 {
     public class FilterModel : ModelBase
     {
-        public bool IsQuarter { get; set; }
-        public bool IsHalf { get; set; }
-        public bool IsHour { get; set; }
-        public bool IsAll { get; set; } = true;
-        public bool IsKids { get; set; }
-        public bool IsSchool { get; set; }
-        public bool IsTeen { get; set; }
-        public bool IsAdult { get; set; }
+        public int? Limit { get; set; }
+        public int? Offset { get; set; } = 0;
+        public string? Lang { get; set; }
+        public string? Author { get; set; }
+        public AgeGroups? AgeGroup { get; set; }
+        public List<string> Duration { get; set; }
+        public FilterTagModel? Tags { get; set; }
 
-        public string KeyWord { get; set; } = "";
+        public string? Name { get; set; } = "";
     }
 }

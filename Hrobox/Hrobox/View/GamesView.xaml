@@ -38,26 +38,26 @@
                                Grid.ColumnSpan="5" Placeholder="Key word"
                                TextColor="White" FontSize="Medium"
                                PlaceholderColor="White"
-                               Text="{Binding Filter.KeyWord}"
+                               Text="{Binding KeyWord}"
                                SearchCommand="{Binding Find}"></SearchBar>
                     <Label Grid.Row="1" Grid.Column="0"
                            Grid.ColumnSpan="5" Text="Time duration (in minutes):"></Label>
                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
-                        <RadioButton HorizontalOptions="Center" IsChecked="{Binding Filter.IsAll}" Content="All" FontSize="Small"></RadioButton>
-                        <RadioButton HorizontalOptions="Center" IsChecked="{Binding Filter.IsQuarter}" Content="&lt;15" FontSize="Small"></RadioButton>
-                        <RadioButton HorizontalOptions="Center" IsChecked="{Binding Filter.IsHalf}" Content="15-30" FontSize="Small"></RadioButton>
-                        <RadioButton HorizontalOptions="Center" IsChecked="{Binding Filter.IsHour}" Content="30-60" FontSize="Small"></RadioButton>
+                        <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsAll}" Content="All" FontSize="Small"></RadioButton>
+                        <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsQuarter}" Content="&lt;15" FontSize="Small"></RadioButton>
+                        <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHalf}" Content="15-30" FontSize="Small"></RadioButton>
+                        <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHour}" Content="30-60" FontSize="Small"></RadioButton>
                     </StackLayout>
                     <Label Grid.Row="3" Grid.Column="0"
                            Grid.ColumnSpan="5" Text="Age groups:"></Label>
                     <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding Filter.IsKids}" HorizontalOptions="Center"></CheckBox>
+                        <CheckBox IsChecked="{Binding IsKids}" HorizontalOptions="Center"></CheckBox>
                         <Label Text="Kids" FontSize="Small"></Label>
-                        <CheckBox IsChecked="{Binding Filter.IsSchool}" HorizontalOptions="Center"></CheckBox>
+                        <CheckBox IsChecked="{Binding IsSchool}" HorizontalOptions="Center"></CheckBox>
                         <Label Text="School" FontSize="Small"></Label>
-                        <CheckBox IsChecked="{Binding Filter.IsTeen}" HorizontalOptions="Center"></CheckBox>
+                        <CheckBox IsChecked="{Binding IsTeen}" HorizontalOptions="Center"></CheckBox>
                         <Label Text="Teen" FontSize="Small"></Label>
-                        <CheckBox IsChecked="{Binding Filter.IsAdult}" HorizontalOptions="Center"></CheckBox>
+                        <CheckBox IsChecked="{Binding IsAdult}" HorizontalOptions="Center"></CheckBox>
                         <Label Text="Adults" FontSize="Small"></Label>
                     </StackLayout>
                     <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5">
