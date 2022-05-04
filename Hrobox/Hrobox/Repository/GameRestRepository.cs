@@ -41,7 +41,7 @@ namespace Hrobox.Repository
 
         public async Task<GameDetailModel> GetById(OutputGameModel game)
         {
-            var url = String.Format("https://hrobox-backend.herokuapp.com/api/game/{0}/version/{1}?lang=cs", game.Id, game.Version);
+            var url = String.Format("https://hrobox-backend.herokuapp.com/api/game/{0}/version/{1}?lang=en", game.Id, game.Version);
             Uri uri = new Uri(url);
             HttpResponseMessage response = await client.GetAsync(uri);
             GameDetailModel Item = new GameDetailModel();
