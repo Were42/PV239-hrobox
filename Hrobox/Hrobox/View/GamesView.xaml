@@ -42,15 +42,16 @@
                                Text="{Binding KeyWord}"
                                SearchCommand="{Binding Find}"></SearchBar>
                     <Label Grid.Row="1" Grid.Column="0"
-                           Grid.ColumnSpan="5" Text="Time duration (in minutes):"></Label>
+                           Grid.ColumnSpan="5" Text="Time duration (in minutes):"/>
                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
                         <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsAll}" Content="All" FontSize="Small"></RadioButton>
                         <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsQuarter}" Content="&lt;15" FontSize="Small"></RadioButton>
                         <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHalf}" Content="15-30" FontSize="Small"></RadioButton>
                         <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHour}" Content="30-60" FontSize="Small"></RadioButton>
+                        <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHourPlus}" Content="60+" FontSize="Small"></RadioButton>
                     </StackLayout>
                     <Label Grid.Row="3" Grid.Column="0"
-                           Grid.ColumnSpan="5" Text="Age groups:"></Label>
+                           Grid.ColumnSpan="5" Text="Age groups:"/>
                     <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
                         <CheckBox IsChecked="{Binding IsKids}" HorizontalOptions="Center"></CheckBox>
                         <Label Text="Kids" FontSize="Small"></Label>

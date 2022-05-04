@@ -6,90 +6,80 @@
                       x:Class="Hrobox.View.NewGameView"
                       Title="Create game"
                       x:DataType="viewModel:NewGameViewModel">
-    <Grid ColumnDefinitions="*, 195, *"
-          RowDefinitions="120,40,40,45,45,45,45,45,*,140,80" 
-          Margin="0, 0, 0,0">
+    <Frame HasShadow="True" Margin="10" CornerRadius="10" BackgroundColor="LightBlue">
+        <Grid ColumnDefinitions="*, 195, *"
+              RowDefinitions="120,40,*,45,45,20,45,20,45,45,5,45,5" 
+              Margin="0, 0, 0,0">
 
-        <Label Grid.Column="0"
-               Grid.ColumnSpan="3"
-               HorizontalTextAlignment="Center"
-               Margin="5, 50, 5 , 0"
-               Text="Here you can create New Game."
-               TextColor= "{StaticResource Primary}"
-               FontSize="Large" 
-               Padding="0"></Label>
-
-        <Entry Grid.Row="1"
-               Grid.Column="1"
-               Placeholder="Name"
-               Text="{Binding GameModel.Name}"
-               PlaceholderColor="CadetBlue"
-               HorizontalTextAlignment="Center"
-               TextColor="{StaticResource Primary}"></Entry>
-        <Entry Grid.Row="2"
-               Grid.Column="1"
-               Placeholder="Rules"
-               Text="{Binding GameModel.Rules}"
-               PlaceholderColor="CadetBlue"
-               HorizontalTextAlignment="Center"
-               TextColor="{StaticResource Primary}"></Entry>
-        <Entry Grid.Row="3" 
-               Grid.Column="1" 
-               Placeholder="Min Number of users"
-               Text="{Binding GameModel.MinNumPlayers}"
-               Keyboard="Numeric"
-               PlaceholderColor="CadetBlue"
-               TextColor="{StaticResource Primary}"
-               HorizontalTextAlignment="Center"></Entry>
-        <Entry Grid.Row="4"
-               Grid.Column="1"
-               Placeholder="Max Number of users" 
-               Text="{Binding GameModel.MaxNumPlayers}"
-               Keyboard="Numeric"
-               PlaceholderColor="CadetBlue"
-               TextColor="{StaticResource Primary}"
-               HorizontalTextAlignment="Center"></Entry>
-        <Picker Grid.Row="5"
-                Grid.Column="1"
-                Title="Duration"
-                TitleColor="CadetBlue"
-                SelectedItem="{Binding GameModel.Duration}"
-                HorizontalTextAlignment="Center"
-                TextColor="{StaticResource Primary}"
-                ItemsSource="{StaticResource DaysOfWeek}" />
-        <Picker Grid.Row="6"
-                Grid.Column="1"
-                Title="Age Groups" 
-                TitleColor="CadetBlue"
-                SelectedItem="{Binding GameModel.AgeGroups}" 
-                HorizontalTextAlignment="Center" 
-                TextColor="{StaticResource Primary}"
-                ItemsSource="{StaticResource DaysOfWeek}" />
-        <Picker Grid.Row="7" 
-                Grid.Column="1"
-                Title="Tags" 
-                TitleColor="CadetBlue" HorizontalTextAlignment="Center" 
-                TextColor="{StaticResource Primary}" 
-                ItemsSource="{StaticResource DaysOfWeek}" />
-        <Button Command="{Binding CreateGame}"
-                Grid.Row="9"
-                Grid.Column="1" Margin="0, 0, 0, 80 " 
-                CornerRadius="15"
-                Text="Create Game" ></Button>
-        <!-- todo: remove when done with testing detail-->
-        <Button Clicked="Button_OnClicked" Grid.Row="10" Grid.Column="1" Margin="0, 0, 0, 40 " CornerRadius="15" Text="Game DETAIL TEST BUTTON" ></Button>
-    </Grid>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <x:Array x:Key="DaysOfWeek" Type="{x:Type x:String}">
-                <x:String>Monday</x:String>
-                <x:String>Tuesday</x:String>
-                <x:String>Wednesday</x:String>
-                <x:String>Thursday</x:String>
-                <x:String>Friday</x:String>
-                <x:String>Saturday</x:String>
-                <x:String>Sunday</x:String>
-            </x:Array>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+            <Label Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   HorizontalTextAlignment="Center"
+                   Margin="5, 50, 5 , 0"
+                   Text="Here you can create New Game."
+                   TextColor= "{StaticResource Primary}"
+                   FontSize="Large" 
+                   Padding="0"/>
+            <Entry Grid.Row="1"
+                   Grid.Column="1"
+                   Placeholder="Name"
+                   Text="{Binding GameModel.NameEn}"
+                   PlaceholderColor="CadetBlue"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource Primary}"/>
+            <Editor Grid.Row="2"
+                   Grid.Column="0" Grid.ColumnSpan="3"
+                   Placeholder="Rules"
+                   Text="{Binding GameModel.RulesEn}"
+                   PlaceholderColor="CadetBlue"
+                   TextColor="{StaticResource Primary}" Margin="15,0"/>
+            <Entry Grid.Row="3" 
+                   Grid.Column="1" 
+                   Placeholder="Min Number of users"
+                   Text="{Binding GameModel.NrOfPlayers.Min}"
+                   Keyboard="Numeric"
+                   PlaceholderColor="CadetBlue"
+                   TextColor="{StaticResource Primary}"
+                   HorizontalTextAlignment="Center"/>
+            <Entry Grid.Row="4"
+                   Grid.Column="1"
+                   Placeholder="Max Number of users" 
+                   Text="{Binding GameModel.NrOfPlayers.Max}"
+                   Keyboard="Numeric"
+                   PlaceholderColor="CadetBlue"
+                   TextColor="{StaticResource Primary}"
+                   HorizontalTextAlignment="Center"/>
+            <Label Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="Center" Text="Time duration (in minutes):"/>
+            <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsQuarter}" Content="&lt;15" FontSize="Small" TextColor="{StaticResource Primary}"/>
+                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHalf}" Content="15-30" FontSize="Small" TextColor="{StaticResource Primary}"/>
+                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHour}" Content="30-60" FontSize="Small" TextColor="{StaticResource Primary}"/>
+                <RadioButton HorizontalOptions="Center" IsChecked="{Binding IsHourPlus}" Content="60+" FontSize="Small" TextColor="{StaticResource Primary}"/>
+            </StackLayout>
+            <Label Grid.Row="7" Grid.Column="1" HorizontalTextAlignment="Center" Text="Age groups:"/>
+            <StackLayout Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding IsKids}" HorizontalOptions="Center"/>
+                <Label Text="Kids" FontSize="Small" TextColor="{StaticResource Primary}"/>
+                <CheckBox IsChecked="{Binding IsSchool}" HorizontalOptions="Center"/>
+                <Label Text="School" FontSize="Small" TextColor="{StaticResource Primary}"/>
+                <CheckBox IsChecked="{Binding IsTeen}" HorizontalOptions="Center"/>
+                <Label Text="Teen" FontSize="Small" TextColor="{StaticResource Primary}"/>
+                <CheckBox IsChecked="{Binding IsAdult}" HorizontalOptions="Center"/>
+                <Label Text="Adults" FontSize="Small" TextColor="{StaticResource Primary}"/>
+            </StackLayout>
+            <Button Grid.Row="9"
+                    Grid.Column="1"
+                    Text="Select tags"
+                    CornerRadius="10"
+                    BackgroundColor="LightBlue"
+                    TextColor="White"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    Command="{Binding OpenPicker}"/>
+            <Button Command="{Binding CreateGame}"
+                    Grid.Row="11"
+                    Grid.Column="1"
+                    CornerRadius="15"
+                    Text="Create Game"/>
+        </Grid>
+    </Frame>
 </view:ContentPageBase>
