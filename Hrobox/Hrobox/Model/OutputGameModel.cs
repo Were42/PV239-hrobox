@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CookBook.Mobile.Models;
 
 namespace Hrobox.Model
 {
-    public class OutputGameModel
+    public class OutputGameModel : ModelBase
     {
         public int Id { get; set; }
 
