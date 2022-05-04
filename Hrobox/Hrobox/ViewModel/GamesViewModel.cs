@@ -160,6 +160,10 @@ namespace Hrobox.ViewModel
         }
         public override async Task OnAppearingAsync()
         {
+            this.Filter = new FilterModel();
+            this.Filter.AgeGroup = new AgeGroup() {Values = new List<string>() {"K", "T", "A", "S"}};
+            this.Filter.Duration = new List<string> { "<15", "15-30", "30-60", "60+" };
+            this.Games = await GameRepository.GetAll(this.Filter);
             if (User.role != null)
             {
                 isLogged = true;

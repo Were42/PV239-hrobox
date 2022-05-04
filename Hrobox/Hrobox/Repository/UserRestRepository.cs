@@ -35,8 +35,8 @@ namespace Hrobox.Repository
 
         public async Task CreateUser(UserModel user)
         {
-            Uri uri = new Uri("".ToString());
-            string json = JsonSerializer.Serialize<UserModel>(user, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/auth/register".ToString());
+            string json = JsonSerializer.Serialize<UserModel>(user, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true});
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
