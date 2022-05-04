@@ -15,7 +15,7 @@ namespace Hrobox.ViewModel
 {
     public class GamesViewModel : ViewModelBase
     {
-        public ObservableCollection<GameModel> Games { get; set; } = new();
+        public ObservableCollection<OutputGameModel> Games { get; set; } = new();
         public ObservableCollection<TagModel> Tags { get; set; } = new();
         public bool IsQuarter { get; set; }
         
@@ -65,102 +65,102 @@ namespace Hrobox.ViewModel
                 Name = "Running",
                 IsSelected = false
             });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "Thinking",
-                Name = "Puzzles",
-                MinMaxNumPlayers = "4-5"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "Ball",
-                Name = "Football",
-                MinMaxNumPlayers = "11-18"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "Ball",
-                Name = "Soccer",
-                MinMaxNumPlayers = "11-18"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "Hand",
-                Name = "Juggling",
-                MinMaxNumPlayers = "1-6"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
-            Games.Add(new GameModel()
-            {
-                FirstTag = "TagPH",
-                Name = "GameNamePH",
-                MinMaxNumPlayers = "4-8"
-            });
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "Thinking",
+            //    Name = "Puzzles",
+            //    MinMaxNumPlayers = "4-5"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "Ball",
+            //    Name = "Football",
+            //    MinMaxNumPlayers = "11-18"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "Ball",
+            //    Name = "Soccer",
+            //    MinMaxNumPlayers = "11-18"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "Hand",
+            //    Name = "Juggling",
+            //    MinMaxNumPlayers = "1-6"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
+            //Games.Add(new GameModel()
+            //{
+            //    FirstTag = "TagPH",
+            //    Name = "GameNamePH",
+            //    MinMaxNumPlayers = "4-8"
+            //});
             find = new AsyncCommand(FindIt, null,  null, false);
             createGame = new AsyncCommand(CreateGameFunction, null, null, false);
             createTag = new AsyncCommand(CreateTagFunction, null, null, false);
@@ -171,7 +171,7 @@ namespace Hrobox.ViewModel
         public async Task FindIt()
         {
             this.FillingModel();
-            this.Games = new ObservableCollection<GameModel>(await GameRepository.GetAll(this.Filter));
+            this.Games = new ObservableCollection<OutputGameModel>(await GameRepository.GetAll(this.Filter));
 
         }
 
