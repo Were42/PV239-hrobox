@@ -8,7 +8,7 @@ namespace Hrobox.Repository
     {
         Task<List<GameModel>> GetAll(FilterModel filterModel);
         Task<GameModel> GetById(int id);
-        Task CreateGame(GameModel game);
+        Task CreateGame(NewGameModel game);
         Task UpdateGame(GameModel game);
         Task deleteGame(string id);
 

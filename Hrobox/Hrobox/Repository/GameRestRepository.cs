@@ -55,10 +55,10 @@ namespace Hrobox.Repository
             return Item;
         }
 
-        public async Task CreateGame(GameModel game)
+        public async Task CreateGame(NewGameModel game)
         {
             Uri uri = new Uri("".ToString());
-            string json = JsonSerializer.Serialize<GameModel>(game,
+            string json = JsonSerializer.Serialize<NewGameModel>(game,
                 new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -66,10 +66,14 @@ namespace Hrobox.Repository
             
             response = await client.PostAsync(uri, content);
 
-                if (response.IsSuccessStatusCode)
-            {
-                Debug.WriteLine(@"\tTodoItem successfully saved.");
-            }
+                switch (response.IsSuccessStatusCode)
+                {
+                    case true:
+                        Debug.WriteLine(@"\tTodoItem successfully saved.");
+                        break;
+                    default:
+                        throw new Exception();
+                }
         }
 
         public async Task UpdateGame(GameModel game)

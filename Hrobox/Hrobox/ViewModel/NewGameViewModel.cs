@@ -3,31 +3,43 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Hrobox.Command;
 using Hrobox.Model;
+using Hrobox.Repository;
 using Hrobox.Services.Interfaces;
 
 namespace Hrobox.ViewModel
 {
     public class NewGameViewModel : ViewModelBase
     {
-        public GameModel GameModel { get; set; }
+        public NewGameModel GameModel { get; set; }
         public List<TagModel> TagModels { get; set; }
         private ICommand createGame; 
         public ICommand CreateGame { get; }
         private readonly INavigationService navigationService;
+        public IGameRepository GameRepository { get; set; }
 
-        public NewGameViewModel(INavigationService navigationService)
+        public NewGameViewModel(INavigationService navigationService, GameRestRepository gameRepository)
         {
             this.navigationService = navigationService;
-            this.createGame = new DelegateCommand(CreateGameCommand);
-            this.GameModel = new GameModel();
+            this.createGame = new AsyncCommand(CreateGameCommand, null, null, false);
+            this.GameRepository = gameRepository;
+            this.GameModel = new NewGameModel();
         }
 
-        private void CreateGameCommand()
+        private async Task CreateGameCommand()
         {
-            throw new NotImplementedException();
+            try
+            {
+                await GameRepository.CreateGame(GameModel);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
