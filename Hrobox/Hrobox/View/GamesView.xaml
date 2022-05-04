@@ -72,7 +72,7 @@
                             Command="{Binding OpenPicker}"/>
                 </Grid>
             </Frame>
-            <Grid ColumnDefinitions="*,*" RowDefinitions="auto">
+            <Grid ColumnDefinitions="*,*" RowDefinitions="auto" IsVisible="{Binding isLogged}">
                 <Button CornerRadius="10"
                         Command="{Binding CreateGame}"
                         Grid.Column="0"

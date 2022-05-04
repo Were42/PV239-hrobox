@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hrobox.Model
 {
-    internal class SignInUserModel
+    public class SignInUserModel
     {
         public string jwt { get; set; }
         public string role { get; set; }
