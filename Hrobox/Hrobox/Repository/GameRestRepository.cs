@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
@@ -20,17 +21,19 @@ namespace Hrobox.Repository
             client = new HttpClient();
         }
 
-        public async Task<List<GameModel>> GetAll()
+        public async Task<ObservableCollection<OutputGameModel>> GetAll(FilterModel filterModel)
         {
 
             Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/games");
-            HttpResponseMessage response = await client.GetAsync(uri);
-            List<GameModel> Items = new List<GameModel>();
+            string json = JsonSerializer.Serialize<FilterModel>(filterModel, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true});
+            StringContent content_post = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(uri, content_post);
+            ObservableCollection<OutputGameModel> Items = new ObservableCollection<OutputGameModel>();
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                Items = JsonSerializer.Deserialize<List<GameModel>>(content,
-                    new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+                Items = JsonSerializer.Deserialize<ObservableCollection<OutputGameModel>>(content,
+                    new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             }
 
             return Items;

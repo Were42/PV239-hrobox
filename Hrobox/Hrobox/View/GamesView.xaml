@@ -87,7 +87,7 @@
             <Label Text="Found games:" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}"></Label>
             <CollectionView ItemsSource="{Binding Games}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:GameModel">
+                    <DataTemplate x:DataType="model:OutputGameModel">
                         <Frame BackgroundColor="LightBlue" HeightRequest="40"
                                HasShadow="True" CornerRadius="10" BorderColor="{StaticResource Primary}">
                             <Grid>
@@ -100,14 +100,19 @@
                                        VerticalTextAlignment="Center"
                                        TextColor="{StaticResource Primary}"
                                        Text="{Binding Name}"/>
-                                <Label Grid.Column="1"
-                                       VerticalTextAlignment="Center"
-                                       TextColor="{StaticResource Primary}"
-                                       Text="{Binding FirstTag}"></Label>
                                 <Label Grid.Column="2"
                                        VerticalTextAlignment="Center"
-                                       TextColor="{StaticResource Primary}"
-                                       Text="{Binding MinMaxNumPlayers}"></Label>
+                                       TextColor="{StaticResource Primary}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Pro " />
+                                            <Span Text="{Binding NrOfPlayers.Min}" />
+                                            <Span Text="-" />
+                                            <Span Text="{Binding NrOfPlayers.Max}" />
+                                            <Span Text=" učastníků" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                             </Grid>
                         </Frame>
                     </DataTemplate>
