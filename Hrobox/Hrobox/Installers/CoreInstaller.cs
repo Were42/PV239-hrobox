@@ -2,6 +2,7 @@
 //using Hrobox.Repositories;
 
 using Hrobox.Annotations;
+using Hrobox.Repository;
 using Hrobox.Services;
 using Hrobox.ViewModel.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,14 +16,14 @@ namespace Hrobox.Installers
             serviceCollection.AddSingleton(dependencyInjectionService);
 
             //InstallFactories(serviceCollection);
-            //InstallRepositories(serviceCollection);
+            InstallRepositories(serviceCollection);
             InstallViewModels(serviceCollection);
         }
 
-        //private void InstallRepositories(IServiceCollection serviceCollection)
-        //{
-        //    serviceCollection.AddSingleton<IIngredientRepository, IngredientRepository>();
-        //}
+        private void InstallRepositories(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddSingleton<IUserRepository, UserRestRepository>();
+        }
 
         //private void InstallFactories(IServiceCollection serviceCollection)
         //{

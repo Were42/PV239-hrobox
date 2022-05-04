@@ -10,7 +10,7 @@ using JsonSerializerOptions = System.Text.Json.JsonSerializerOptions;
 
 namespace Hrobox.Repository
 {
-    internal class UserRestRepository : IUserRepository
+    public class UserRestRepository : IUserRepository
     {
         HttpClient client;
 
@@ -73,10 +73,10 @@ namespace Hrobox.Repository
             }
         }
 
-        public async Task<SignInUserModel> SignIn(UserModel user)
+        public async Task<SignInUserModel> SignIn(UserLoginModel user)
         {
-            Uri uri = new Uri("".ToString());
-            string json = JsonSerializer.Serialize<UserModel>(user, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/auth/login");
+            string json = JsonSerializer.Serialize<UserLoginModel>(user, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PostAsync(uri, content);
             SignInUserModel Item = new SignInUserModel();

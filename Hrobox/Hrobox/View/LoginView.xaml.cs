@@ -16,8 +16,5 @@ namespace Hrobox.View
         {
             InitializeComponent();
         }
-        private void Button_OnClicked(object sender, EventArgs e)
-        {
-        }
     }
 }

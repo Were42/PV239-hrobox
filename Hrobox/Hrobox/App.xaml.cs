@@ -1,5 +1,6 @@
 ﻿using System;
 using Hrobox.Installers;
+using Hrobox.Model;
 using Hrobox.Services;
 using Hrobox.Services.Interfaces;
 using Hrobox.View;

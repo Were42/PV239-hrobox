@@ -9,6 +9,7 @@ using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Services;
 using Hrobox.Services.Interfaces;
+using Hrobox.ViewModel.Interfaces;
 
 namespace Hrobox.ViewModel
 {
@@ -16,6 +17,9 @@ namespace Hrobox.ViewModel
     {
         public ObservableCollection<GameModel> Games { get; set; } = new();
         public ObservableCollection<TagModel> Tags { get; set; } = new();
+
+        public SignInUserModel? User { get; set; }
+
         public bool IsQuarter { get; set; }
         public bool IsHalf { get; set; }
         public bool IsHour { get; set; }
@@ -24,8 +28,9 @@ namespace Hrobox.ViewModel
         public bool IsSchool { get; set; }
         public bool IsTeen { get; set; }
         public bool IsAdult { get; set; }
-
         public string KeyWord { get; set; } = "";
+        public bool isLogged { get; set; } = false;
+        public bool canLog { get; set; } = true;
 
         private ICommand find;
         public ICommand Find => find;
@@ -154,6 +159,7 @@ namespace Hrobox.ViewModel
                 Name = "GameNamePH",
                 MinMaxNumPlayers = "4-8"
             });
+            User = new SignInUserModel();
             find = new DelegateCommand(FindIt);
             createGame = new AsyncCommand(CreateGameFunction, null, null, false);
             createTag = new AsyncCommand(CreateTagFunction, null, null, false);
@@ -175,7 +181,7 @@ namespace Hrobox.ViewModel
         }
         public async Task LoginFunction()
         {
-            await navigationService.PushAsync<LoginViewModel>();
+            await navigationService.PushAsync<LoginViewModel, SignInUserModel>(User);
         }
         public async Task OpenPickerFunction()
         {
@@ -183,6 +189,11 @@ namespace Hrobox.ViewModel
         }
         public override async Task OnAppearingAsync()
         {
+            if (User.role != null)
+            {
+                isLogged = true;
+                canLog = false;
+            }
         }
     }
 }
