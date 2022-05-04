@@ -10,13 +10,13 @@ namespace Hrobox.Model
     {
         public int? Limit { get; set; }
         public int? Offset { get; set; }
-        public string? Lang { get; set; } = "Cs";
+        public string? Lang { get; set; } = "en";
         public string? Author { get; set; }
         public AgeGroup AgeGroup { get; set; }
         public List<string> Duration { get; set; }
         public FilterTagModel? Tags { get; set; }
         public int? NrOfPlayers { get; set; }
 
-        public string? Name { get; set; } = "";
+        public string? Name { get; set; }
     }
 }
