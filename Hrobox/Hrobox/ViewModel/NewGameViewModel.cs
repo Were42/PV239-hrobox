@@ -7,12 +7,15 @@ using System.Windows.Input;
 using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Services.Interfaces;
+using Hrobox.ViewModel.Interfaces;
 
 namespace Hrobox.ViewModel
 {
-    public class NewGameViewModel : ViewModelBase
+    public class NewGameViewModel : ViewModelBase, IViewModel<SignInUserModel>
     {
         public GameModel GameModel { get; set; }
+        public SignInUserModel SignInUserModel { get; set; }
+
         public List<TagModel> TagModels { get; set; }
         private ICommand createGame; 
         public ICommand CreateGame { get; }
@@ -28,6 +31,11 @@ namespace Hrobox.ViewModel
         private void CreateGameCommand()
         {
             throw new NotImplementedException();
+        }
+
+        public void SetViewModelParameter(SignInUserModel? parameter)
+        {
+            SignInUserModel = parameter;
         }
     }
 }

@@ -5,13 +5,14 @@ using System.Windows.Input;
 using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Services.Interfaces;
+using Hrobox.ViewModel.Interfaces;
 
 namespace Hrobox.ViewModel
 {
-    public class NewTagViewModel : ViewModelBase
+    public class NewTagViewModel : ViewModelBase, IViewModel<SignInUserModel>
     {
         public string Tag { get; set; }
-
+        public SignInUserModel SignInUserModel { get; set; }
         private ICommand createTag;
         public ICommand CreateTag { get; }
         private readonly INavigationService navigationService;
@@ -25,6 +26,11 @@ namespace Hrobox.ViewModel
         private void CreateTagCommand()
         {
             throw new NotImplementedException();
+        }
+
+        public void SetViewModelParameter(SignInUserModel? parameter)
+        {
+            SignInUserModel = parameter;
         }
     }
 
