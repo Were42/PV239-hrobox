@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,8 @@ namespace Hrobox.ViewModel
         public ICommand Login => login;
         private ICommand openPicker;
         public ICommand OpenPicker => openPicker;
+        private ICommand openDetail;
+        public ICommand OpenDetail => openDetail;
         private readonly IGameRepository GameRepository;
         private readonly INavigationService navigationService;
         
@@ -75,6 +78,7 @@ namespace Hrobox.ViewModel
             createTag = new AsyncCommand(CreateTagFunction, null, null, false);
             login = new AsyncCommand(LoginFunction, null, null, false);
             openPicker = new AsyncCommand(OpenPickerFunction, null, null, false);
+            openDetail = new AsyncCommand<int>(OpenDetailFuction, null, null, false);
         }
 
         public async Task FindIt()
@@ -139,6 +143,20 @@ namespace Hrobox.ViewModel
         public async Task OpenPickerFunction()
         {
             await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
+        }
+        public async Task OpenDetailFuction(int Id)
+        {
+            var game = Games.First();
+            foreach (var outputGameModel in Games)
+            {
+                if (outputGameModel.Id == Id)
+                {
+                    game = outputGameModel;
+                    break;
+                }
+            }
+            var result = await GameRepository.GetById(game);
+            await navigationService.PushAsync<GameDetailViewModel, GameDetailModel>(result);
         }
         public override async Task OnAppearingAsync()
         {
