@@ -51,27 +51,14 @@ namespace Hrobox.ViewModel
         public ICommand OpenDetail => openDetail;
         private readonly IGameRepository GameRepository;
         private readonly INavigationService navigationService;
+        private readonly ITagRepository TagRepository;
         
-        public GamesViewModel(INavigationService navigationService, IGameRepository gameRestRepository)
+        public GamesViewModel(INavigationService navigationService, IGameRepository gameRestRepository, ITagRepository tagRepository)
         {
             this.navigationService = navigationService;
             this.GameRepository = gameRestRepository;
-            //todo: delete this test data. Ph before calling to server is implemented
-            Tags.Add(new TagModel()
-            {
-                Name = "Ball",
-                IsSelected = false
-            });
-            Tags.Add(new TagModel()
-            {
-                Name = "Thinking",
-                IsSelected = false
-            });
-            Tags.Add(new TagModel()
-            {
-                Name = "Running",
-                IsSelected = false
-            });
+            this.TagRepository = tagRepository;
+            
             find = new AsyncCommand(FindIt, null,  null, false);
             User = new SignInUserModel();
             createGame = new AsyncCommand(CreateGameFunction, null, null, false);
@@ -142,6 +129,15 @@ namespace Hrobox.ViewModel
         }
         public async Task OpenPickerFunction()
         {
+            var result = await TagRepository.GetAllTags();
+            foreach (var tag in result.tags)
+            {
+                if (this.Tags.Any(x => x.Name.Equals(tag.nameEn)))
+                {
+                    continue;
+                }
+                this.Tags.Add(new TagModel() { Name = tag.nameEn });
+            }
             await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
         public async Task OpenDetailFuction(int Id)
