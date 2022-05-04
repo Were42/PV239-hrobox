@@ -17,7 +17,7 @@ namespace Hrobox.ViewModel
             this.navigationService = navigationService;
             GameModel = new GameModel();
             this.GameModel.Name = "Hra na slepou bábu";
-            this.GameModel.Duration = Duration.DurationEnum.Fifteenminutes;
+            this.GameModel.Duration = "<15";
             this.GameModel.MaxNumPlayers = 10;
             this.GameModel.MinNumPlayers = 2;
             this.GameModel.Rules = "Bla la la la la la ";
