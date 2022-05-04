@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -30,14 +31,17 @@ namespace Hrobox.Repository
             return Items;
         }
 
-        public async Task CreateTag(Tag tag)
+        public async Task CreateTag(Tag tag, string jwt)
         {
-            Uri uri = new Uri("".ToString());
-            string json = JsonSerializer.Serialize<Tag>(tag, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            var authHeader = new AuthenticationHeaderValue("Bearer", jwt);
+            client.DefaultRequestHeaders.Authorization = authHeader;
+            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/tag");
+            string json = JsonSerializer.Serialize<Tag>(tag, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
             response = await client.PostAsync(uri, content);
+
 
             if (response.IsSuccessStatusCode)
             {

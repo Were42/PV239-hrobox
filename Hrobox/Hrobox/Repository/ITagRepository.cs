@@ -6,9 +6,9 @@ using Hrobox.Model;
 
 namespace Hrobox.Repository
 {
-    internal interface ITagRepository
+    public interface ITagRepository
     {
         Task<TagsModel> GetAllTags();
-        Task CreateTag(Tag tag);
+        Task CreateTag(Tag tag, string jwt);
     }
 }
