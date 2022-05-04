@@ -12,7 +12,11 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="40,0">
-                            <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" FontSize="Medium" />
+                            <Label Text="{Binding Name}"
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="{StaticResource Primary}"
+                                   FontSize="Medium" />
                             <CheckBox HorizontalOptions="End" IsChecked="{Binding IsSelected}"/>
                         </StackLayout>
                     </ViewCell>

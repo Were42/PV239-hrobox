@@ -25,6 +25,7 @@ namespace Hrobox.Installers
             serviceCollection.AddSingleton<IGameRepository, GameRestRepository>();
             //serviceCollection.AddSingleton<ITagRepository, TagRestRepository>();
             //serviceCollection.AddSingleton<IUserRepository, UserRestRepository>();
+            serviceCollection.AddSingleton<IUserRepository, UserRestRepository>();
         }
 
         //private void InstallFactories(IServiceCollection serviceCollection)

@@ -12,6 +12,6 @@ namespace Hrobox.Repository
         Task CreateUser(UserModel user);
         Task UpdateUser(UserModel user);
         Task DeleteUser(string id);
-        public Task<SignInUserModel> SignIn(UserModel user);
+        Task<SignInUserModel> SignIn(UserLoginModel user);
     }
 }

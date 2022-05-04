@@ -65,14 +65,14 @@
                             Grid.ColumnSpan="3"
                             Text="Select tags"
                             CornerRadius="10"
-                            BackgroundColor="White"
-                            TextColor="{StaticResource Primary}"
-                            BorderColor="{StaticResource Primary}"
-                            BorderWidth="2"
+                            BackgroundColor="LightBlue"
+                            TextColor="White"
+                            BorderColor="White"
+                            BorderWidth="1"
                             Command="{Binding OpenPicker}"/>
                 </Grid>
             </Frame>
-            <Grid ColumnDefinitions="*,*" RowDefinitions="auto">
+            <Grid ColumnDefinitions="*,*" RowDefinitions="auto" IsVisible="{Binding isLogged}">
                 <Button CornerRadius="10"
                         Command="{Binding CreateGame}"
                         Grid.Column="0"
