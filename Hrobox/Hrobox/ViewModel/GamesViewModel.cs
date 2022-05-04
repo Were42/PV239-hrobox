@@ -34,7 +34,6 @@ namespace Hrobox.ViewModel
         public string KeyWord { get; set; } = "";
         public bool isLogged { get; set; } = false;
         public bool canLog { get; set; } = true;
-
         public FilterModel Filter { get; set; }
 
         private ICommand find;
@@ -123,7 +122,6 @@ namespace Hrobox.ViewModel
             {
                 this.Filter.AgeGroup.Values.Add("A");
             }
-
             this.Filter.Name = KeyWord;
         }
         public async Task CreateGameFunction()
