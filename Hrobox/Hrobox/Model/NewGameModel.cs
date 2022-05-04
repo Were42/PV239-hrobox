@@ -10,10 +10,10 @@ namespace Hrobox.Model
         public string NameCs { get; set; }
         public string RulesEn { get; set; }
         public string RulesCs { get; set; }
-        public NumberOfPlayers NumberOfPlayers { get; set; }
-        public List<string> Duration { get; set; }
+        public NrOfPlayers NrOfPlayers { get; set; }
+        public string Duration { get; set; }
         public List<string> AgeGroups { get; set; }
-        public List<Tag> Tags { get; set; }
+        public List<int> Tags { get; set; }
 
     }
 }

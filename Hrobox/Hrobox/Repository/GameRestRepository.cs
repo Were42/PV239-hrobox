@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -55,18 +56,18 @@ namespace Hrobox.Repository
             return Item;
         }
 
-        public async Task CreateGame(GameModel game)
+        public async Task CreateGame(NewGameModel game, string jwt)
         {
-            Uri uri = new Uri("".ToString());
-            string json = JsonSerializer.Serialize<GameModel>(game,
-                new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+            var authHeader = new AuthenticationHeaderValue("Bearer", jwt);
+            client.DefaultRequestHeaders.Authorization = authHeader;
+            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/game");
+            string json = JsonSerializer.Serialize<NewGameModel>(game, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
-            
             response = await client.PostAsync(uri, content);
 
-                if (response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 Debug.WriteLine(@"\tTodoItem successfully saved.");
             }

@@ -13,7 +13,7 @@ namespace Hrobox.Model
         public string CreatedBy { get; set; }
         public string CreatedAt { get; set; }
         public string Rules { get; set; }
-        public NumberOfPlayers NrOfPlayers { get; set; }
+        public NrOfPlayers NrOfPlayers { get; set; }
         public string Duration { get; set; }
         public string[] AgeGroups { get; set; }
         public string[] Tags { get; set; }

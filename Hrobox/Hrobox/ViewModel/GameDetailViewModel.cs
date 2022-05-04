@@ -20,7 +20,7 @@ namespace Hrobox.ViewModel
         {
             this.navigationService = navigationService;
             GameModel = new GameDetailModel();
-            this.GameModel.NrOfPlayers = new NumberOfPlayers();
+            this.GameModel.NrOfPlayers = new NrOfPlayers();
         }
 
         public void SetViewModelParameter(GameDetailModel? parameter)
