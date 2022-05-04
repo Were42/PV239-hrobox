@@ -16,7 +16,7 @@ namespace Hrobox.ViewModel
 
         private ICommand registerCommand;
 
-        public ICommand RegisterCommand { get; }
+        public ICommand RegisterCommand => registerCommand;
         private readonly INavigationService navigationService;
         public IUserRepository UserRepository { get; set; }
 
