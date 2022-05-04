@@ -5,7 +5,7 @@
                       xmlns:view="clr-namespace:Hrobox.View;assembly=Hrobox"
                       x:Class="Hrobox.View.GameDetailView"
                       Title="Game Detail"
-                      x:DataType="viewModel:GameDetailViewModels">
+                      x:DataType="viewModel:GameDetailViewModel">
     <Frame BorderColor="{StaticResource Primary}" Margin="20" HasShadow="True" CornerRadius="15">
         <Grid RowDefinitions="60, 35, 35, 35, 35, 35, *" Padding="0" >
             <Label Text="{Binding GameModel.Name}" TextDecorations="Underline" Padding="10" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}">
@@ -23,7 +23,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Min Players: " />
-                        <Span Text="{Binding GameModel.MinNumPlayers}" />
+                        <Span Text="{Binding GameModel.NrOfPlayers.Min}" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -32,7 +32,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Max Players: " />
-                        <Span Text="{Binding GameModel.MaxNumPlayers}" />
+                        <Span Text="{Binding GameModel.NrOfPlayers.Max}" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -42,15 +42,7 @@
                     <FormattedString>
                         <Span Text="Duration: " />
                         <Span Text="{Binding GameModel.Duration}" />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-
-            <Label FontSize="Medium" Grid.Row="5" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Version: " />
-                        <Span Text="{Binding GameModel.Version}" />
+                        <Span Text=" minutes" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -59,11 +51,11 @@
                 <ScrollView>
                     <StackLayout>
                         <Label TextDecorations="Underline" Text="Rules:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
-                        <Label  Text=" Bla bla blbalablablablablablablablablablablablablablab blbalbalbalablablablabaal bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla Bla bla bla bla bla bla bla bla bla bla Bla blabla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla Bla bla bla bla bla bla bla bla bla bla" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
+                        <Label  Text="{Binding GameModel.Rules}" TextColor="{StaticResource Primary}" FontSize="Small"/>
                         <Label  TextDecorations="Underline" Text="Age Groups:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
-                        <Label  Text="Bla bla bla bla bla bla bla bla bla bla Bla bla bla" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
+                        <Label  Text="{Binding AgeGroups}" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
                         <Label  TextDecorations="Underline" Text="Tags:" TextColor="{StaticResource Primary}" FontSize="Medium"></Label>
-                        <Label  Text="Bla bla Bla Bldsfa ahoj Blkukačkaa Bla Bla " TextColor="{StaticResource Primary}" FontSize="Small"></Label>
+                        <Label  Text="{Binding Tags}" TextColor="{StaticResource Primary}" FontSize="Small"></Label>
                     </StackLayout>
                 </ScrollView>
             </Frame>

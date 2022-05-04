@@ -6,7 +6,8 @@
              xmlns:model="clr-namespace:Hrobox.Model;assembly=Hrobox"
              x:Class="Hrobox.View.GamesView"
              Title="Hrobox Games"
-             x:DataType="viewModel:GamesViewModel">
+             x:DataType="viewModel:GamesViewModel"
+             x:Name="Games">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Login" IconImageSource="userIcon" Command="{Binding Login}"/>
     </ContentPage.ToolbarItems>
@@ -114,6 +115,10 @@
                                     </Label.FormattedText>
                                 </Label>
                             </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding Id}"
+                                    Command="{Binding BindingContext.OpenDetail ,Source={x:Reference Games}}" />
+                            </Frame.GestureRecognizers>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

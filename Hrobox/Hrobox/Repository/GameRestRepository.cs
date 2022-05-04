@@ -39,18 +39,17 @@ namespace Hrobox.Repository
             return Items;
         }
 
-        public async Task<GameModel> GetById(int id)
+        public async Task<GameDetailModel> GetById(OutputGameModel game)
         {
-            Uri uri = new Uri("".ToString());
-            
-            StringContent content_in = new StringContent(id.ToString(), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PostAsync(uri, content_in);
-            GameModel Item = new GameModel();
+            var url = String.Format("https://hrobox-backend.herokuapp.com/api/game/{0}/version/{1}?lang=cs", game.Id, game.Version);
+            Uri uri = new Uri(url);
+            HttpResponseMessage response = await client.GetAsync(uri);
+            GameDetailModel Item = new GameDetailModel();
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                Item = JsonSerializer.Deserialize<GameModel>(content,
-                    new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+                Item = JsonSerializer.Deserialize<GameDetailModel>(content,
+                    new JsonSerializerOptions {PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
             }
 
             return Item;

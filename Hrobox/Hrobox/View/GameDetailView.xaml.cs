@@ -12,7 +12,7 @@ namespace Hrobox.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GameDetailView
     {
-        public GameDetailView(GameDetailViewModels gameDetailViewModels):base(gameDetailViewModels)
+        public GameDetailView(GameDetailViewModel gameDetailViewModel) : base(gameDetailViewModel)
         {
             InitializeComponent();
         }
