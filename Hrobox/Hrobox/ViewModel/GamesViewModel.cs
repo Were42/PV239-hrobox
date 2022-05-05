@@ -35,6 +35,7 @@ namespace Hrobox.ViewModel
         public string KeyWord { get; set; } = "";
         public bool isLogged { get; set; } = false;
         public bool canLog { get; set; } = true;
+        public bool Loading { get; set; } = false;
         public FilterModel Filter { get; set; }
 
         private ICommand find;
@@ -71,7 +72,9 @@ namespace Hrobox.ViewModel
         public async Task FindIt()
         {
             this.FillingModel();
+            this.Loading = true;
             this.Games = await GameRepository.GetAll(this.Filter);
+            this.Loading = false;
         }
 
         public void FillingModel()
@@ -159,7 +162,9 @@ namespace Hrobox.ViewModel
             this.Filter = new FilterModel();
             this.Filter.AgeGroup = new AgeGroup() {Values = new List<string>() {"K", "T", "A", "S"}};
             this.Filter.Duration = new List<string> { "<15", "15-30", "30-60", "60+" };
+            this.Loading = true;
             this.Games = await GameRepository.GetAll(this.Filter);
+            this.Loading = false;
             if (User.role != null)
             {
                 isLogged = true;
