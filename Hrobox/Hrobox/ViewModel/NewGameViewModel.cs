@@ -34,14 +34,19 @@ namespace Hrobox.ViewModel
         public ICommand OpenPicker => openPicker;
         private readonly INavigationService navigationService;
         private readonly IGameRepository gameRepository;
-        private readonly ITagRepository TagRepository;
+        private readonly ITagRepository tagRepository;
+        private readonly IMessageService messageService;
         private TagsModel tagsModel;
 
-        public NewGameViewModel(INavigationService navigationService, IGameRepository gameRepository, ITagRepository tagRepository)
+        public NewGameViewModel(INavigationService navigationService,
+            IGameRepository gameRepository,
+            ITagRepository tagRepository,
+            IMessageService messageService)
         {
             this.gameRepository = gameRepository;
-            this.TagRepository = tagRepository;
+            this.tagRepository = tagRepository;
             this.navigationService = navigationService;
+            this.messageService = messageService;
             this.createGame = new AsyncCommand(CreateGameCommand, null, null, false);
             this.openPicker = new AsyncCommand(OpenPickerCommand, null, null, false);
             this.GameModel = new NewGameModel(){NrOfPlayers = new NrOfPlayers()};
@@ -50,11 +55,17 @@ namespace Hrobox.ViewModel
         private async Task CreateGameCommand()
         {
             FillingModel();
-            await gameRepository.CreateGame(GameModel, SignInUserModel.jwt);
+            var msg = await gameRepository.CreateGame(GameModel, SignInUserModel.jwt);
+            await messageService.ShowAsync(msg);
+            if (msg.Contains("Success"))
+            {
+                await navigationService.PopAsync();
+            }
+            
         }
         private async Task OpenPickerCommand()
         {
-            tagsModel = await TagRepository.GetAllTags();
+            tagsModel = await tagRepository.GetAllTags();
             foreach (var tag in tagsModel.tags)
             {
                 if (this.Tags.Any(x => x.Name.Equals(tag.nameEn)))

@@ -56,7 +56,7 @@ namespace Hrobox.Repository
             return Item;
         }
 
-        public async Task CreateGame(NewGameModel game, string jwt)
+        public async Task<string> CreateGame(NewGameModel game, string jwt)
         {
             var authHeader = new AuthenticationHeaderValue("Bearer", jwt);
             client.DefaultRequestHeaders.Authorization = authHeader;
@@ -69,8 +69,9 @@ namespace Hrobox.Repository
 
             if (response.IsSuccessStatusCode)
             {
-                Debug.WriteLine(@"\tTodoItem successfully saved.");
+                return "Successfully created new Game.";
             }
+            return "Something failed during creation of game, please validate inputs and tr again.";
         }
 
         public async Task UpdateGame(GameModel game)
