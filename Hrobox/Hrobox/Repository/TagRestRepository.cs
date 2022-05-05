@@ -31,7 +31,7 @@ namespace Hrobox.Repository
             return Items;
         }
 
-        public async Task CreateTag(Tag tag, string jwt)
+        public async Task<string> CreateTag(Tag tag, string jwt)
         {
             var authHeader = new AuthenticationHeaderValue("Bearer", jwt);
             client.DefaultRequestHeaders.Authorization = authHeader;
@@ -45,8 +45,9 @@ namespace Hrobox.Repository
 
             if (response.IsSuccessStatusCode)
             {
-                Debug.WriteLine(@"\tTodoItem successfully saved.");
+                return "Successfully created new tag.";
             }
+            return "Some error occurred during creating new tag please try validate inputs and try again.";
         }
     }
 }

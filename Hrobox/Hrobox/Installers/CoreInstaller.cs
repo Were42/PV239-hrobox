@@ -4,6 +4,7 @@
 using Hrobox.Annotations;
 using Hrobox.Repository;
 using Hrobox.Services;
+using Hrobox.Services.Interfaces;
 using Hrobox.ViewModel.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,9 +16,9 @@ namespace Hrobox.Installers
         {
             serviceCollection.AddSingleton(dependencyInjectionService);
 
-            //InstallFactories(serviceCollection);
             InstallRepositories(serviceCollection);
             InstallViewModels(serviceCollection);
+            serviceCollection.AddSingleton<IMessageService, MessageService>();
         }
 
         private void InstallRepositories(IServiceCollection serviceCollection)
