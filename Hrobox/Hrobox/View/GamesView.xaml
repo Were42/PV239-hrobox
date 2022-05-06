@@ -87,7 +87,7 @@
                         BackgroundColor="LightBlue"/>
             </Grid>
             <Label Text="Found games:" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}"></Label>
-            <ActivityIndicator IsRunning="{Binding Loading}"/>
+            <ActivityIndicator IsRunning="{Binding Loading}" IsVisible="{Binding Loading}"/>
             <CollectionView ItemsSource="{Binding Games}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:OutputGameModel">
