@@ -19,6 +19,7 @@ namespace Hrobox.ViewModel
     {
         public ObservableCollection<OutputGameModel> Games { get; set; } = new();
         public ObservableCollection<TagModel> Tags { get; set; } = new();
+        private TagsModel tagsWithAllInfo;
 
         public SignInUserModel? User { get; set; }
 
@@ -79,44 +80,61 @@ namespace Hrobox.ViewModel
 
         public void FillingModel()
         {
-            this.Filter = new FilterModel();
-            if (this.IsQuarter == true)
+            this.Filter = new FilterModel()
+            {
+                Duration = new List<string>(),
+                AgeGroup = new AgeGroup()
+                {
+                    Values = new List<string>()
+
+                },
+                Tags = new FilterTagModel(){ Values = new List<int>()}
+            };
+            if (this.IsQuarter)
             {
                 this.Filter.Duration.Add("<15");
-            }
-            if (this.IsHalf == true)
+            }else if (this.IsHalf)
             {
                 this.Filter.Duration.Add("15-30");
-            }
-            if (this.IsHour == true)
+            } else if (this.IsHour)
             {
                 this.Filter.Duration.Add("30-60");
-            }
-            if (this.IsHourPlus == true)
+            } else if (this.IsHourPlus)
             {
                 this.Filter.Duration.Add("60+");
-            }
-            if (this.IsAll == true)
+            } else if (this.IsAll)
             {
                 this.Filter.Duration = new List<string> { "<15", "15-30", "30-60", "60+" };
             }
-            if (this.IsKids == true)
+            if (this.IsKids)
             {
                 this.Filter.AgeGroup.Values.Add("K");
             }
-            if (this.IsSchool == true)
+            if (this.IsSchool)
             {
                 this.Filter.AgeGroup.Values.Add("S");
             }
-            if (this.IsTeen == true)
+            if (this.IsTeen)
             {
                 this.Filter.AgeGroup.Values.Add("T");
             }
-            if (this.IsAdult == true)
+            if (this.IsAdult)
             {
                 this.Filter.AgeGroup.Values.Add("A");
             }
             this.Filter.Name = KeyWord;
+            foreach (var tagModel in Tags)
+            {
+                if (tagModel.IsSelected)
+                {
+                    //todo find id
+                    var result = tagsWithAllInfo.tags.Find(x => x.nameEn.Equals(tagModel.Name));
+                    if (result != null)
+                    {
+                        this.Filter.Tags.Values.Add((int)result.id);
+                    }
+                }
+            }
         }
         public async Task CreateGameFunction()
         {
@@ -132,8 +150,8 @@ namespace Hrobox.ViewModel
         }
         public async Task OpenPickerFunction()
         {
-            var result = await TagRepository.GetAllTags();
-            foreach (var tag in result.tags)
+            this.tagsWithAllInfo = await TagRepository.GetAllTags();
+            foreach (var tag in tagsWithAllInfo.tags)
             {
                 if (this.Tags.Any(x => x.Name.Equals(tag.nameEn)))
                 {
