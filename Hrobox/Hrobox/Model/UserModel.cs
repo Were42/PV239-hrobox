@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Hrobox.Model
 {
-    internal class UserModel
+    public class UserModel
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = "Ja";
         public string Email { get; set; }
         public string Password { get; set; }
+        public string Lang { get; set; } = "cs";
     }
 }

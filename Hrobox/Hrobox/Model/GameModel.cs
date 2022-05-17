@@ -5,17 +5,20 @@ using CookBook.Mobile.Models;
 
 namespace Hrobox.Model
 {
-    internal class GameModel : ModelBase
+    public class GameModel : ModelBase
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Rules { get; set; }
-        public Tag Tag { get; set; }
-        public Duration.DurationEnum Duration { get; set; }
+        public List<Tag> Tags { get; set; }
+        public string Duration { get; set; }
         public string Version { get; set; }
         public int? MinNumPlayers { get; set; }
         public int? MaxNumPlayers { get; set; }
         public string MinMaxNumPlayers { get; set; }
         public string FirstTag { get; set; }
-        public AgeGroup AgeGroups { get; set; }
+        public string CreatedBy { get; set; }
+        public string CreatedAt { get; set; }
+        public string AgeGroups { get; set; }
     }
 }

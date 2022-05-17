@@ -1,11 +1,10 @@
-﻿namespace Hrobox.Model
+﻿using System.Collections.Generic;
+
+namespace Hrobox.Model
 {
     public class AgeGroup
     {
-        enum Age
-        {
-            
-
-        }
+        public bool MatchAll { get; set; } = false;
+        public List<string> Values { get; set; }
     }
 }

@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Hrobox.Model
 {
-    internal class Tag
+    public class Tag
     {
-        public List<string> Tags { get; set; }
+        public int? id { get; set; }
+        public string nameEn { get; set; } = "ahh";
+        public string nameCs { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace Hrobox.Model
     public class TagModel : ModelBase
     {
         public string Name { get; set; }
-        public bool IsSelected { get; set; }
+        public bool IsSelected { get; set; } = false;
     }
 }
