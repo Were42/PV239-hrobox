@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Repository;
-using Hrobox.Services;
 using Hrobox.Services.Interfaces;
-using Hrobox.ViewModel.Interfaces;
 
 namespace Hrobox.ViewModel
 {
@@ -19,7 +15,7 @@ namespace Hrobox.ViewModel
     {
         public ObservableCollection<OutputGameModel> Games { get; set; } = new();
         public ObservableCollection<TagModel> Tags { get; set; } = new();
-        private TagsModel tagsWithAllInfo;
+        private TagsModel _tagsWithAllInfo;
 
         public SignInUserModel? User { get; set; }
 
@@ -34,8 +30,8 @@ namespace Hrobox.ViewModel
         public bool IsTeen { get; set; }
         public bool IsAdult { get; set; }
         public string KeyWord { get; set; } = "";
-        public bool isLogged { get; set; } = false;
-        public bool canLog { get; set; } = true;
+        public bool IsLogged { get; set; } = false;
+        public bool CanLog { get; set; } = true;
         public bool Loading { get; set; } = false;
         public FilterModel Filter { get; set; }
 
@@ -45,15 +41,15 @@ namespace Hrobox.ViewModel
         public ICommand LoginCommand { get; set; }
         public ICommand OpenPickerCommand { get; set; }
         public ICommand OpenDetailCommand { get; set; }
-        private readonly IGameRepository GameRepository;
-        private readonly INavigationService navigationService;
-        private readonly ITagRepository TagRepository;
+        private readonly IGameRepository _gameRepository;
+        private readonly INavigationService _navigationService;
+        private readonly ITagRepository _tagRepository;
         
         public GamesViewModel(INavigationService navigationService, IGameRepository gameRestRepository, ITagRepository tagRepository)
         {
-            this.navigationService = navigationService;
-            this.GameRepository = gameRestRepository;
-            this.TagRepository = tagRepository;
+            this._navigationService = navigationService;
+            this._gameRepository = gameRestRepository;
+            this._tagRepository = tagRepository;
             
             FindCommand = new AsyncCommand(FindIt, null,  null, false);
             User = new SignInUserModel();
@@ -68,7 +64,7 @@ namespace Hrobox.ViewModel
         {
             this.FillingModel();
             this.Loading = true;
-            this.Games = await GameRepository.GetAll(this.Filter);
+            this.Games = await _gameRepository.GetAll(this.Filter);
             this.Loading = false;
         }
 
@@ -122,7 +118,7 @@ namespace Hrobox.ViewModel
                 if (tagModel.IsSelected)
                 {
                     //todo find id
-                    var result = tagsWithAllInfo.tags.Find(x => x.NameEn.Equals(tagModel.Name));
+                    var result = _tagsWithAllInfo.tags.Find(x => x.NameEn.Equals(tagModel.Name));
                     if (result != null)
                     {
                         this.Filter.Tags.Values.Add((int)result.Id);
@@ -132,20 +128,20 @@ namespace Hrobox.ViewModel
         }
         public async Task CreateGameFunction()
         {
-            await navigationService.PushAsync<NewGameViewModel, SignInUserModel>(User);
+            await _navigationService.PushAsync<NewGameViewModel, SignInUserModel>(User);
         }
         public async Task CreateTagFunction()
         {
-            await navigationService.PushAsync<NewTagViewModel, SignInUserModel>(User);
+            await _navigationService.PushAsync<NewTagViewModel, SignInUserModel>(User);
         }
         public async Task LoginFunction()
         {
-            await navigationService.PushAsync<LoginViewModel, SignInUserModel>(User);
+            await _navigationService.PushAsync<LoginViewModel, SignInUserModel>(User);
         }
         public async Task OpenPickerFunction()
         {
-            this.tagsWithAllInfo = await TagRepository.GetAllTags();
-            foreach (var tag in tagsWithAllInfo.tags)
+            this._tagsWithAllInfo = await _tagRepository.GetAllTags();
+            foreach (var tag in _tagsWithAllInfo.tags)
             {
                 if (this.Tags.Any(x => x.Name.Equals(tag.NameEn)))
                 {
@@ -153,7 +149,7 @@ namespace Hrobox.ViewModel
                 }
                 this.Tags.Add(new TagModel() { Name = tag.NameEn });
             }
-            await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
+            await _navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
         public async Task OpenDetailFuction(int Id)
         {
@@ -166,8 +162,8 @@ namespace Hrobox.ViewModel
                     break;
                 }
             }
-            var result = await GameRepository.GetById(game);
-            await navigationService.PushAsync<GameDetailViewModel, GameDetailModel>(result);
+            var result = await _gameRepository.GetById(game);
+            await _navigationService.PushAsync<GameDetailViewModel, GameDetailModel>(result);
         }
         public override async Task OnAppearingAsync()
         {
@@ -177,13 +173,13 @@ namespace Hrobox.ViewModel
                 this.Filter.AgeGroup = new AgeGroup() { Values = new List<string>() { "K", "T", "A", "S" } };
                 this.Filter.Duration = new List<string> { "<15", "15-30", "30-60", "60+" };
                 this.Loading = true;
-                this.Games = await GameRepository.GetAll(this.Filter);
+                this.Games = await _gameRepository.GetAll(this.Filter);
                 this.Loading = false;
             }
             if (User.Role != null)
             {
-                isLogged = true;
-                canLog = false;
+                IsLogged = true;
+                CanLog = false;
             }
         }
     }
