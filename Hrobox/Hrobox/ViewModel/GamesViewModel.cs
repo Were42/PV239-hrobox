@@ -115,14 +115,12 @@ namespace Hrobox.ViewModel
             this.Filter.Name = KeyWord;
             foreach (var tagModel in Tags)
             {
-                if (tagModel.IsSelected)
+                if (!tagModel.IsSelected) continue;
+                //todo find id
+                var result = _tagsWithAllInfo.tags.Find(x => x.NameEn.Equals(tagModel.Name));
+                if (result != null)
                 {
-                    //todo find id
-                    var result = _tagsWithAllInfo.tags.Find(x => x.NameEn.Equals(tagModel.Name));
-                    if (result != null)
-                    {
-                        this.Filter.Tags.Values.Add((int)result.Id);
-                    }
+                    this.Filter.Tags.Values.Add((int)result.Id);
                 }
             }
         }
@@ -169,9 +167,11 @@ namespace Hrobox.ViewModel
         {
             if (!(Games.Count > 0))
             {
-                this.Filter = new FilterModel();
-                this.Filter.AgeGroup = new AgeGroup() { Values = new List<string>() { "K", "T", "A", "S" } };
-                this.Filter.Duration = new List<string> { "<15", "15-30", "30-60", "60+" };
+                this.Filter = new FilterModel
+                {
+                    AgeGroup = new AgeGroup() { Values = new List<string>() { "K", "T", "A", "S" } },
+                    Duration = new List<string> { "<15", "15-30", "30-60", "60+" }
+                };
                 this.Loading = true;
                 this.Games = await _gameRepository.GetAll(this.Filter);
                 this.Loading = false;
