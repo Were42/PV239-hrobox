@@ -14,11 +14,11 @@ namespace Hrobox.ViewModel
         public string AgeGroups { get; set; }
         public string Tags { get; set; }
 
-        private readonly INavigationService navigationService;
+        private readonly INavigationService _navigationService;
 
         public GameDetailViewModel(INavigationService navigationService)
         {
-            this.navigationService = navigationService;
+            this._navigationService = navigationService;
             GameModel = new GameDetailModel();
             this.GameModel.NrOfPlayers = new NrOfPlayers();
         }
