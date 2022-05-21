@@ -39,18 +39,12 @@ namespace Hrobox.ViewModel
         public bool Loading { get; set; } = false;
         public FilterModel Filter { get; set; }
 
-        private ICommand find;
-        public ICommand Find => find;
-        private ICommand createGame;
-        public ICommand CreateGame => createGame;
-        private ICommand createTag;
-        public ICommand CreateTag => createTag;
-        private ICommand login;
-        public ICommand Login => login;
-        private ICommand openPicker;
-        public ICommand OpenPicker => openPicker;
-        private ICommand openDetail;
-        public ICommand OpenDetail => openDetail;
+        public ICommand FindCommand { get; set; }
+        public ICommand CreateGameCommand { get; set; }
+        public ICommand CreateTagCommand { get; set; }
+        public ICommand LoginCommand { get; set; }
+        public ICommand OpenPickerCommand { get; set; }
+        public ICommand OpenDetailCommand { get; set; }
         private readonly IGameRepository GameRepository;
         private readonly INavigationService navigationService;
         private readonly ITagRepository TagRepository;
@@ -61,13 +55,13 @@ namespace Hrobox.ViewModel
             this.GameRepository = gameRestRepository;
             this.TagRepository = tagRepository;
             
-            find = new AsyncCommand(FindIt, null,  null, false);
+            FindCommand = new AsyncCommand(FindIt, null,  null, false);
             User = new SignInUserModel();
-            createGame = new AsyncCommand(CreateGameFunction, null, null, false);
-            createTag = new AsyncCommand(CreateTagFunction, null, null, false);
-            login = new AsyncCommand(LoginFunction, null, null, false);
-            openPicker = new AsyncCommand(OpenPickerFunction, null, null, false);
-            openDetail = new AsyncCommand<int>(OpenDetailFuction, null, null, false);
+            CreateGameCommand = new AsyncCommand(CreateGameFunction, null, null, false);
+            CreateTagCommand = new AsyncCommand(CreateTagFunction, null, null, false);
+            LoginCommand = new AsyncCommand(LoginFunction, null, null, false);
+            OpenPickerCommand = new AsyncCommand(OpenPickerFunction, null, null, false);
+            OpenDetailCommand = new AsyncCommand<int>(OpenDetailFuction, null, null, false);
         }
 
         public async Task FindIt()
