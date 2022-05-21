@@ -14,18 +14,16 @@ namespace Hrobox.ViewModel
     {
         public UserModel User { get; set; }
 
-        private ICommand registerCommand;
-
-        public ICommand RegisterCommand => registerCommand;
-        private readonly INavigationService navigationService;
+        public ICommand RegisterCommand { get; set; }
+        private readonly INavigationService _navigationService;
         public IUserRepository UserRepository { get; set; }
 
         public RegisterViewModel(INavigationService navigationService, IUserRepository userRepository)
         {
-            this.navigationService = navigationService;
+            this._navigationService = navigationService;
             this.User = new UserModel();
             this.UserRepository = userRepository;
-            registerCommand = new AsyncCommand(Register, null, null, false);
+            RegisterCommand = new AsyncCommand(Register, null, null, false);
         }
 
         private async Task Register()
