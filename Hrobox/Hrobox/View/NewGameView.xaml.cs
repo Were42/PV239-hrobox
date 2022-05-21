@@ -16,9 +16,5 @@ namespace Hrobox.View
         {
             InitializeComponent();
         }
-        //todo: remove when done with testing detail
-        private void Button_OnClicked(object sender, EventArgs e)
-        {
-        }
     }
 }
