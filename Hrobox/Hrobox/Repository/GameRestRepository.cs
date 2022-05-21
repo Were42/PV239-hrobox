@@ -74,23 +74,8 @@ namespace Hrobox.Repository
             return "Something failed during creation of game, please validate inputs and tr again.";
         }
 
-        public async Task UpdateGame(GameModel game)
-        {
-            Uri uri = new Uri("".ToString());
-            string json = JsonSerializer.Serialize<GameModel>(game,
-                new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = null;
-            response = await client.PutAsync(uri, content);
-
-            if (response.IsSuccessStatusCode)
-            {
-                Debug.WriteLine(@"\tTodoItem successfully saved.");
-            }
-        }
-
-        public async Task deleteGame(string id)
+        public async Task DeleteGame(string id)
         {
             Uri uri = new Uri("".ToString());
             HttpResponseMessage response = await client.DeleteAsync(uri);
