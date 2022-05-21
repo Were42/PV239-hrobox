@@ -15,7 +15,7 @@ namespace Hrobox.ViewModel
     {
         public Tag Tag { get; set; }
         public SignInUserModel SignInUserModel { get; set; }
-        public ICommand CreateTag { get; set; }
+        public ICommand CreateTagCommand { get; set; }
     private readonly INavigationService _navigationService;
         private readonly ITagRepository _tagRepository;
         private readonly IMessageService _messageService;
@@ -23,14 +23,14 @@ namespace Hrobox.ViewModel
         public NewTagViewModel(INavigationService navigationService, ITagRepository tagRepository, IMessageService messageService)
 
         {
-            this.CreateTag = new AsyncCommand(CreateTagCommand, null, null, false);
+            this.CreateTagCommand = new AsyncCommand(CreateTag, null, null, false);
             this._tagRepository = tagRepository;
             this._navigationService = navigationService;
             this._messageService = messageService;
             this.Tag = new Tag();
         }
 
-        private async Task CreateTagCommand()
+        private async Task CreateTag()
         {
             var msg = await _tagRepository.CreateTag(this.Tag, this.SignInUserModel.Jwt);
             await _messageService.ShowAsync(msg);

@@ -24,7 +24,7 @@
                Placeholder="Name"
                PlaceholderColor="CadetBlue"
                HorizontalTextAlignment="Center"/>
-        <Button Command="{Binding CreateTag}"
+        <Button Command="{Binding CreateTagCommand}"
                 Grid.Row="2"
                 Grid.Column="1"
                 Margin="0, 100, 0, 200 " 
