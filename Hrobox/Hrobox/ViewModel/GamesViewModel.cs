@@ -128,10 +128,10 @@ namespace Hrobox.ViewModel
                 if (tagModel.IsSelected)
                 {
                     //todo find id
-                    var result = tagsWithAllInfo.tags.Find(x => x.nameEn.Equals(tagModel.Name));
+                    var result = tagsWithAllInfo.tags.Find(x => x.NameEn.Equals(tagModel.Name));
                     if (result != null)
                     {
-                        this.Filter.Tags.Values.Add((int)result.id);
+                        this.Filter.Tags.Values.Add((int)result.Id);
                     }
                 }
             }
@@ -153,11 +153,11 @@ namespace Hrobox.ViewModel
             this.tagsWithAllInfo = await TagRepository.GetAllTags();
             foreach (var tag in tagsWithAllInfo.tags)
             {
-                if (this.Tags.Any(x => x.Name.Equals(tag.nameEn)))
+                if (this.Tags.Any(x => x.Name.Equals(tag.NameEn)))
                 {
                     continue;
                 }
-                this.Tags.Add(new TagModel() { Name = tag.nameEn });
+                this.Tags.Add(new TagModel() { Name = tag.NameEn });
             }
             await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
@@ -186,7 +186,7 @@ namespace Hrobox.ViewModel
                 this.Games = await GameRepository.GetAll(this.Filter);
                 this.Loading = false;
             }
-            if (User.role != null)
+            if (User.Role != null)
             {
                 isLogged = true;
                 canLog = false;

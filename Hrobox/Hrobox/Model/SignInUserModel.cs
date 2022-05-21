@@ -6,8 +6,8 @@ namespace Hrobox.Model
 {
     public class SignInUserModel
     {
-        public string jwt { get; set; }
-        public string role { get; set; }
-        public string lang { get; set; }
+        public string Jwt { get; set; }
+        public string Role { get; set; }
+        public string Lang { get; set; }
     }
 }

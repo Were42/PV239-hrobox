@@ -33,7 +33,7 @@ namespace Hrobox.ViewModel
 
         private async Task CreateTagCommand()
         {
-            var msg = await tagRepository.CreateTag(this.Tag, this.SignInUserModel.jwt);
+            var msg = await tagRepository.CreateTag(this.Tag, this.SignInUserModel.Jwt);
             await messageService.ShowAsync(msg);
             if (msg.Contains("Success"))
             {

@@ -55,7 +55,7 @@ namespace Hrobox.ViewModel
         private async Task CreateGameCommand()
         {
             FillingModel();
-            var msg = await gameRepository.CreateGame(GameModel, SignInUserModel.jwt);
+            var msg = await gameRepository.CreateGame(GameModel, SignInUserModel.Jwt);
             await messageService.ShowAsync(msg);
             if (msg.Contains("Success"))
             {
@@ -68,11 +68,11 @@ namespace Hrobox.ViewModel
             tagsModel = await tagRepository.GetAllTags();
             foreach (var tag in tagsModel.tags)
             {
-                if (this.Tags.Any(x => x.Name.Equals(tag.nameEn)))
+                if (this.Tags.Any(x => x.Name.Equals(tag.NameEn)))
                 {
                     continue;
                 }
-                this.Tags.Add(new TagModel() { Name = tag.nameEn });
+                this.Tags.Add(new TagModel() { Name = tag.NameEn });
             }
             await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
@@ -124,10 +124,10 @@ namespace Hrobox.ViewModel
             {
                 if (tag.IsSelected)
                 {
-                    var foundTag = tagsModel.tags.Find(x => x.nameEn.Equals(tag.Name));
+                    var foundTag = tagsModel.tags.Find(x => x.NameEn.Equals(tag.Name));
                     if (foundTag != null)
                     {
-                        this.GameModel.Tags.Add((int)foundTag.id);
+                        this.GameModel.Tags.Add((int)foundTag.Id);
                     }
                 }
             }

@@ -17,7 +17,7 @@
                Text="Here you can create Tag, that is used for filtering games."
                TextColor= "{StaticResource Primary}"
                FontSize="Medium" Padding="10"/>
-        <Entry Text="{Binding Tag.nameCs }"
+        <Entry Text="{Binding Tag.NameCs }"
                TextColor="{StaticResource Primary}" 
                Grid.Row="1"
                Grid.Column="1" 

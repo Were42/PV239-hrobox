@@ -37,9 +37,9 @@ namespace Hrobox.ViewModel
             var loggedInUser = await userRepository.SignIn(User);
             if (loggedInUser != null)
             {
-                SignedUser.jwt = loggedInUser.jwt;
-                SignedUser.lang = loggedInUser.lang;
-                SignedUser.role = loggedInUser.role;
+                SignedUser.Jwt = loggedInUser.Jwt;
+                SignedUser.Lang = loggedInUser.Lang;
+                SignedUser.Role = loggedInUser.Role;
                 await navigationService.PopAsync();
             }
         }
