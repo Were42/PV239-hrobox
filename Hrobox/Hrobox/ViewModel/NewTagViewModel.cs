@@ -16,7 +16,7 @@ namespace Hrobox.ViewModel
         public Tag Tag { get; set; }
         public SignInUserModel SignInUserModel { get; set; }
         public ICommand CreateTagCommand { get; set; }
-    private readonly INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
         private readonly ITagRepository _tagRepository;
         private readonly IMessageService _messageService;
 
