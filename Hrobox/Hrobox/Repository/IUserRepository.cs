@@ -8,7 +8,6 @@ namespace Hrobox.Repository
 {
     public interface IUserRepository
     {
-        Task<List<UserModel>> GetAllUsers();
         Task CreateUser(UserModel user);
         Task<SignInUserModel> SignIn(UserLoginModel user);
     }
