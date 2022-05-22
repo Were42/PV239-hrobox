@@ -26,7 +26,7 @@ namespace Hrobox.Repository
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                Items = JsonSerializer.Deserialize<TagsModel>(content);
+                Items = JsonSerializer.Deserialize<TagsModel>(content, new JsonSerializerOptions(){ PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
             }
 
             return Items;
