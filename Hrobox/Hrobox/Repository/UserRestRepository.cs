@@ -48,31 +48,6 @@ namespace Hrobox.Repository
             }
         }
 
-        public async Task UpdateUser(UserModel user)
-        {
-            Uri uri = new Uri("".ToString());
-            string json = JsonSerializer.Serialize<UserModel>(user, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = null;
-            response = await client.PutAsync(uri, content);
-
-            if (response.IsSuccessStatusCode)
-            {
-                Debug.WriteLine(@"\tTodoItem successfully saved.");
-            }
-        }
-
-        public async Task DeleteUser(string id)
-        {
-            Uri uri = new Uri("".ToString());
-            HttpResponseMessage response = await client.DeleteAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                Debug.WriteLine(@"\tTodoItem successfully deleted.");
-            }
-        }
-
         public async Task<SignInUserModel> SignIn(UserLoginModel user)
         {
             Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/auth/login");

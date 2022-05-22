@@ -73,16 +73,5 @@ namespace Hrobox.Repository
             }
             return "Something failed during creation of game, please validate inputs and tr again.";
         }
-
-
-        public async Task DeleteGame(string id)
-        {
-            Uri uri = new Uri("".ToString());
-            HttpResponseMessage response = await client.DeleteAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                Debug.WriteLine(@"\tTodoItem successfully deleted.");
-            }
-        }
     }
 }
