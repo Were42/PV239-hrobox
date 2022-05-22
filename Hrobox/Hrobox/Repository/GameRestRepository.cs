@@ -57,15 +57,18 @@ namespace Hrobox.Repository
             return Item;
         }
 
-        public async Task<string> CreateGame(NewGameModel game, string jwt)
+        public async Task<string> CreateGame(NewGameModel game)
         {
-            var authHeader = new AuthenticationHeaderValue("Bearer", jwt);
-            client.DefaultRequestHeaders.Authorization = authHeader;
+            
             Uri uri = new Uri(String.Format("{0}{1}", Constants.Url, "game"));
             string json = JsonSerializer.Serialize<NewGameModel>(game, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
+
+            var request = new HttpRequestMessage(HttpMethod.Post, uri);
+
+
             response = await client.PostAsync(uri, content);
 
             if (response.IsSuccessStatusCode)

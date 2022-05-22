@@ -53,7 +53,7 @@ namespace Hrobox.ViewModel
         private async Task CreateGameCommand()
         {
             FillingModel();
-            var msg = await gameRepository.CreateGame(GameModel, SignInUserModel.Jwt);
+            var msg = await gameRepository.CreateGame(GameModel);
             await messageService.ShowAsync(msg);
             if (msg.Contains("Success"))
             {
