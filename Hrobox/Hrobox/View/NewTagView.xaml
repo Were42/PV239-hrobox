@@ -17,14 +17,14 @@
                Text="Here you can create Tag, that is used for filtering games."
                TextColor= "{StaticResource Primary}"
                FontSize="Medium" Padding="10"/>
-        <Entry Text="{Binding Tag.nameCs }"
+        <Entry Text="{Binding Tag.NameEn }"
                TextColor="{StaticResource Primary}" 
                Grid.Row="1"
                Grid.Column="1" 
                Placeholder="Name"
                PlaceholderColor="CadetBlue"
                HorizontalTextAlignment="Center"/>
-        <Button Command="{Binding CreateTag}"
+        <Button Command="{Binding CreateTagCommand}"
                 Grid.Row="2"
                 Grid.Column="1"
                 Margin="0, 100, 0, 200 " 

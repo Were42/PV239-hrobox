@@ -7,7 +7,8 @@
                       Title="Create game"
                       x:DataType="viewModel:NewGameViewModel">
     <Frame HasShadow="True" Margin="10" CornerRadius="10" BackgroundColor="LightBlue">
-        <Grid ColumnDefinitions="*, 195, *"
+        <ScrollView>
+            <Grid ColumnDefinitions="*, 195, *"
               RowDefinitions="120,40,*,45,45,20,45,20,45,45,5,45,5" 
               Margin="0, 0, 0,0">
 
@@ -80,6 +81,7 @@
                     Grid.Column="1"
                     CornerRadius="15"
                     Text="Create Game"/>
-        </Grid>
+            </Grid>
+        </ScrollView>
     </Frame>
 </view:ContentPageBase>

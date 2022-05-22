@@ -10,8 +10,6 @@ namespace Hrobox.Repository
         Task<ObservableCollection<OutputGameModel>> GetAll(FilterModel filterModel);
         Task<GameDetailModel> GetById(OutputGameModel id);
         Task<string> CreateGame(NewGameModel game, string jwt);
-        Task UpdateGame(GameModel game);
-        Task deleteGame(string id);
 
     }
 }

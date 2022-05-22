@@ -15,19 +15,17 @@ namespace Hrobox.ViewModel
     public class MultiPickerViewModel : ViewModelBase, IViewModel<ObservableCollection<TagModel>>
     {
         public ObservableCollection<TagModel> Tags { get; set; }
-        public string Teststring { get; set; } = "HEJ";
-        private readonly INavigationService navigationService;
-        private ICommand closePicker;
-        public ICommand ClosePicker => closePicker;
+        private readonly INavigationService _navigationService;
+        public ICommand ClosePicker { get; set; }
         public MultiPickerViewModel(INavigationService navigationService)
         {
-            this.navigationService = navigationService;
-            closePicker = new AsyncCommand(ClosePickerFunction, null, null, false);
+            this._navigationService = navigationService;
+            ClosePicker = new AsyncCommand(ClosePickerFunction, null, null, false);
         }
 
         public async Task ClosePickerFunction()
         {
-            await navigationService.PopAsync();
+            await _navigationService.PopAsync();
         }
 
         public void SetViewModelParameter(ObservableCollection<TagModel>? parameter)

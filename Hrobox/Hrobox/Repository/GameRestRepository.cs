@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Hrobox.Model;
+using Hrobox.Utility;
 using Xamarin.Forms;
 using JsonSerializerOptions = System.Text.Json.JsonSerializerOptions;
 
@@ -17,15 +18,15 @@ namespace Hrobox.Repository
     {
         HttpClient client;
 
-        public GameRestRepository()
+        public GameRestRepository(HttpClient client)
         {
-            client = new HttpClient();
+            this.client = client;
         }
 
         public async Task<ObservableCollection<OutputGameModel>> GetAll(FilterModel filterModel)
         {
 
-            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/games");
+            Uri uri = new Uri(String.Format("{0}{1}", Constants.Url, "games"));
             string json = JsonSerializer.Serialize<FilterModel>(filterModel, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true});
             StringContent content_post = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PostAsync(uri, content_post);
@@ -42,7 +43,7 @@ namespace Hrobox.Repository
 
         public async Task<GameDetailModel> GetById(OutputGameModel game)
         {
-            var url = String.Format("https://hrobox-backend.herokuapp.com/api/game/{0}/version/{1}?lang=en", game.Id, game.Version);
+            var url = String.Format("{0}game/{1}/version/{2}?lang={3}", Constants.Url, game.Id, game.Version, Constants.Lang);
             Uri uri = new Uri(url);
             HttpResponseMessage response = await client.GetAsync(uri);
             GameDetailModel Item = new GameDetailModel();
@@ -60,7 +61,7 @@ namespace Hrobox.Repository
         {
             var authHeader = new AuthenticationHeaderValue("Bearer", jwt);
             client.DefaultRequestHeaders.Authorization = authHeader;
-            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/game");
+            Uri uri = new Uri(String.Format("{0}{1}", Constants.Url, "game"));
             string json = JsonSerializer.Serialize<NewGameModel>(game, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -72,32 +73,6 @@ namespace Hrobox.Repository
                 return "Successfully created new Game.";
             }
             return "Something failed during creation of game, please validate inputs and tr again.";
-        }
-
-        public async Task UpdateGame(GameModel game)
-        {
-            Uri uri = new Uri("".ToString());
-            string json = JsonSerializer.Serialize<GameModel>(game,
-                new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = null;
-            response = await client.PutAsync(uri, content);
-
-            if (response.IsSuccessStatusCode)
-            {
-                Debug.WriteLine(@"\tTodoItem successfully saved.");
-            }
-        }
-
-        public async Task deleteGame(string id)
-        {
-            Uri uri = new Uri("".ToString());
-            HttpResponseMessage response = await client.DeleteAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                Debug.WriteLine(@"\tTodoItem successfully deleted.");
-            }
         }
     }
 }

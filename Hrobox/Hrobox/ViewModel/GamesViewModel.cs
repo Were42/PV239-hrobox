@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Hrobox.Command;
 using Hrobox.Model;
 using Hrobox.Repository;
-using Hrobox.Services;
 using Hrobox.Services.Interfaces;
-using Hrobox.ViewModel.Interfaces;
 
 namespace Hrobox.ViewModel
 {
@@ -19,7 +15,7 @@ namespace Hrobox.ViewModel
     {
         public ObservableCollection<OutputGameModel> Games { get; set; } = new();
         public ObservableCollection<TagModel> Tags { get; set; } = new();
-        private TagsModel tagsWithAllInfo;
+        private TagsModel _tagsWithAllInfo;
 
         public SignInUserModel? User { get; set; }
 
@@ -34,47 +30,41 @@ namespace Hrobox.ViewModel
         public bool IsTeen { get; set; }
         public bool IsAdult { get; set; }
         public string KeyWord { get; set; } = "";
-        public bool isLogged { get; set; } = false;
-        public bool canLog { get; set; } = true;
+        public bool IsLogged { get; set; } = false;
+        public bool CanLog { get; set; } = true;
         public bool Loading { get; set; } = false;
         public FilterModel Filter { get; set; }
 
-        private ICommand find;
-        public ICommand Find => find;
-        private ICommand createGame;
-        public ICommand CreateGame => createGame;
-        private ICommand createTag;
-        public ICommand CreateTag => createTag;
-        private ICommand login;
-        public ICommand Login => login;
-        private ICommand openPicker;
-        public ICommand OpenPicker => openPicker;
-        private ICommand openDetail;
-        public ICommand OpenDetail => openDetail;
-        private readonly IGameRepository GameRepository;
-        private readonly INavigationService navigationService;
-        private readonly ITagRepository TagRepository;
+        public ICommand FindCommand { get; set; }
+        public ICommand CreateGameCommand { get; set; }
+        public ICommand CreateTagCommand { get; set; }
+        public ICommand LoginCommand { get; set; }
+        public ICommand OpenPickerCommand { get; set; }
+        public ICommand OpenDetailCommand { get; set; }
+        private readonly IGameRepository _gameRepository;
+        private readonly INavigationService _navigationService;
+        private readonly ITagRepository _tagRepository;
         
         public GamesViewModel(INavigationService navigationService, IGameRepository gameRestRepository, ITagRepository tagRepository)
         {
-            this.navigationService = navigationService;
-            this.GameRepository = gameRestRepository;
-            this.TagRepository = tagRepository;
+            this._navigationService = navigationService;
+            this._gameRepository = gameRestRepository;
+            this._tagRepository = tagRepository;
             
-            find = new AsyncCommand(FindIt, null,  null, false);
+            FindCommand = new AsyncCommand(FindIt, null,  null, false);
             User = new SignInUserModel();
-            createGame = new AsyncCommand(CreateGameFunction, null, null, false);
-            createTag = new AsyncCommand(CreateTagFunction, null, null, false);
-            login = new AsyncCommand(LoginFunction, null, null, false);
-            openPicker = new AsyncCommand(OpenPickerFunction, null, null, false);
-            openDetail = new AsyncCommand<int>(OpenDetailFuction, null, null, false);
+            CreateGameCommand = new AsyncCommand(CreateGameFunction, null, null, false);
+            CreateTagCommand = new AsyncCommand(CreateTagFunction, null, null, false);
+            LoginCommand = new AsyncCommand(LoginFunction, null, null, false);
+            OpenPickerCommand = new AsyncCommand(OpenPickerFunction, null, null, false);
+            OpenDetailCommand = new AsyncCommand<int>(OpenDetailFuction, null, null, false);
         }
 
         public async Task FindIt()
         {
             this.FillingModel();
             this.Loading = true;
-            this.Games = await GameRepository.GetAll(this.Filter);
+            this.Games = await _gameRepository.GetAll(this.Filter);
             this.Loading = false;
         }
 
@@ -125,41 +115,39 @@ namespace Hrobox.ViewModel
             this.Filter.Name = KeyWord;
             foreach (var tagModel in Tags)
             {
-                if (tagModel.IsSelected)
+                if (!tagModel.IsSelected) continue;
+                //todo find id
+                var result = _tagsWithAllInfo.Tags.Find(x => x.NameEn.Equals(tagModel.Name));
+                if (result != null)
                 {
-                    //todo find id
-                    var result = tagsWithAllInfo.tags.Find(x => x.nameEn.Equals(tagModel.Name));
-                    if (result != null)
-                    {
-                        this.Filter.Tags.Values.Add((int)result.id);
-                    }
+                    this.Filter.Tags.Values.Add((int)result.Id);
                 }
             }
         }
         public async Task CreateGameFunction()
         {
-            await navigationService.PushAsync<NewGameViewModel, SignInUserModel>(User);
+            await _navigationService.PushAsync<NewGameViewModel, SignInUserModel>(User);
         }
         public async Task CreateTagFunction()
         {
-            await navigationService.PushAsync<NewTagViewModel, SignInUserModel>(User);
+            await _navigationService.PushAsync<NewTagViewModel, SignInUserModel>(User);
         }
         public async Task LoginFunction()
         {
-            await navigationService.PushAsync<LoginViewModel, SignInUserModel>(User);
+            await _navigationService.PushAsync<LoginViewModel, SignInUserModel>(User);
         }
         public async Task OpenPickerFunction()
         {
-            this.tagsWithAllInfo = await TagRepository.GetAllTags();
-            foreach (var tag in tagsWithAllInfo.tags)
+            this._tagsWithAllInfo = await _tagRepository.GetAllTags();
+            foreach (var tag in _tagsWithAllInfo.Tags)
             {
-                if (this.Tags.Any(x => x.Name.Equals(tag.nameEn)))
+                if (this.Tags.Any(x => x.Name.Equals(tag.NameEn)))
                 {
                     continue;
                 }
-                this.Tags.Add(new TagModel() { Name = tag.nameEn });
+                this.Tags.Add(new TagModel() { Name = tag.NameEn });
             }
-            await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
+            await _navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
         public async Task OpenDetailFuction(int Id)
         {
@@ -172,24 +160,26 @@ namespace Hrobox.ViewModel
                     break;
                 }
             }
-            var result = await GameRepository.GetById(game);
-            await navigationService.PushAsync<GameDetailViewModel, GameDetailModel>(result);
+            var result = await _gameRepository.GetById(game);
+            await _navigationService.PushAsync<GameDetailViewModel, GameDetailModel>(result);
         }
         public override async Task OnAppearingAsync()
         {
             if (!(Games.Count > 0))
             {
-                this.Filter = new FilterModel();
-                this.Filter.AgeGroup = new AgeGroup() { Values = new List<string>() { "K", "T", "A", "S" } };
-                this.Filter.Duration = new List<string> { "<15", "15-30", "30-60", "60+" };
+                this.Filter = new FilterModel
+                {
+                    AgeGroup = new AgeGroup() { Values = new List<string>() { "K", "T", "A", "S" } },
+                    Duration = new List<string> { "<15", "15-30", "30-60", "60+" }
+                };
                 this.Loading = true;
-                this.Games = await GameRepository.GetAll(this.Filter);
+                this.Games = await _gameRepository.GetAll(this.Filter);
                 this.Loading = false;
             }
-            if (User.role != null)
+            if (User.Role != null)
             {
-                isLogged = true;
-                canLog = false;
+                IsLogged = true;
+                CanLog = false;
             }
         }
     }

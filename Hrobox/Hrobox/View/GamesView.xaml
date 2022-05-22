@@ -9,7 +9,7 @@
              x:DataType="viewModel:GamesViewModel"
              x:Name="Games">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Login" IconImageSource="userIcon" Command="{Binding Login}"/>
+        <ToolbarItem Text="Login" IconImageSource="userIcon" Command="{Binding LoginCommand}"/>
     </ContentPage.ToolbarItems>
     <Grid BackgroundColor="White">
         <Grid.ColumnDefinitions>
@@ -40,7 +40,7 @@
                                TextColor="White" FontSize="Medium"
                                PlaceholderColor="White"
                                Text="{Binding KeyWord}"
-                               SearchCommand="{Binding Find}"></SearchBar>
+                               SearchCommand="{Binding FindCommand}"></SearchBar>
                     <Label Grid.Row="1" Grid.Column="0"
                            Grid.ColumnSpan="5" Text="Time duration (in minutes):"/>
                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
@@ -71,17 +71,17 @@
                             TextColor="White"
                             BorderColor="White"
                             BorderWidth="1"
-                            Command="{Binding OpenPicker}"/>
+                            Command="{Binding OpenPickerCommand}"/>
                 </Grid>
             </Frame>
-            <Grid ColumnDefinitions="*,*" RowDefinitions="auto" IsVisible="{Binding isLogged}">
+            <Grid ColumnDefinitions="*,*" RowDefinitions="auto" IsVisible="{Binding IsLogged}">
                 <Button CornerRadius="10"
-                        Command="{Binding CreateGame}"
+                        Command="{Binding CreateGameCommand}"
                         Grid.Column="0"
                         Text="Create Game"
                         BackgroundColor="LightBlue"/>
                 <Button CornerRadius="10"
-                        Command="{Binding CreateTag}"
+                        Command="{Binding CreateTagCommand}"
                         Grid.Column="1"
                         Text="Create Tag"
                         BackgroundColor="LightBlue"/>
@@ -119,7 +119,7 @@
                             </Grid>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding Id}"
-                                    Command="{Binding BindingContext.OpenDetail ,Source={x:Reference Games}}" />
+                                                      Command="{Binding BindingContext.OpenDetailCommand ,Source={x:Reference Games}}" />
                             </Frame.GestureRecognizers>
                         </Frame>
                     </DataTemplate>

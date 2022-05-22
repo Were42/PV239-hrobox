@@ -41,7 +41,6 @@ namespace Hrobox
         private void InstallDependencies(IDependencyInjectionService dependencyInjectionService, App application, INavigation navigation)
         {
             var serviceCollection = new ServiceCollection();
-
             new CoreInstaller().Install(serviceCollection, dependencyInjectionService);
             new AppInstaller().Install(serviceCollection, application, navigation);
 

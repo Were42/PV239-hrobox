@@ -16,36 +16,34 @@ namespace Hrobox.ViewModel
     {
         public UserLoginModel User { get; set; }
         public SignInUserModel SignedUser { get; set; }
-        private ICommand loginCommand;
-        public ICommand LoginCommand => loginCommand;
+        public ICommand LoginCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
 
-        private ICommand register;
-        public ICommand Register => register;
-        private readonly INavigationService navigationService;
-        private readonly IUserRepository userRepository;
+        private readonly INavigationService _navigationService;
+        private readonly IUserRepository _userRepository;
         public LoginViewModel(IUserRepository userRepository, INavigationService navigationService)
         {
-            this.userRepository = userRepository;
-            this.navigationService = navigationService;
+            this._userRepository = userRepository;
+            this._navigationService = navigationService;
             this.User = new UserLoginModel();
-            this.loginCommand = new AsyncCommand(Login,null,null,false);
-            this.register = new AsyncCommand(RegisterFunction, null, null, false);
+            this.LoginCommand = new AsyncCommand(Login,null,null,false);
+            this.RegisterCommand = new AsyncCommand(RegisterFunction, null, null, false);
         }
 
         private async Task Login()
         {
-            var loggedInUser = await userRepository.SignIn(User);
+            var loggedInUser = await _userRepository.SignIn(User);
             if (loggedInUser != null)
             {
-                SignedUser.jwt = loggedInUser.jwt;
-                SignedUser.lang = loggedInUser.lang;
-                SignedUser.role = loggedInUser.role;
-                await navigationService.PopAsync();
+                SignedUser.Jwt = loggedInUser.Jwt;
+                SignedUser.Lang = loggedInUser.Lang;
+                SignedUser.Role = loggedInUser.Role;
+                await _navigationService.PopAsync();
             }
         }
         private async Task RegisterFunction()
         {
-            await navigationService.PushAsync<RegisterViewModel>();
+            await _navigationService.PushAsync<RegisterViewModel>();
         }
 
         public void SetViewModelParameter(SignInUserModel? parameter)

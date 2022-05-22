@@ -28,15 +28,13 @@ namespace Hrobox.ViewModel
         public bool IsHalf { get; set; }
         public bool IsHour { get; set; }
         public bool IsHourPlus { get; set; }
-        private ICommand createGame;
-        public ICommand CreateGame => createGame;
-        private ICommand openPicker;
-        public ICommand OpenPicker => openPicker;
+        public ICommand CreateGame { get; set; }
+        public ICommand OpenPicker { get; set; }
         private readonly INavigationService navigationService;
         private readonly IGameRepository gameRepository;
         private readonly ITagRepository tagRepository;
         private readonly IMessageService messageService;
-        private TagsModel tagsModel;
+        private TagsModel _tagsModel;
 
         public NewGameViewModel(INavigationService navigationService,
             IGameRepository gameRepository,
@@ -47,15 +45,15 @@ namespace Hrobox.ViewModel
             this.tagRepository = tagRepository;
             this.navigationService = navigationService;
             this.messageService = messageService;
-            this.createGame = new AsyncCommand(CreateGameCommand, null, null, false);
-            this.openPicker = new AsyncCommand(OpenPickerCommand, null, null, false);
+            this.CreateGame = new AsyncCommand(CreateGameCommand, null, null, false);
+            this.OpenPicker = new AsyncCommand(OpenPickerCommand, null, null, false);
             this.GameModel = new NewGameModel(){NrOfPlayers = new NrOfPlayers()};
         }
 
         private async Task CreateGameCommand()
         {
             FillingModel();
-            var msg = await gameRepository.CreateGame(GameModel, SignInUserModel.jwt);
+            var msg = await gameRepository.CreateGame(GameModel, SignInUserModel.Jwt);
             await messageService.ShowAsync(msg);
             if (msg.Contains("Success"))
             {
@@ -65,14 +63,14 @@ namespace Hrobox.ViewModel
         }
         private async Task OpenPickerCommand()
         {
-            tagsModel = await tagRepository.GetAllTags();
-            foreach (var tag in tagsModel.tags)
+            _tagsModel = await tagRepository.GetAllTags();
+            foreach (var tag in _tagsModel.Tags)
             {
-                if (this.Tags.Any(x => x.Name.Equals(tag.nameEn)))
+                if (this.Tags.Any(x => x.Name.Equals(tag.NameEn)))
                 {
                     continue;
                 }
-                this.Tags.Add(new TagModel() { Name = tag.nameEn });
+                this.Tags.Add(new TagModel() { Name = tag.NameEn });
             }
             await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
@@ -124,10 +122,10 @@ namespace Hrobox.ViewModel
             {
                 if (tag.IsSelected)
                 {
-                    var foundTag = tagsModel.tags.Find(x => x.nameEn.Equals(tag.Name));
+                    var foundTag = _tagsModel.Tags.Find(x => x.NameEn.Equals(tag.Name));
                     if (foundTag != null)
                     {
-                        this.GameModel.Tags.Add((int)foundTag.id);
+                        this.GameModel.Tags.Add((int)foundTag.Id);
                     }
                 }
             }
