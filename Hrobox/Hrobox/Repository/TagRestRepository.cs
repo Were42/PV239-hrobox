@@ -14,9 +14,9 @@ namespace Hrobox.Repository
     internal class TagRestRepository: ITagRepository
     {
         private HttpClient client;
-        public TagRestRepository()
+        public TagRestRepository(HttpClient client)
         {
-            client = new HttpClient();
+            this.client = client;
         }
         public async Task<TagsModel> GetAllTags()
         {

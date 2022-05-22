@@ -15,9 +15,9 @@ namespace Hrobox.Repository
     {
         HttpClient client;
 
-        public UserRestRepository()
+        public UserRestRepository(HttpClient client)
         {
-            client = new HttpClient();
+            this.client = client;
         }
 
         public async Task CreateUser(UserModel user)

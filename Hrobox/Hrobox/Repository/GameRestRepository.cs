@@ -18,9 +18,9 @@ namespace Hrobox.Repository
     {
         HttpClient client;
 
-        public GameRestRepository()
+        public GameRestRepository(HttpClient client)
         {
-            client = new HttpClient();
+            this.client = client;
         }
 
         public async Task<ObservableCollection<OutputGameModel>> GetAll(FilterModel filterModel)

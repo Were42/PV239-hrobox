@@ -119,7 +119,7 @@
                             </Grid>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding Id}"
-                                    Command="{Binding BindingContext.OpenDetail ,Source={x:Reference Games}}" />
+                                                      Command="{Binding BindingContext.OpenDetailCommand ,Source={x:Reference Games}}" />
                             </Frame.GestureRecognizers>
                         </Frame>
                     </DataTemplate>
