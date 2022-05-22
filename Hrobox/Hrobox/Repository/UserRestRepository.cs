@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Hrobox.Model;
+using Hrobox.Utility;
 using JsonSerializerOptions = System.Text.Json.JsonSerializerOptions;
 
 namespace Hrobox.Repository
@@ -18,24 +19,10 @@ namespace Hrobox.Repository
         {
             client = new HttpClient();
         }
-        public async Task<List<UserModel>> GetAllUsers()
-        {
-            Uri uri = new Uri("".ToString());
-            HttpResponseMessage response = await client.GetAsync(uri);
-            List<UserModel> Items = new List<UserModel>();
-            if (response.IsSuccessStatusCode)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                Items = JsonSerializer.Deserialize<List<UserModel>>(content,
-                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            }
-
-            return Items;
-        }
 
         public async Task CreateUser(UserModel user)
         {
-            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/auth/register".ToString());
+            Uri uri = new Uri(String.Format("{0}{1}", Constants.Url, "auth/register"));
             string json = JsonSerializer.Serialize<UserModel>(user, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true});
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -50,7 +37,7 @@ namespace Hrobox.Repository
 
         public async Task<SignInUserModel> SignIn(UserLoginModel user)
         {
-            Uri uri = new Uri("https://hrobox-backend.herokuapp.com/api/auth/login");
+            Uri uri = new Uri(String.Format("{0}{1}", Constants.Url, "auth/login"));
             string json = JsonSerializer.Serialize<UserLoginModel>(user, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PostAsync(uri, content);
