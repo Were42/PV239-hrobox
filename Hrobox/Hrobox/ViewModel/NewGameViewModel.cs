@@ -64,7 +64,7 @@ namespace Hrobox.ViewModel
         private async Task OpenPickerCommand()
         {
             _tagsModel = await tagRepository.GetAllTags();
-            foreach (var tag in _tagsModel.tags)
+            foreach (var tag in _tagsModel.Tags)
             {
                 if (this.Tags.Any(x => x.Name.Equals(tag.NameEn)))
                 {
@@ -122,7 +122,7 @@ namespace Hrobox.ViewModel
             {
                 if (tag.IsSelected)
                 {
-                    var foundTag = _tagsModel.tags.Find(x => x.NameEn.Equals(tag.Name));
+                    var foundTag = _tagsModel.Tags.Find(x => x.NameEn.Equals(tag.Name));
                     if (foundTag != null)
                     {
                         this.GameModel.Tags.Add((int)foundTag.Id);

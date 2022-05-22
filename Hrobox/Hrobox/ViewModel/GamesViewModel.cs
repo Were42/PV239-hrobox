@@ -117,7 +117,7 @@ namespace Hrobox.ViewModel
             {
                 if (!tagModel.IsSelected) continue;
                 //todo find id
-                var result = _tagsWithAllInfo.tags.Find(x => x.NameEn.Equals(tagModel.Name));
+                var result = _tagsWithAllInfo.Tags.Find(x => x.NameEn.Equals(tagModel.Name));
                 if (result != null)
                 {
                     this.Filter.Tags.Values.Add((int)result.Id);
@@ -139,7 +139,7 @@ namespace Hrobox.ViewModel
         public async Task OpenPickerFunction()
         {
             this._tagsWithAllInfo = await _tagRepository.GetAllTags();
-            foreach (var tag in _tagsWithAllInfo.tags)
+            foreach (var tag in _tagsWithAllInfo.Tags)
             {
                 if (this.Tags.Any(x => x.Name.Equals(tag.NameEn)))
                 {

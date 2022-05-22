@@ -6,6 +6,6 @@ namespace Hrobox.Model
 {
     public class TagsModel
     {
-        public List<Tag> tags { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }

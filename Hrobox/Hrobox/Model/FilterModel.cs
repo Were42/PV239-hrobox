@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using CookBook.Mobile.Models;
+using Hrobox.Utility;
 using Newtonsoft.Json;
 
 namespace Hrobox.Model
@@ -10,7 +11,7 @@ namespace Hrobox.Model
     {
         public int? Limit { get; set; }
         public int? Offset { get; set; }
-        public string? Lang { get; set; } = "en";
+        public string? Lang { get; set; } = Constants.Lang;
         public string? Author { get; set; }
         public AgeGroup AgeGroup { get; set; }
         public List<string> Duration { get; set; }
