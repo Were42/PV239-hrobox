@@ -16,7 +16,7 @@ namespace Hrobox.Repository
         {
             var accessToken = await GetAccessTokenAsync();
 
-            request.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             return await base.SendAsync(request, cancellationToken);
         }
 

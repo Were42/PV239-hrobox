@@ -11,10 +11,9 @@ using Hrobox.ViewModel.Interfaces;
 
 namespace Hrobox.ViewModel
 {
-    public class NewTagViewModel : ViewModelBase, IViewModel<SignInUserModel>
+    public class NewTagViewModel : ViewModelBase
     {
         public Tag Tag { get; set; }
-        public SignInUserModel SignInUserModel { get; set; }
         public ICommand CreateTagCommand { get; set; }
         private readonly INavigationService _navigationService;
         private readonly ITagRepository _tagRepository;
@@ -32,17 +31,12 @@ namespace Hrobox.ViewModel
 
         private async Task CreateTag()
         {
-            var msg = await _tagRepository.CreateTag(this.Tag, this.SignInUserModel.Jwt);
+            var msg = await _tagRepository.CreateTag(this.Tag);
             await _messageService.ShowAsync(msg);
             if (msg.Contains("Success"))
             {
                 await _navigationService.PopToRootAsync();
             }
-        }
-
-        public void SetViewModelParameter(SignInUserModel? parameter)
-        {
-            SignInUserModel = parameter;
         }
     }
 

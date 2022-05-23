@@ -16,10 +16,9 @@ using Xamarin.Essentials;
 
 namespace Hrobox.ViewModel
 {
-    public class NewGameViewModel : ViewModelBase, IViewModel<SignInUserModel>
+    public class NewGameViewModel : ViewModelBase
     {
         public NewGameModel GameModel { get; set; }
-        public SignInUserModel SignInUserModel { get; set; }
         public ObservableCollection<TagModel> Tags { get; set; } = new();
         public bool IsKids { get; set; }
         public bool IsSchool { get; set; }
@@ -53,7 +52,6 @@ namespace Hrobox.ViewModel
 
         private async Task CreateGameCommand()
         {
-            await SecureStorage.SetAsync("bearer", SignInUserModel.Jwt);
             FillingModel();
             var msg = await gameRepository.CreateGame(GameModel);
             await messageService.ShowAsync(msg);
@@ -77,10 +75,6 @@ namespace Hrobox.ViewModel
             await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
 
-        public void SetViewModelParameter(SignInUserModel? parameter)
-        {
-            SignInUserModel = parameter;
-        }
         public void FillingModel()
         {
             this.GameModel.Tags = new List<int>();

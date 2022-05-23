@@ -32,16 +32,18 @@ namespace Hrobox.Repository
             return Items;
         }
 
-        public async Task<string> CreateTag(Tag tag, string jwt)
+        public async Task<string> CreateTag(Tag tag)
         {
-            var authHeader = new AuthenticationHeaderValue("Bearer", jwt);
-            client.DefaultRequestHeaders.Authorization = authHeader;
             Uri uri = new Uri(String.Format("{0}{1}", Constants.Url, "tag"));
             string json = JsonSerializer.Serialize<Tag>(tag, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
-            response = await client.PostAsync(uri, content);
+            var request = new HttpRequestMessage(HttpMethod.Post, uri);
+            request.Content = content;
+
+
+            response = await client.SendAsync(request);
 
 
             if (response.IsSuccessStatusCode)

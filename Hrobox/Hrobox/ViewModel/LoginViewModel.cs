@@ -8,6 +8,7 @@ using Hrobox.Model;
 using Hrobox.Repository;
 using Hrobox.Services.Interfaces;
 using Hrobox.ViewModel.Interfaces;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Hrobox.ViewModel
@@ -35,6 +36,7 @@ namespace Hrobox.ViewModel
             var loggedInUser = await _userRepository.SignIn(User);
             if (loggedInUser != null)
             {
+                await SecureStorage.SetAsync("bearer", loggedInUser.Jwt);
                 SignedUser.Jwt = loggedInUser.Jwt;
                 SignedUser.Lang = loggedInUser.Lang;
                 SignedUser.Role = loggedInUser.Role;
