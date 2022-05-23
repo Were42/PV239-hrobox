@@ -22,7 +22,6 @@ namespace Hrobox.Repository
 
         protected Task<string?> GetAccessTokenAsync()
         {
-
             return SecureStorage.GetAsync("bearer");
         }
     }

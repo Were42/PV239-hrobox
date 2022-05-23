@@ -21,7 +21,7 @@ namespace Hrobox.Installers
             serviceCollection.AddTransient<AddAuthorizationHeaderHandler>();
             serviceCollection.AddHttpClient<IGameRepository, GameRestRepository>().AddHttpMessageHandler<AddAuthorizationHeaderHandler>();
             serviceCollection.AddHttpClient<ITagRepository, TagRestRepository>().AddHttpMessageHandler<AddAuthorizationHeaderHandler>();
-            serviceCollection.AddHttpClient<IUserRepository, UserRestRepository>().AddHttpMessageHandler<AddAuthorizationHeaderHandler>();
+            serviceCollection.AddHttpClient<IUserRepository, UserRestRepository>();
             serviceCollection.AddSingleton<IMessageService, MessageService>();
         }
 
