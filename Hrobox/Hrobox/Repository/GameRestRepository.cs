@@ -69,7 +69,7 @@ namespace Hrobox.Repository
             var request = new HttpRequestMessage(HttpMethod.Post, uri);
 
 
-            response = await client.PostAsync(uri, content);
+            response = await client.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
             {

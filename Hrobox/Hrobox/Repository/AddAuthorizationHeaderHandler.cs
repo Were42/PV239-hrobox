@@ -12,12 +12,6 @@ namespace Hrobox.Repository
 {
     public class AddAuthorizationHeaderHandler : DelegatingHandler
     {
-        private readonly IHttpContextAccessor accessor;
-        public AddAuthorizationHeaderHandler(IHttpContextAccessor accessor)
-        {
-            this.accessor = accessor;
-            
-        }
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var accessToken = await GetAccessTokenAsync();

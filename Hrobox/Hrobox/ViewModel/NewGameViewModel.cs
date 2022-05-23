@@ -12,6 +12,7 @@ using Hrobox.Model;
 using Hrobox.Repository;
 using Hrobox.Services.Interfaces;
 using Hrobox.ViewModel.Interfaces;
+using Xamarin.Essentials;
 
 namespace Hrobox.ViewModel
 {
@@ -52,6 +53,7 @@ namespace Hrobox.ViewModel
 
         private async Task CreateGameCommand()
         {
+            await SecureStorage.SetAsync("bearer", SignInUserModel.Jwt);
             FillingModel();
             var msg = await gameRepository.CreateGame(GameModel);
             await messageService.ShowAsync(msg);
