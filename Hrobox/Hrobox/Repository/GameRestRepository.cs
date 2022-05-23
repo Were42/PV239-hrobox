@@ -59,7 +59,6 @@ namespace Hrobox.Repository
 
         public async Task<string> CreateGame(NewGameModel game)
         {
-            
             Uri uri = new Uri(String.Format("{0}{1}", Constants.Url, "game"));
             string json = JsonSerializer.Serialize<NewGameModel>(game, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
