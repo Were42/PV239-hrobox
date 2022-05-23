@@ -8,7 +8,7 @@ namespace Hrobox.Model
     public class Tag
     {
         public int? Id { get; set; }
-        public string NameEn { get; set; } = Constants.Default;
-        public string NameCs { get; set; }
+        public string NameEn { get; set; }
+        public string NameCs { get; set; } = Constants.Default;
     }
 }
