@@ -18,8 +18,9 @@ namespace Hrobox.Installers
 
             InstallRepositories(serviceCollection);
             InstallViewModels(serviceCollection);
-            serviceCollection.AddHttpClient<IGameRepository, GameRestRepository>();
-            serviceCollection.AddHttpClient<ITagRepository, TagRestRepository>();
+            serviceCollection.AddTransient<AddAuthorizationHeaderHandler>();
+            serviceCollection.AddHttpClient<IGameRepository, GameRestRepository>().AddHttpMessageHandler<AddAuthorizationHeaderHandler>();
+            serviceCollection.AddHttpClient<ITagRepository, TagRestRepository>().AddHttpMessageHandler<AddAuthorizationHeaderHandler>();
             serviceCollection.AddHttpClient<IUserRepository, UserRestRepository>();
             serviceCollection.AddSingleton<IMessageService, MessageService>();
         }

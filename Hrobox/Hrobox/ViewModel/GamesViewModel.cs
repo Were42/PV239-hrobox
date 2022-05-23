@@ -126,11 +126,11 @@ namespace Hrobox.ViewModel
         }
         public async Task CreateGameFunction()
         {
-            await _navigationService.PushAsync<NewGameViewModel, SignInUserModel>(User);
+            await _navigationService.PushAsync<NewGameViewModel>();
         }
         public async Task CreateTagFunction()
         {
-            await _navigationService.PushAsync<NewTagViewModel, SignInUserModel>(User);
+            await _navigationService.PushAsync<NewTagViewModel>();
         }
         public async Task LoginFunction()
         {

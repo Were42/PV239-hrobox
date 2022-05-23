@@ -12,13 +12,13 @@ using Hrobox.Model;
 using Hrobox.Repository;
 using Hrobox.Services.Interfaces;
 using Hrobox.ViewModel.Interfaces;
+using Xamarin.Essentials;
 
 namespace Hrobox.ViewModel
 {
-    public class NewGameViewModel : ViewModelBase, IViewModel<SignInUserModel>
+    public class NewGameViewModel : ViewModelBase
     {
         public NewGameModel GameModel { get; set; }
-        public SignInUserModel SignInUserModel { get; set; }
         public ObservableCollection<TagModel> Tags { get; set; } = new();
         public bool IsKids { get; set; }
         public bool IsSchool { get; set; }
@@ -53,7 +53,7 @@ namespace Hrobox.ViewModel
         private async Task CreateGameCommand()
         {
             FillingModel();
-            var msg = await gameRepository.CreateGame(GameModel, SignInUserModel.Jwt);
+            var msg = await gameRepository.CreateGame(GameModel);
             await messageService.ShowAsync(msg);
             if (msg.Contains("Success"))
             {
@@ -75,10 +75,6 @@ namespace Hrobox.ViewModel
             await navigationService.PushAsync<MultiPickerViewModel, ObservableCollection<TagModel>>(Tags);
         }
 
-        public void SetViewModelParameter(SignInUserModel? parameter)
-        {
-            SignInUserModel = parameter;
-        }
         public void FillingModel()
         {
             this.GameModel.Tags = new List<int>();
